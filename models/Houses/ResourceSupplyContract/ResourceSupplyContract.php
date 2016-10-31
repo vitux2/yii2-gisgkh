@@ -1,6 +1,6 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\DRSOIndType;
 use gisgkh\types\HouseManagement\HeatingSystemType;
@@ -15,17 +15,17 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress_Pair;
 use gisgkh\types\lib\Nsi\nsiRef;
 use gisgkh\types\lib\OrganizationsRegistry\RegOrgType;
-use startuplab\gisgkh\common\exceptions\GisgkhDataExtractionException;
-use startuplab\gisgkh\common\models\common\GisAttachment;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
-use startuplab\gisgkh\common\models\common\DayOfMonth;
-use startuplab\gisgkh\common\models\common\GisPerson;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\exceptions\GisgkhDataExtractionException;
+use opengkh\gis\models\common\GisAttachment;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\common\DayOfMonth;
+use opengkh\gis\models\common\GisPerson;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
  * Договор ресурсоснабжения
  *
- * @package startuplab\gisgkh\common\models\Houses
+ * @package opengkh\gis\models\Houses
  */
 class ResourceSupplyContract extends CompatibleWithGisgkh
 {

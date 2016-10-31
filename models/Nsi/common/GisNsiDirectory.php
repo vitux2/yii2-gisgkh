@@ -1,17 +1,17 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi\common;
+namespace opengkh\gis\models\Nsi\common;
 
 use startuplab\helpers\ArrayHelper;
 use yii\base\Model;
 
 use gisgkh\NsiCommonService;
 use gisgkh\types\lib\ErrorMessageType;
-use startuplab\gisgkh\common\exceptions\GisgkhRequestControlException;
+use opengkh\gis\exceptions\GisgkhRequestControlException;
 
 /**
  * Справочник НСИ ГИС ЖКХ
- * @package startuplab\gisgkh\common\models\Nsi\common
+ * @package opengkh\gis\models\Nsi\common
  */
 abstract class GisNsiDirectory extends Model
 {

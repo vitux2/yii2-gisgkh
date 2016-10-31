@@ -1,6 +1,6 @@
 <?php
 
-namespace startuplab\gisgkh\common\components;
+namespace opengkh\gis\components;
 
 use yii\base\Component;
 
@@ -9,17 +9,17 @@ use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\Nsi\NsiElementType;
 use gisgkh\types\lib\Nsi\NsiItemInfoType;
 
-use startuplab\gisgkh\common\GisgkhCommonModule;
-use startuplab\gisgkh\common\exceptions\GisgkhRequestControlException;
-use startuplab\gisgkh\common\interfaces\nsi\DynamicReference\IDynamicElement;
-use startuplab\gisgkh\common\interfaces\nsi\DynamicReference\IDynamicReference;
-use startuplab\gisgkh\common\interfaces\nsi\DynamicReference\IDynamicReferenceManager;
+use opengkh\gis\Module;
+use opengkh\gis\exceptions\GisgkhRequestControlException;
+use opengkh\gis\interfaces\nsi\DynamicReference\IDynamicElement;
+use opengkh\gis\interfaces\nsi\DynamicReference\IDynamicReference;
+use opengkh\gis\interfaces\nsi\DynamicReference\IDynamicReferenceManager;
 use yii\base\Exception;
 
 /**
  * Компонент для выполнения задач импорта/экспорта над справочниками ГИС ЖКХ
  *
- * @package startuplab\gisgkh\common\components
+ * @package opengkh\gis\components
  */
 class NsiDynamicManager extends Component
 {
@@ -46,7 +46,7 @@ class NsiDynamicManager extends Component
 
         $this->report(
             "\nИмпорт справочников NSI из ГИС ЖКХ" .
-            "\nИспользуемая версия API ГИС ЖКХ: " . GisgkhCommonModule::getInstance()->version . "\n"
+            "\nИспользуемая версия API ГИС ЖКХ: " . Module::getInstance()->version . "\n"
         );
 
         $nsiCommonService = new NsiCommonService();

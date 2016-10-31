@@ -1,16 +1,16 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\ContractSubjectType;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
  * Предмет договора: вид коммунальной услуги, вид ресурса, период поставки и плановый объём
  *
- * @package startuplab\gisgkh\common\models\Houses
+ * @package opengkh\gis\models\Houses
  */
 class ResourceSupplyContractSubject extends CompatibleWithGisgkh
 {

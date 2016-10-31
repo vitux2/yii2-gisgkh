@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
 use yii\base\Model;
 
 /**
  * Еденицы измерения для тарифицируемого ресурса (единица измерения ресурса/еденица измерения тарифа)
  *
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class ChargeableResourceUnit extends Model
 {

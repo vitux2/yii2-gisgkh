@@ -1,9 +1,9 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 
 use gisgkh\types\lib\IndividualRegistry\ID;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 class GisIdentityDocument extends CompatibleWithGisgkh
 {

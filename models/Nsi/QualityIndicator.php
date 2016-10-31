@@ -1,16 +1,16 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
 use gisgkh\types\lib\Nsi\NsiElementNsiFieldType;
 use gisgkh\types\lib\Nsi\NsiElementNsiRefFieldType;
 use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiPermanentDirectoryEntry;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
  * Показатель качества коммунальных ресурсов
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class QualityIndicator extends GisNsiPermanentDirectoryEntry
 {

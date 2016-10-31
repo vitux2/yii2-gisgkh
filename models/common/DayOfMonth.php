@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 
 use yii\base\Model;
 
 /**
  * День месяца, указывается либо порядковым номером либо признаком "последний день месяца"
  *
- * @package startuplab\gisgkh\common\models\common
+ * @package opengkh\gis\models\common
  */
 class DayOfMonth extends Model
 {

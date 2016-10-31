@@ -1,18 +1,18 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi\common;
+namespace opengkh\gis\models\Nsi\common;
 
 use gisgkh\NsiCommonService;
 use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\Nsi\NsiElementType;
 use gisgkh\types\lib\Nsi\nsiRef;
-use startuplab\gisgkh\common\exceptions\GisgkhRequestControlException;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
+use opengkh\gis\exceptions\GisgkhRequestControlException;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
 use yii\base\Model;
 
 /**
  * Абстрактный элемент справочника
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 abstract class GisNsiDirectoryEntry extends CompatibleWithGisgkh
 {

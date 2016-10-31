@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 
 use gisgkh\types\GisgkhType;
 use yii\base\Model;
 
 /**
  * Абстрактный класс для объектов декларирующих совместимость со схемой API ГИС ЖКХ
- * @package startuplab\gisgkh\common\models\common
+ * @package opengkh\gis\models\common
  */
 abstract class CompatibleWithGisgkh extends Model
 {

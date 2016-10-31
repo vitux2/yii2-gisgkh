@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="74a51eea-55bd-4ccd-be19-57de47cee981" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Module.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/commands/TestController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/NsiDynamicManager.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exceptions/GisgkhDataExtractionException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exceptions/GisgkhDataPreparationException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exceptions/GisgkhException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exceptions/GisgkhFileUploadException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/exceptions/GisgkhRequestControlException.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/interfaces/nsi/DynamicReference/IDynamicElement.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/interfaces/nsi/DynamicReference/IDynamicReference.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/interfaces/nsi/DynamicReference/IDynamicReferenceManager.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/QualityIndicator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ReadingsDeliveryPeriod.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ResourceSupplyContract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ResourceSupplyContractObject.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ResourceSupplyContractPlannedVolume.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ResourceSupplyContractRegistry.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Houses/ResourceSupplyContract/ResourceSupplyContractSubject.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ChargeableResource.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ChargeableResourceDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ChargeableResourceLinkWithUnits.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ChargeableResourceUnit.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ContractBase.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/ContractBaseDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/IdentityDocument.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/IdentityDocumentDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalResource.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalResourceDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalServiceChargeableResources.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalServiceChargeableResourcesDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/MunicipalServiceDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/OrganizationRole.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/OrganizationRoleDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/QualityIndicator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/QualityIndicatorDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/common/GisNsiDirectory.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/common/GisNsiDirectoryEntry.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/common/GisNsiDirectoryEntryLink.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/common/GisNsiNonPermanentDirectoryEntry.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Nsi/common/GisNsiPermanentDirectoryEntry.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/CompatibleWithGisgkh.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/DayOfMonth.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/GisAttachment.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/GisIdentityDocument.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/GisOrganization.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/common/GisPerson.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/bills/hcs-bills-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/bills/hcs-bills-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/bills/hcs-bills-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/capital-repair/hcs-capital-repair-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/capital-repair/hcs-capital-repair-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/capital-repair/hcs-capital-repair-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/changelog.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/device-metering/hcs-device-metering-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/device-metering/hcs-device-metering-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/device-metering/hcs-device-metering-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/fas/hcs-fas-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/fas/hcs-fas-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/house-management/hcs-house-management-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/house-management/hcs-house-management-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/house-management/hcs-house-management-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/infrastructure/hcs-infrastructure-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/infrastructure/hcs-infrastructure-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/infrastructure/hcs-infrastructure-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/inspection/hcs-inspection-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/inspection/hcs-inspection-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/inspection/hcs-inspection-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-account-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-bills-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-individual-registry-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-metering-device-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-nsi-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-organizations-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-organizations-registry-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-payments-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/hcs-premises-base.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/lib/xmldsig-core-schema.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/licenses/hcs-licenses-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/licenses/hcs-licenses-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/licenses/hcs-licenses-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi-common/hcs-nsi-common-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi-common/hcs-nsi-common-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi-common/hcs-nsi-common-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi/hcs-nsi-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi/hcs-nsi-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/nsi/hcs-nsi-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry-common/hcs-organizations-registry-common-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry-common/hcs-organizations-registry-common-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry-common/hcs-organizations-registry-common-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry/hcs-organizations-registry-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry/hcs-organizations-registry-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/organizations-registry/hcs-organizations-registry-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/payment/hcs-payment-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/payment/hcs-payment-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/services/hcs-services-service-async.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/services/hcs-services-service.wsdl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/schema/services/hcs-services-types.xsd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/FileService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/GisgkhSoapClient.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/HouseManagementService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/NsiCommonService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/OrganizationsRegistryCommonService.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/config.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/GisgkhType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/AnnulmentType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/ApartmentBuildingOwner.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/ContractSubjectType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/DRSOIndType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/HeatingSystemType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/IndicatorValueType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/LivingHouseOwner.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/ObjectAddressType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/OtherQualityIndicator.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/Owner.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/PlannedVolume.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/Quality.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_ContractSubject.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_IsContract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_IsNotContract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_ObjectAddress.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_ObjectAddress_Pair.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_Period.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_Period_End.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_Period_Start.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/SupplyResourceContractType_ServiceType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/TemperatureChart.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/TerminateContract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/TerminateType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/exportSupplyResourceContractRequest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/exportSupplyResourceContractResult.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/exportSupplyResourceContractResultType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/importSupplyResourceContractRequest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/importSupplyResourceContractRequest_Contract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/HouseManagement/importSupplyResourceContractRequest_RollOverContract.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/NsiCommon/exportNsiItemRequest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/NsiCommon/exportNsiItemResult.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/NsiCommon/exportNsiListRequest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/NsiCommon/exportNsiListResult.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryRequest.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryRequest_SearchCriteria.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryResult.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryResultType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryResultType_OrgVersion.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/OrganizationsRegistryCommon/exportOrgRegistryResultType_OrgVersion_Subsidiary.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Attachment.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/AttachmentType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/BaseType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/CommonResultType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/ErrorMessageType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/HeaderType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/ISRequestHeader.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/ImportResult.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/IndividualRegistry/FIOType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/IndividualRegistry/ID.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/IndividualRegistry/IndType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementAttachmentFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementBooleanFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementDateFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementEnumFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementEnumFieldType_Position.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementFiasAddressRefFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementFiasAddressRefFieldType_NsiRef.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementFloatFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementIntegerFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementNsiFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementNsiFieldType_NsiRef.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementNsiRefFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementNsiRefFieldType_NsiRef.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementOkeiRefFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementStringFieldType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiElementType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiItemInfoType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiItemType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/NsiListType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/Nsi/nsiRef.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/OrganizationsRegistry/EntpsType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/OrganizationsRegistry/LegalType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/OrganizationsRegistry/RegOrgType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/OrganizationsRegistry/RegOrgVersionType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/OrganizationsRegistry/SubsidiaryType.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/versions/10.0.2.3/services/types/lib/RequestHeader.php" />
+    </list>
+    <ignored path="yii-gisgkh.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="yii-gisgkh" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/TestController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Module.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Module.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GisgkhSoapClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/versions/10.0.2.3/services/GisgkhSoapClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+              <folding>
+                <element signature="e#26#49#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GisOrganization.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/common/GisOrganization.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChargeableResource.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/Nsi/ChargeableResource.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="27" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompatibleWithGisgkh.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/common/CompatibleWithGisgkh.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.lock" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.lock">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/commands/TestController.php" />
+        <option value="$PROJECT_DIR$/GisgkhCommonModule.php" />
+        <option value="$PROJECT_DIR$/Module.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1920" />
+    <option name="y" value="-1176" />
+    <option name="width" value="1920" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yii2-gisgkh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yii2-gisgkh" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yii2-gisgkh" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yii2-gisgkh-example" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="74a51eea-55bd-4ccd-be19-57de47cee981" name="Default" comment="" />
+      <created>1477900744494</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1477900744494</updated>
+      <workItem from="1477900746195" duration="129000" />
+      <workItem from="1477901149308" duration="2881000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3010000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="-1176" width="1920" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24386339" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/commands/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/SchemaInitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/SchemaInitController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/versions/10.0.2.3/services/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NsiDynamicManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding>
+            <element signature="e#42#65#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/common/GisOrganization.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Nsi/ChargeableResource.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.lock">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/common/CompatibleWithGisgkh.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Module.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/versions/10.0.2.3/services/GisgkhSoapClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+          <folding>
+            <element signature="e#26#49#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="27" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

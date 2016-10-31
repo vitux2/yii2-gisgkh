@@ -1,10 +1,10 @@
 <?php
 
-namespace startuplab\gisgkh\common\exceptions;
+namespace opengkh\gis\exceptions;
 
 /**
  * Ошибка загрузки файла
- * @package startuplab\gisgkh\common\exceptions
+ * @package opengkh\gis\exceptions
  */
 class GisgkhFileUploadException extends GisgkhException
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 
 use gisgkh\OrganizationsRegistryCommonService;
 use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\OrganizationsRegistry\LegalType;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType;
-use startuplab\gisgkh\common\exceptions\GisgkhRequestControlException;
-use \startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\exceptions\GisgkhRequestControlException;
+use \opengkh\gis\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
  * Организация (юр. лицо, обособленное подпазделение либо ИП)

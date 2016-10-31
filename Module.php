@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common;
+namespace opengkh\gis;
 
 /**
- * Class GisgkhCommonModule
+ * Модуль интеграции с ГИС ЖКХ
  *
- * @package startuplab\gisgkh\common
+ * @package opengkh\gis
  */
-class GisgkhCommonModule extends \yii\base\Module implements \yii\base\BootstrapInterface
+class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
     public $classesPath = '@app/gisgkh';
 
@@ -59,7 +59,7 @@ class GisgkhCommonModule extends \yii\base\Module implements \yii\base\Bootstrap
             // routes for web application (controllers)
         } elseif ($app instanceof \yii\console\Application) {
             // routes for console application (commands)
-            $this->controllerNamespace = 'startuplab\gisgkh\common\commands';
+            $this->controllerNamespace = 'opengkh\gis\commands';
         }
 
         \Yii::configure(\Yii::$app, [

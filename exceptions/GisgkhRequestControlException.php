@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\exceptions;
+namespace opengkh\gis\exceptions;
 
 use gisgkh\types\lib\ErrorMessageType;
 
 /**
  * Ошибка контроля или бизнес-процессов
  *
- * @package startuplab\gisgkh\common\exceptions
+ * @package opengkh\gis\exceptions
  */
 class GisgkhRequestControlException extends GisgkhException
 {

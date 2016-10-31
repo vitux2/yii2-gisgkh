@@ -1,12 +1,12 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 use gisgkh\types\lib\IndividualRegistry\ID;
 use gisgkh\types\lib\IndividualRegistry\IndType;
 
 /**
  * Физическое лицо
- * @package startuplab\gisgkh\common\models\common
+ * @package opengkh\gis\models\common
  */
 class GisPerson extends CompatibleWithGisgkh
 {

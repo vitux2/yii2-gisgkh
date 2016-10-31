@@ -1,18 +1,18 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
 use gisgkh\types\lib\Nsi\NsiElementNsiFieldType;
 use gisgkh\types\lib\Nsi\NsiElementOkeiRefFieldType;
 use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
 use gisgkh\types\lib\Nsi\NsiElementType;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
-use \startuplab\gisgkh\common\models\Nsi\common\GisNsiPermanentDirectoryEntry;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use \opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
  * Вид коммунальной услуги
  *
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class MunicipalService extends GisNsiPermanentDirectoryEntry
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\common;
+namespace opengkh\gis\models\common;
 use gisgkh\FileService;
 use gisgkh\types\lib\AttachmentType;
-use startuplab\gisgkh\common\exceptions\GisgkhException;
-use startuplab\gisgkh\common\exceptions\GisgkhFileUploadException;
+use opengkh\gis\exceptions\GisgkhException;
+use opengkh\gis\exceptions\GisgkhFileUploadException;
 
 /**
  * Вложение (файл)
  *
- * @package startuplab\gisgkh\common\models\common
+ * @package opengkh\gis\models\common
  */
 class GisAttachment extends CompatibleWithGisgkh
 {

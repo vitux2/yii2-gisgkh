@@ -1,0 +1,19 @@
+{
+    "name": "opengkh/yii2-gisgkh",
+    "description": "GIS GKH integration for Yii2 framework",
+    "type": "yii2-module",
+    "require": {
+        "yiisoft/yii2": "^2.0"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Maxim Korshunov",
+            "email": "korshunov.m.e@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "opengkh\\gis\\": "" }
+    },
+    "minimum-stability": "dev"
+}

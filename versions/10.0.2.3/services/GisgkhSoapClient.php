@@ -2,7 +2,7 @@
 
 namespace gisgkh;
 
-use startuplab\gisgkh\common\GisgkhCommonModule;
+use opengkh\gis\Module;
 
 use gisgkh\types\lib\ISRequestHeader;
 use gisgkh\types\lib\RequestHeader;
@@ -10,7 +10,7 @@ use gisgkh\types\lib\RequestHeader;
 /**
  * Class GisgkhSoapClient
  *
- * @package startuplab\gisgkh\common
+ * @package opengkh\gis
  */
 class GisgkhSoapClient extends \SoapClient {
 
@@ -31,7 +31,7 @@ class GisgkhSoapClient extends \SoapClient {
      */
     public function setRequestHeader()
     {
-        $header = new RequestHeader(GisgkhCommonModule::getInstance()->SenderId, GisgkhCommonModule::getInstance()->orgPPAGUID);
+        $header = new RequestHeader(Module::getInstance()->SenderId, Module::getInstance()->orgPPAGUID);
         $this->__setSoapHeaders(new \SoapHeader($this->getBaseXmlNamespace(), 'RequestHeader', $header));
     }
 
@@ -59,9 +59,9 @@ class GisgkhSoapClient extends \SoapClient {
             'soap_version'      => SOAP_1_1,
             'location'          => $this->getLocation(),
             'trace'             => true,
-            'local_cert'        => \Yii::getAlias(GisgkhCommonModule::getInstance()->sslCert),
-            'login'             => GisgkhCommonModule::getInstance()->username,
-            'password'          => GisgkhCommonModule::getInstance()->password,
+            'local_cert'        => \Yii::getAlias(Module::getInstance()->sslCert),
+            'login'             => Module::getInstance()->username,
+            'password'          => Module::getInstance()->password,
             'authentication'    => SOAP_AUTHENTICATION_DIGEST,
             'features'          => SOAP_SINGLE_ELEMENT_ARRAYS,
             'classmap'          => $this->getClassMap($complexTypes)
@@ -118,13 +118,13 @@ class GisgkhSoapClient extends \SoapClient {
         curl_setopt($handle, CURLOPT_HTTPHEADER, Array("Content-Type: text/xml", 'SOAPAction: "' .   $action . '"'));
         //curl_setopt($handle, CURLOPT_HEADER, 0);
         curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($handle, CURLOPT_USERPWD, GisgkhCommonModule::getInstance()->username . ':' . GisgkhCommonModule::getInstance()->password);
-        curl_setopt($handle, CURLOPT_SSLCERT, \Yii::getAlias(GisgkhCommonModule::getInstance()->sslCert));
-        if (!empty(GisgkhCommonModule::getInstance()->sslCertPassword)) {
-            curl_setopt($handle, CURLOPT_SSLCERTPASSWD, \Yii::getAlias(GisgkhCommonModule::getInstance()->sslCertPassword));
+        curl_setopt($handle, CURLOPT_USERPWD, Module::getInstance()->username . ':' . Module::getInstance()->password);
+        curl_setopt($handle, CURLOPT_SSLCERT, \Yii::getAlias(Module::getInstance()->sslCert));
+        if (!empty(Module::getInstance()->sslCertPassword)) {
+            curl_setopt($handle, CURLOPT_SSLCERTPASSWD, \Yii::getAlias(Module::getInstance()->sslCertPassword));
         }
-        curl_setopt($handle, CURLOPT_SSLKEY, \Yii::getAlias(GisgkhCommonModule::getInstance()->sslKey));
-        curl_setopt($handle, CURLOPT_CAINFO, \Yii::getAlias(GisgkhCommonModule::getInstance()->caInfo));
+        curl_setopt($handle, CURLOPT_SSLKEY, \Yii::getAlias(Module::getInstance()->sslKey));
+        curl_setopt($handle, CURLOPT_CAINFO, \Yii::getAlias(Module::getInstance()->caInfo));
         curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($handle, CURLINFO_HEADER_OUT, true);
@@ -162,7 +162,7 @@ class GisgkhSoapClient extends \SoapClient {
     {
         return str_replace(
             ['{IP}', '{PORT}'],
-            [GisgkhCommonModule::getInstance()->ip, GisgkhCommonModule::getInstance()->port],
+            [Module::getInstance()->ip, Module::getInstance()->port],
             $this->getConfig()['location'][(new \ReflectionClass($this))->getShortName()]
         );
     }
@@ -175,7 +175,7 @@ class GisgkhSoapClient extends \SoapClient {
     {
         return str_replace(
             '{SCHEMA_PATH}',
-            GisgkhCommonModule::getInstance()->getSchemaPath(),
+            Module::getInstance()->getSchemaPath(),
             $this->getConfig()['wsdl'][(new \ReflectionClass($this))->getShortName()]
         );
     }

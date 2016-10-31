@@ -1,11 +1,11 @@
 <?php
 
-namespace startuplab\gisgkh\common\exceptions;
+namespace opengkh\gis\exceptions;
 
 /**
  * Обшибка валидации данных, подгатавливаемых для отправки в ГИС ЖКХ
  *
- * @package startuplab\gisgkh\common\exceptions
+ * @package opengkh\gis\exceptions
  */
 class GisgkhDataPreparationException extends GisgkhException
 {

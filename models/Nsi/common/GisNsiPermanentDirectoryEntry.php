@@ -1,11 +1,11 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi\common;
+namespace opengkh\gis\models\Nsi\common;
 use gisgkh\types\lib\Nsi\NsiElementType;
 
 /**
  * Абстрактный не ограниченный по времени действия элемент справочника
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 abstract class GisNsiPermanentDirectoryEntry extends GisNsiDirectoryEntry
 {

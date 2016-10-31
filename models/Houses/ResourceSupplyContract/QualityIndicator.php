@@ -1,16 +1,16 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\GisgkhType;
 use gisgkh\types\HouseManagement\Quality;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
  * Показатель качества коммунальной услуги
  *
- * @package startuplab\gisgkh\common\models\Houses\ResourceSupplyContract
+ * @package opengkh\gis\models\Houses\ResourceSupplyContract
  */
 class QualityIndicator extends CompatibleWithGisgkh
 {

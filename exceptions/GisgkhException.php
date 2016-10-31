@@ -1,6 +1,6 @@
 <?php
 
-namespace startuplab\gisgkh\common\exceptions;
+namespace opengkh\gis\exceptions;
 
 use yii\base\Exception;
 

@@ -1,14 +1,14 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
 use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiPermanentDirectoryEntry;
+use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
  * Полномочие организации
  *
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class OrganizationRole extends GisNsiPermanentDirectoryEntry
 {

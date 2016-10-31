@@ -1,17 +1,17 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 use gisgkh\types\lib\Nsi\NsiElementBooleanFieldType;
 use gisgkh\types\lib\Nsi\NsiElementIntegerFieldType;
 use gisgkh\types\lib\Nsi\NsiElementOkeiRefFieldType;
 use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
 use gisgkh\types\lib\Nsi\NsiElementType;
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiPermanentDirectoryEntry;
+use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
  * Вид коммунального ресурса
  *
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class MunicipalResource extends GisNsiPermanentDirectoryEntry
 {

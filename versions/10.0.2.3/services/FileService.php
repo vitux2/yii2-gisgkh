@@ -4,7 +4,7 @@ namespace gisgkh;
 
 use Faker\Provider\cs_CZ\DateTime;
 use gisgkh\types\lib\Attachment;
-use startuplab\gisgkh\common\GisgkhCommonModule;
+use opengkh\gis\Module;
 
 use gisgkh\types\lib\AttachmentType;
 
@@ -33,10 +33,10 @@ class FileService
      */
     protected function setCurlAuthOptions($curl)
     {
-        curl_setopt($curl, CURLOPT_USERPWD, GisgkhCommonModule::getInstance()->username . ':' . GisgkhCommonModule::getInstance()->password);
-        curl_setopt($curl, CURLOPT_SSLCERT, \Yii::getAlias(GisgkhCommonModule::getInstance()->sslCert));
-        curl_setopt($curl, CURLOPT_SSLKEY, \Yii::getAlias(GisgkhCommonModule::getInstance()->sslKey));
-        curl_setopt($curl, CURLOPT_CAINFO, \Yii::getAlias(GisgkhCommonModule::getInstance()->caInfo));
+        curl_setopt($curl, CURLOPT_USERPWD, Module::getInstance()->username . ':' . Module::getInstance()->password);
+        curl_setopt($curl, CURLOPT_SSLCERT, \Yii::getAlias(Module::getInstance()->sslCert));
+        curl_setopt($curl, CURLOPT_SSLKEY, \Yii::getAlias(Module::getInstance()->sslKey));
+        curl_setopt($curl, CURLOPT_CAINFO, \Yii::getAlias(Module::getInstance()->caInfo));
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     }
@@ -101,7 +101,7 @@ class FileService
     {
         $location = str_replace(
             ['{IP}', '{PORT}', '{CONTEXT}'],
-            [GisgkhCommonModule::getInstance()->ip, GisgkhCommonModule::getInstance()->port, $context],
+            [Module::getInstance()->ip, Module::getInstance()->port, $context],
             'https://{IP}:{PORT}/ext-bus-file-store-service/rest/{CONTEXT}'
         );
 
@@ -114,11 +114,11 @@ class FileService
 
         $this->setCurlAuthOptions($curl);
         $this->setCurlDataTransferOptions($curl, $file, [
-            "Host: " . GisgkhCommonModule::getInstance()->host,
+            "Host: " . Module::getInstance()->host,
             "Date: " . (new \DateTime())->format(DATE_RFC822),
             "Content-MD5: " . $attachment->AttachmentHASH,
             //@todo: switch between orgPPAGUID and SenderID (now only orgPPAGUID supported)
-            "X-Upload-OrgPPAGUID: " . GisgkhCommonModule::getInstance()->orgPPAGUID,
+            "X-Upload-OrgPPAGUID: " . Module::getInstance()->orgPPAGUID,
             "X-Upload-Filename: " . $attachment->Name,
             "Expect:",
             "Accept:",

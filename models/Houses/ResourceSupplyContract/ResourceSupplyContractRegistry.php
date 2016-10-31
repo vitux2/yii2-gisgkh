@@ -1,6 +1,6 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\HouseManagementService;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
@@ -19,12 +19,12 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_Start;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
 use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\Nsi\nsiRef;
-use startuplab\gisgkh\common\exceptions\GisgkhRequestControlException;
+use opengkh\gis\exceptions\GisgkhRequestControlException;
 
 /**
  * Работа с реестром договор ресурсоснабжения
  *
- * @package startuplab\gisgkh\common\models\Houses
+ * @package opengkh\gis\models\Houses
  */
 class ResourceSupplyContractRegistry
 {

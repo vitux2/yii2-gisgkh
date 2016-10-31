@@ -1,12 +1,12 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectory;
+use opengkh\gis\models\Nsi\common\GisNsiDirectory;
 
 /**
  * Справочник №236 "Связь коммуальных услуг с тарифицируемыми ресурсами"
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class MunicipalServiceChargeableResourcesDirectory extends GisNsiDirectory
 {

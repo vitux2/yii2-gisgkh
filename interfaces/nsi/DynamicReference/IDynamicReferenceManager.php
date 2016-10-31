@@ -1,11 +1,11 @@
 <?php
 
-namespace startuplab\gisgkh\common\interfaces\nsi\DynamicReference;
+namespace opengkh\gis\interfaces\nsi\DynamicReference;
 
 /**
  * Обобщенный интерфейс фабрики управления реестром справочников ГИС ЖКХ
  *
- * @package startuplab\gisgkh\common\interfaces
+ * @package opengkh\gis\interfaces
  */
 interface IDynamicReferenceManager
 {

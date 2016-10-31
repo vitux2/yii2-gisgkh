@@ -1,12 +1,12 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi;
+namespace opengkh\gis\models\Nsi;
 
-use startuplab\gisgkh\common\models\Nsi\common\GisNsiDirectory;
+use opengkh\gis\models\Nsi\common\GisNsiDirectory;
 
 /**
  * Справочник №276 "Показатели качества коммунальных ресурсов"
- * @package startuplab\gisgkh\common\models\Nsi
+ * @package opengkh\gis\models\Nsi
  */
 class QualityIndicatorDirectory extends GisNsiDirectory
 {

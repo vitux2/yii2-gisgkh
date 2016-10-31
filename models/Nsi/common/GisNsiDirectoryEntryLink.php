@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Nsi\common;
+namespace opengkh\gis\models\Nsi\common;
 
 use gisgkh\types\lib\Nsi\nsiRef;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
 
 /**
  * Ссылка на элемент справочника
- * @package startuplab\gisgkh\common\models\Nsi\common
+ * @package opengkh\gis\models\Nsi\common
  */
 class GisNsiDirectoryEntryLink extends CompatibleWithGisgkh
 {

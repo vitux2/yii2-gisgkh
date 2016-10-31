@@ -1,13 +1,13 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\ObjectAddressType;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
 
 /**
  * Объект жилищного фонда в договоре ресурсоснабжения
- * @package startuplab\gisgkh\common\models\Houses
+ * @package opengkh\gis\models\Houses
  */
 class ResourceSupplyContractObject extends CompatibleWithGisgkh
 {

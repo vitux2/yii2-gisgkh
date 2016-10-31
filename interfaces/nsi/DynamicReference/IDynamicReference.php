@@ -1,6 +1,6 @@
 <?php
 
-namespace startuplab\gisgkh\common\interfaces\nsi\DynamicReference;
+namespace opengkh\gis\interfaces\nsi\DynamicReference;
 
 /**
  * Обобщенный интерфейс "справочник ГИС ЖКХ"

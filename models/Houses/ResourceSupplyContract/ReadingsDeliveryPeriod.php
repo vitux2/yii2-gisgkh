@@ -1,16 +1,16 @@
 <?php
 
-namespace startuplab\gisgkh\common\models\Houses\ResourceSupplyContract;
+namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\GisgkhType;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
-use startuplab\gisgkh\common\models\common\CompatibleWithGisgkh;
-use startuplab\gisgkh\common\models\common\DayOfMonth;
+use opengkh\gis\models\common\CompatibleWithGisgkh;
+use opengkh\gis\models\common\DayOfMonth;
 
 /**
  * Период сдачи показаний приборов учета
  *
- * @package startuplab\gisgkh\common\models\Houses\ResourceSupplyContract
+ * @package opengkh\gis\models\Houses\ResourceSupplyContract
  */
 class ReadingsDeliveryPeriod extends CompatibleWithGisgkh
 {
