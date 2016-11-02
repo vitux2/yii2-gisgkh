@@ -15,7 +15,7 @@ use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
  *
  * @package opengkh\gis\models\Nsi
  */
-class MunicipalServiceChargeableResources extends GisNsiPermanentDirectoryEntry
+class GisNsiMunicipalServiceChargeableResources extends GisNsiPermanentDirectoryEntry
 {
     /**
      * @var GisNsiDirectoryEntryLink $municipalServiceReference Вид коммцнальной услуги. Ссылка на элемент справочника "Вид коммунальной услуги"
@@ -46,22 +46,13 @@ class MunicipalServiceChargeableResources extends GisNsiPermanentDirectoryEntry
 
             $chargeableResourceReference->units = [];
             foreach ($chargeableResourceElement->ChildElement as $chargeableResourceUnitElement) {
-                $unit = new ChargeableResourceUnit();
 
                 foreach ($chargeableResourceUnitElement->NsiElementField as $unitField) {
-                    switch ((new \ReflectionClass($unitField))->getName()) {
-                        case NsiElementOkeiRefFieldType::class:
-                            /* @var NsiElementOkeiRefFieldType $unitField */
-                            $unit->okei = $unitField->Code;
-                            break;
-                        case NsiElementStringFieldType::class:
-                            /* @var NsiElementStringFieldType $unitField */
-                            $unit->tariffUnit = $unitField->Value;
-                            break;
+                    if ((new \ReflectionClass($unitField))->getName() == NsiElementOkeiRefFieldType::class) {
+                        /* @var NsiElementOkeiRefFieldType $unitField */
+                        $chargeableResourceReference->units[] = intval($unitField->Code);
                     }
                 }
-
-                $chargeableResourceReference->units[] = $unit;
             }
 
             $this->chargeableResources[] = $chargeableResourceReference;

@@ -12,7 +12,7 @@ use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
  *
  * @package opengkh\gis\models\Houses
  */
-class ResourceSupplyContractSubject extends CompatibleWithGisgkh
+class GisResourceSupplyContractSubject extends CompatibleWithGisgkh
 {
     /**
      * @var GisNsiDirectoryEntryLink $serviceType Вид коммунальной услуги. По справочнику
@@ -35,14 +35,14 @@ class ResourceSupplyContractSubject extends CompatibleWithGisgkh
     public $endSupplyDate = null;
 
     /**
-     * @var ResourceSupplyContractPlannedVolume|null $plannedVolume
+     * @var GisResourceSupplyContractPlannedVolume|null $plannedVolume
      */
     public $plannedVolume = null;
 
     /**
-     * @var QualityIndicator[] $qualityIndicators
+     * @var GisQualityIndicator[] $qualityIndicators
      */
-    public $qualityIndicators = null;
+    public $qualityIndicators = [];
 
     /**
      * @inheritDoc
@@ -55,7 +55,7 @@ class ResourceSupplyContractSubject extends CompatibleWithGisgkh
         $this->startSupplyDate = $source->getStartSupplyDate();
         $this->endSupplyDate = $source->getEndSupplyDate();
         if (!empty($source->PlannedVolume)) {
-            $this->plannedVolume = ResourceSupplyContractPlannedVolume::convertFrom($source->PlannedVolume);
+            $this->plannedVolume = GisResourceSupplyContractPlannedVolume::convertFrom($source->PlannedVolume);
         }
         return $this;
     }

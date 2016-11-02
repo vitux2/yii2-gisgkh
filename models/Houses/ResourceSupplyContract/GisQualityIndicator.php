@@ -12,7 +12,7 @@ use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
  *
  * @package opengkh\gis\models\Houses\ResourceSupplyContract
  */
-class QualityIndicator extends CompatibleWithGisgkh
+class GisQualityIndicator extends CompatibleWithGisgkh
 {
 
     /**

@@ -9,7 +9,7 @@ use opengkh\gis\models\common\CompatibleWithGisgkh;
  * Плановый объем и режим подачи за год
  * @package opengkh\gis\models\Houses
  */
-class ResourceSupplyContractPlannedVolume extends CompatibleWithGisgkh
+class GisResourceSupplyContractPlannedVolume extends CompatibleWithGisgkh
 {
     /**
      * @var string $volume Плановый объем поставки ресурса по договору. Decimal

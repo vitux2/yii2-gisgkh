@@ -69,6 +69,10 @@ class FileService
     {
         $response = curl_exec($curl);
 
+        //debugging stuff
+        //$sentHeaders = curl_getinfo($curl, CURLINFO_HEADER_OUT);
+        //print_r($sentHeaders);
+
         $code           = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         $header_size    = curl_getinfo($curl, CURLINFO_HEADER_SIZE);
 
@@ -79,11 +83,11 @@ class FileService
         foreach ($headerRows as $headerRow) {
             if (empty($headerRow)) continue;
             list($headerName, $headerValue) = explode(':', $headerRow);
-            $headers[$headerName] = $headerValue;
+            $headers[$headerName] = trim($headerValue);
         }
 
         if ($code != 200) {
-            $error = $headers['X-Upload-Error'];
+            $this->lastError = $response;//$headers['X-Upload-Error'];
             return null;
         }
 
@@ -94,10 +98,11 @@ class FileService
      * Синхронная загрузка файла размером до 5 Мб
      *
      * @param string $context
-     * @param string $filename
+     * @param string $filePath
+     * @param string $fileName
      * @return AttachmentType|null
      */
-    public function upload($context, $filename)
+    public function upload($context, $filePath, $fileName = null)
     {
         $location = str_replace(
             ['{IP}', '{PORT}', '{CONTEXT}'],
@@ -105,12 +110,12 @@ class FileService
             'https://{IP}:{PORT}/ext-bus-file-store-service/rest/{CONTEXT}'
         );
 
-        $file = fopen($filename, 'r');
+        $file = fopen($filePath, 'r');
         $curl = curl_init($location);
 
         $attachment = new AttachmentType();
-        $attachment->Name = basename($filename);
-        $attachment->AttachmentHASH = base64_encode(md5_file($filename, true));
+        $attachment->Name = ($fileName ?: basename($filePath));
+        $attachment->AttachmentHASH = base64_encode(md5_file($filePath, true));
 
         $this->setCurlAuthOptions($curl);
         $this->setCurlDataTransferOptions($curl, $file, [

@@ -24,7 +24,9 @@ class GisAttachment extends CompatibleWithGisgkh
     public $description = null;
 
     /**
-     * @var string $hash Хэш-тег вложения по алгоритму ГОСТ
+     * @var string $hash Хэш-тег вложения по алгоритму ГОСТ в binhex
+     * hash('gost-crypto', file_get_contents($pathToFile));
+     * Не тот что указывается при загрузке файла!
      */
     public $hash = null;
 
@@ -67,15 +69,16 @@ class GisAttachment extends CompatibleWithGisgkh
     }
 
     /**
-     * @param string $filename
      * @param string $context контекст функциональной подсистемы
+     * @param string $filePath
+     * @param string $fileName
      * @return self
      * @throws GisgkhFileUploadException
      */
-    public static function upload($filename, $context)
+    public static function upload($context, $filePath, $fileName = null)
     {
         $fileService = new FileService();
-        $gisAttachment = $fileService->upload($context, $filename);
+        $gisAttachment = $fileService->upload($context, $filePath, $fileName);
 
         if (empty($gisAttachment)) {
             throw new GisgkhFileUploadException($fileService->lastError);

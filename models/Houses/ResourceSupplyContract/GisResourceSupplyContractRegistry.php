@@ -26,12 +26,12 @@ use opengkh\gis\exceptions\GisgkhRequestControlException;
  *
  * @package opengkh\gis\models\Houses
  */
-class ResourceSupplyContractRegistry
+class GisResourceSupplyContractRegistry
 {
     /**
      * Поиск договоров ресурсоснабжения по номеру договора
      * @param string $number Номер договора (полностью или частично)
-     * @return ResourceSupplyContract[]
+     * @return GisResourceSupplyContract[]
      * @throws GisgkhRequestControlException
      */
     public function searchByNumber($number)
@@ -60,23 +60,24 @@ class ResourceSupplyContractRegistry
         }
 
         return array_map(function (exportSupplyResourceContractResultType $gisContract) {
-            return ResourceSupplyContract::convertFrom($gisContract);
+            return GisResourceSupplyContract::convertFrom($gisContract);
         }, $result->Contract);
     }
 
     /**
-     * @param ResourceSupplyContract $contract
+     * @param GisResourceSupplyContract $contract
      */
-    public function send(ResourceSupplyContract $contract)
+    public function send(GisResourceSupplyContract $contract)
     {
-        $service = new HouseManagementService(['SupplyResourceContractType', 'importSupplyResourceContractRequest']);
+        //$service = new HouseManagementService(['SupplyResourceContractType', 'exportSupplyResourceContractRequest']);
+        $service = new HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
         $request->Contract->SupplyResourceContract = $contract->convertTo();;
-        //print_r($request);
-//        die();
+        //print_r($request->Contract->SupplyResourceContract);
+        //die();
 
         try {
             $response = $service->importSupplyResourceContractData($request);

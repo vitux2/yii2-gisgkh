@@ -11,6 +11,8 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
     public $classesPath = '@app/gisgkh';
 
+    public $host = 'rias-gkh.ru';
+
     public $sslCert;
     public $sslCertPassword = null;
     public $sslKey;

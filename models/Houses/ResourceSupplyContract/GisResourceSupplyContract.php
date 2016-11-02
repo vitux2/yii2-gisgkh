@@ -13,12 +13,13 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType;
 
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress_Pair;
+use gisgkh\types\HouseManagement\SupplyResourceContractType_Organization;
 use gisgkh\types\lib\Nsi\nsiRef;
 use gisgkh\types\lib\OrganizationsRegistry\RegOrgType;
 use opengkh\gis\exceptions\GisgkhDataExtractionException;
 use opengkh\gis\models\common\GisAttachment;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
-use opengkh\gis\models\common\DayOfMonth;
+use opengkh\gis\models\common\GisDayOfMonth;
 use opengkh\gis\models\common\GisPerson;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
@@ -27,7 +28,7 @@ use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
  *
  * @package opengkh\gis\models\Houses
  */
-class ResourceSupplyContract extends CompatibleWithGisgkh
+class GisResourceSupplyContract extends CompatibleWithGisgkh
 {
     // вид договора
     const CONTRACT_TYPE_OFFER   = 'offer';  // договор-оферта
@@ -81,26 +82,26 @@ class ResourceSupplyContract extends CompatibleWithGisgkh
     /* @var GisNsiDirectoryEntryLink|null Основание заключения договора. Слылка на элемент справочника */
     public $base = null;
 
-    /* @var ReadingsDeliveryPeriod $readingsDeliveryPeriod */
+    /* @var GisReadingsDeliveryPeriod $readingsDeliveryPeriod */
     public $readingsDeliveryPeriod = null;
 
-    /* @var DayOfMonth $billingDay Срок выставления платежных документов, не позднее (день месяца, следующего за расчетным) */
+    /* @var GisBilingDay $billingDay Срок выставления платежных документов, не позднее (день месяца, следующего за расчетным) */
     public $billingDay = null;
 
-    /* @var DayOfMonth $paymentDay Срок внесения платы, не позднее (день месяца, следующего за расчетным) */
+    /* @var GisBilingDay $paymentDay Срок внесения платы, не позднее (день месяца, следующего за расчетным) */
     public $paymentDay = null;
 
-    /* @var DayOfMonth $providingInformationDay Срок предоставления информации о поступивших платежах (день месяца, следующего за расчетным) */
+    /* @var GisBilingDay $providingInformationDay Срок предоставления информации о поступивших платежах (день месяца, следующего за расчетным) */
     public $providingInformationDay = null;
 
     /* @var boolean $isPlannedVolume */
     public $isPlannedVolume = false;
 
-    /* @var ResourceSupplyContractSubject[] $subjects */
-    public $subjects = null;
+    /* @var GisResourceSupplyContractSubject[] $subjects */
+    public $subjects = [];
 
-    /* @var ResourceSupplyContractObject[] $objects Объекты жилищного фонда */
-    public $objects = null;
+    /* @var GisResourceSupplyContractObject[] $objects Объекты жилищного фонда */
+    public $objects = [];
 
     /* @var boolean $commonQualityIndicators показатели качества указываются в разрезе договора */
     public $commonQualityIndicators = true;
@@ -136,9 +137,9 @@ class ResourceSupplyContract extends CompatibleWithGisgkh
         $owner = null;
         if ($source->Offer) {
             $this->contractType = static::CONTRACT_TYPE_OFFER;
-        } elseif ($source->organizations) {
+        } elseif ($source->Organization) {
             $this->contractType = static::CONTRACT_TYPE_MC;
-            $this->managementCompanyGuid = $source->organizations->orgRootEntityGUID;
+            $this->managementCompanyGuid = $source->Organization->orgRootEntityGUID;
         } elseif ($source->ApartmentBuildingOwner) {
             $this->contractType = static::CONTRACT_TYPE_OWNER;
             $this->propertyType = static::PROPERTY_TYPE_APARTMENT_BUILDING;
@@ -168,21 +169,21 @@ class ResourceSupplyContract extends CompatibleWithGisgkh
         $this->completionDate = $source->getCompletionDate();
         $this->isPlannedVolume = $source->getIsPlannedVolume();
 
-        $this->readingsDeliveryPeriod = ReadingsDeliveryPeriod::convertFrom($source->Period);
-        $this->billingDay = DayOfMonth::convertFrom($source->BillingDate);
-        $this->paymentDay = DayOfMonth::convertFrom($source->PaymentDate);
-        $this->providingInformationDay = DayOfMonth::convertFrom($source->ProvidingInformationDate);
+        $this->readingsDeliveryPeriod = GisReadingsDeliveryPeriod::convertFrom($source->Period);
+        $this->billingDay = GisBilingDay::convertFrom($source->BillingDate);
+        $this->paymentDay = GisBilingDay::convertFrom($source->PaymentDate);
+        $this->providingInformationDay = GisBilingDay::convertFrom($source->ProvidingInformationDate);
 
         $this->subjects = array_map(function (SupplyResourceContractType_ContractSubject $gisSubject) use ($source) {
-            $subject = ResourceSupplyContractSubject::convertFrom($gisSubject);
+            $subject = GisResourceSupplyContractSubject::convertFrom($gisSubject);
             foreach ($source->Quality as $quality) {
                 if ($quality->PairKey == $gisSubject->TransportGUID) {
-                    $subject->qualityIndicators[] = QualityIndicator::convertFrom($quality);
+                    $subject->qualityIndicators[] = GisQualityIndicator::convertFrom($quality);
                 }
             }
             return $subject;
         }, $source->ContractSubject);
-        $this->objects = ResourceSupplyContractObject::convertFromArray($source->ObjectAddress);
+        $this->objects = GisResourceSupplyContractObject::convertFromArray($source->ObjectAddress);
 
         $this->commonQualityIndicators = $source->SpecifyingQualityIndicators == 'D' ? true : false;
 
@@ -216,7 +217,7 @@ class ResourceSupplyContract extends CompatibleWithGisgkh
                 $target->setIsOffer();
                 break;
             case static::CONTRACT_TYPE_MC:
-                $target->organizations = new RegOrgType($this->managementCompanyGuid);
+                $target->Organization = new SupplyResourceContractType_Organization($this->managementCompanyGuid);
                 break;
             case static::CONTRACT_TYPE_OWNER:
                 $owner = new Owner();
@@ -274,7 +275,7 @@ class ResourceSupplyContract extends CompatibleWithGisgkh
 
             $target->ContractSubject[] = $gisSubject;
         }
-        $target->ObjectAddress = ResourceSupplyContractObject::convertToArray($this->objects, SupplyResourceContractType_ObjectAddress::className());
+        $target->ObjectAddress = GisResourceSupplyContractObject::convertToArray($this->objects, SupplyResourceContractType_ObjectAddress::className());
 
         for ($i = 0; $i < count($target->ObjectAddress); $i++) {
             $pairs = [];

@@ -54,6 +54,8 @@ class GisgkhSoapClient extends \SoapClient {
      */
     public function __construct(array $complexTypes = [])
     {
+        $classmap = $this->getClassMap($complexTypes);
+
         parent::__construct($this->getWsdl(), [
             'cache_wsdl'        => WSDL_CACHE_NONE,
             'soap_version'      => SOAP_1_1,
@@ -64,7 +66,7 @@ class GisgkhSoapClient extends \SoapClient {
             'password'          => Module::getInstance()->password,
             'authentication'    => SOAP_AUTHENTICATION_DIGEST,
             'features'          => SOAP_SINGLE_ELEMENT_ARRAYS,
-            'classmap'          => $this->getClassMap($complexTypes)
+            'classmap'          => $classmap
         ]);
     }
 

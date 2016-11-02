@@ -9,7 +9,7 @@ use opengkh\gis\models\common\CompatibleWithGisgkh;
  * Объект жилищного фонда в договоре ресурсоснабжения
  * @package opengkh\gis\models\Houses
  */
-class ResourceSupplyContractObject extends CompatibleWithGisgkh
+class GisResourceSupplyContractObject extends CompatibleWithGisgkh
 {
     /**
      * @var string $fiasGuid Глобальный уникальный идентификатор дома по ФИАС

@@ -5,17 +5,17 @@ namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 use gisgkh\types\GisgkhType;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
-use opengkh\gis\models\common\DayOfMonth;
+use opengkh\gis\models\common\GisDayOfMonth;
 
 /**
  * Период сдачи показаний приборов учета
  *
  * @package opengkh\gis\models\Houses\ResourceSupplyContract
  */
-class ReadingsDeliveryPeriod extends CompatibleWithGisgkh
+class GisReadingsDeliveryPeriod extends CompatibleWithGisgkh
 {
     /**
-     * @var DayOfMonth $firstDay день начала сдачи показаний
+     * @var GisDayOfMonth $firstDay день начала сдачи показаний
      */
     public $firstDay = null;
 
@@ -25,7 +25,7 @@ class ReadingsDeliveryPeriod extends CompatibleWithGisgkh
     public $firstDayInNextMonth = false;
 
     /**
-     * @var DayOfMonth $lastDay день окончания сдачи показаний
+     * @var GisDayOfMonth $lastDay день окончания сдачи показаний
      */
     public $lastDay = null;
 
@@ -48,10 +48,10 @@ class ReadingsDeliveryPeriod extends CompatibleWithGisgkh
      */
     function fillFrom($source)
     {
-        $this->firstDay = DayOfMonth::convertFrom($source->Start->StartDate);
+        $this->firstDay = GisDayOfMonth::convertFrom($source->Start->StartDate);
         $this->firstDayInNextMonth = filter_var($source->Start->NextMonth, FILTER_VALIDATE_BOOLEAN);
 
-        $this->lastDay = DayOfMonth::convertFrom($source->End->EndDate);
+        $this->lastDay = GisDayOfMonth::convertFrom($source->End->EndDate);
         $this->lastDayInNextMonth = filter_var($source->End->NextMonth, FILTER_VALIDATE_BOOLEAN);
     }
 
@@ -61,9 +61,9 @@ class ReadingsDeliveryPeriod extends CompatibleWithGisgkh
      */
     function fillTo(&$target)
     {
-        $target->Start->NextMonth = $this->firstDayInNextMonth ? 'true' : 'false';
+        $target->Start->NextMonth = $this->firstDayInNextMonth ? 'true' : null;
         $target->Start->StartDate = $this->firstDay->convertTo();
-        $target->End->NextMonth = $this->lastDayInNextMonth ? 'true' : 'false';
+        $target->End->NextMonth = $this->lastDayInNextMonth ? 'true' : null;
         $target->End->EndDate = $this->lastDay->convertTo();
         return $target;
     }

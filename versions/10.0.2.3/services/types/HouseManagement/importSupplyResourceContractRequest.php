@@ -11,7 +11,7 @@ use gisgkh\types\lib\BaseType;
  */
 class importSupplyResourceContractRequest extends BaseType
 {
-    public $version = '10.0.1.1';
+    public $version = '10.0.2.1';
 
     /**
      * @var importSupplyResourceContractRequest_Contract[] $Contract Договор ресурсоснабжения, до 1000 штук в одном запросе

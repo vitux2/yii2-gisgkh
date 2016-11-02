@@ -9,7 +9,7 @@ use yii\base\Model;
  *
  * @package opengkh\gis\models\common
  */
-class DayOfMonth extends Model
+class GisDayOfMonth extends Model
 {
     /**
      * @var integer|null $number порядковый номер, от 1 до 30

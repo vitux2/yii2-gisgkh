@@ -12,7 +12,7 @@ use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 class ChargeableResourceLinkWithUnits extends GisNsiDirectoryEntryLink
 {
     /**
-     * @var ChargeableResourceUnit[] $units
+     * @var integer[] $units массив кодов по справочнику ОКЕИ
      */
     public $units = [];
 }

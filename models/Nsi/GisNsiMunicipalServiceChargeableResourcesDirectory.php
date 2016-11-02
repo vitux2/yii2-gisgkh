@@ -8,7 +8,7 @@ use opengkh\gis\models\Nsi\common\GisNsiDirectory;
  * Справочник №236 "Связь коммуальных услуг с тарифицируемыми ресурсами"
  * @package opengkh\gis\models\Nsi
  */
-class MunicipalServiceChargeableResourcesDirectory extends GisNsiDirectory
+class GisNsiMunicipalServiceChargeableResourcesDirectory extends GisNsiDirectory
 {
 
     /**
@@ -24,6 +24,6 @@ class MunicipalServiceChargeableResourcesDirectory extends GisNsiDirectory
      */
     function getEntryClassName()
     {
-        return MunicipalServiceChargeableResources::className();
+        return GisNsiMunicipalServiceChargeableResources::className();
     }
 }
