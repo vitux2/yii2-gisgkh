@@ -17,7 +17,9 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_End;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_Start;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
+use gisgkh\types\lib\CommonResultType;
 use gisgkh\types\lib\ErrorMessageType;
+use gisgkh\types\lib\ImportResult;
 use gisgkh\types\lib\Nsi\nsiRef;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 
@@ -66,6 +68,7 @@ class GisResourceSupplyContractRegistry
 
     /**
      * @param GisResourceSupplyContract $contract
+     * @return ImportResult
      */
     public function send(GisResourceSupplyContract $contract)
     {
@@ -79,17 +82,17 @@ class GisResourceSupplyContractRegistry
         //print_r($request->Contract->SupplyResourceContract);
         //die();
 
-        try {
+        //try {
             $response = $service->importSupplyResourceContractData($request);
-        } catch (\SoapFault $e) {
-            echo $e->getMessage() . "\n";
-            echo $service->__getLastRequest() . "\n";
-            echo $service->__getLastResponse() . "\n";
-            die();
-        }
+        //} catch (\SoapFault $e) {
+        //    echo $e->getMessage() . "\n";
+        //    echo $service->__getLastRequest() . "\n";
+        //    echo $service->__getLastResponse() . "\n";
+        //    die();
+        //}
 
         // обработка возможных ошибок
-        if ($response->ErrorMessage) {
+        /*if ($response->ErrorMessage) {
             if ($response->ErrorMessage->ErrorCode == ErrorMessageType::ERROR_CODE_EMPTY_COLLECTION) {
                 return [];
             } else {
@@ -98,8 +101,8 @@ class GisResourceSupplyContractRegistry
                 die();
                 //throw new GisgkhRequestControlException($result->ErrorMessage);
             }
-        }
+        }*/
 
-        return $response->CommonResult;
+        return $response;
     }
 }
