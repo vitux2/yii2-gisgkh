@@ -3,7 +3,6 @@
 namespace gisgkh\types\lib;
 
 use gisgkh\types\GisgkhType;
-use startuplab\helpers\GuidHelper;
 
 /**
  * Базовый тип заголовка
@@ -33,7 +32,7 @@ class HeaderType extends GisgkhType
     public function __construct($date = null, $messageGUID = null)
     {
         $this->setDate(empty($date) ? new \DateTime() : $date);
-        $this->MessageGUID = empty($messageGUID) ? GuidHelper::generate() : $messageGUID;
+        $this->MessageGUID = empty($messageGUID) ? sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535)) : $messageGUID;
     }
 
     /**
