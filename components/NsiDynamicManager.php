@@ -73,11 +73,9 @@ class NsiDynamicManager extends Component
             // если в реестре ИС справочника нет, то создаём его
             if (empty($reference)) {
                 $reference = $this->referenceManager->createReference($nsiItemInfo->RegistryNumber, $nsiItemInfo->Name);
-                $reference->setModifiedAt($nsiItemInfo->getModified());
             } else {
                 // обновляем название справочника
                 $reference->setName($nsiItemInfo->Name);
-                $reference->setModifiedAt($nsiItemInfo->getModified());
             }
         }
     }
