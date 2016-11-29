@@ -34,7 +34,121 @@ class NsiDynamicManager extends Component
     public $reportCallback = null;
 
     /**
-     * Импорт справочников из ГИС ЖКХ во внутренний реестр
+     * Обновление перечня справочников
+     * @throws GisgkhRequestControlException
+     */
+    public function updateReferencesList()
+    {
+        $this->report(
+            "\nИмпорт перечня справочников NSI из ГИС ЖКХ" .
+            "\nИспользуемая версия API ГИС ЖКХ: " . Module::getInstance()->version . "\n"
+        );
+
+        $this->report(
+            "\nИмпорт справочников NSI из ГИС ЖКХ" .
+            "\nИспользуемая версия API ГИС ЖКХ: " . Module::getInstance()->version . "\n"
+        );
+
+        $nsiCommonService = new NsiCommonService();
+        $nsiListResult = $nsiCommonService->exportNsiList();
+
+        // если получить перечень справочников не удалось, то генерируется исключение
+        if (!empty($nsiListResult->ErrorMessage)) {
+            throw new GisgkhRequestControlException($nsiListResult->ErrorMessage);
+        }
+
+        $nsiItems = $nsiListResult->NsiList->NsiItemInfo;
+
+        $this->report("\nОбщее количество справочников в ГИС ЖКХ: " . count($nsiItems) . "\n");
+
+        // сортируем справочники по реестровому номеру
+        // это опционально (может быть полезно при логгировании процесса импорта)
+        $this->sortNsiItems($nsiItems);
+
+        // бежим по перечню справочников
+        foreach ($nsiItems as $nsiItemInfo) {
+            // получаем экземпляр справочника в реестре ИС по реестровому номеру справочника
+            $reference = $this->referenceManager->getReferenceByRegistryNumber($nsiItemInfo->RegistryNumber);
+
+            // если в реестре ИС справочника нет, то создаём его
+            if (empty($reference)) {
+                $reference = $this->referenceManager->createReference($nsiItemInfo->RegistryNumber, $nsiItemInfo->Name);
+                $reference->setModifiedAt($nsiItemInfo->getModified());
+            } else {
+                // обновляем название справочника
+                $reference->setName($nsiItemInfo->Name);
+                $reference->setModifiedAt($nsiItemInfo->getModified());
+            }
+        }
+    }
+
+    /**
+     * Обновить элементы справочника
+     * @param string $registryNumber
+     * @return boolean
+     */
+    public function updateReference($registryNumber)
+    {
+        $nsiCommonService = new NsiCommonService();
+
+        // получаем экземпляр справочника в реестре по реестровому номеру справочника
+        $reference = $this->referenceManager->getReferenceByRegistryNumber($registryNumber);
+
+        if (empty($reference)) return false;
+
+        $modifiedAfter = null;
+        if (!empty($reference)) {
+            $modifiedAt = $reference->getModifiedAt();
+            if (!empty($modifiedAt)) {
+                $modifiedAfter = $modifiedAt->add(new \DateInterval('PT1H'));
+            }
+        }
+
+        // получаем из ГИС ЖКХ перечень элементов справочника для импорта
+        // если справочник в реестре не пустой, то запрашиваются только обновлённые элементы
+        $nsiItemResult = $nsiCommonService->exportNsiItem($registryNumber, $modifiedAfter);
+
+        // если получить элементы для импорта не удалось, то
+        // обрабатываем ощибку, пишем в отчет и переходим к следующему справочнику
+        if (!empty($nsiItemResult->ErrorMessage)) {
+            switch ($nsiItemResult->ErrorMessage->ErrorCode) {
+                case ErrorMessageType::ERROR_CODE_NSI_ITEM_NOT_FOUND:
+                    $this->report(sprintf(
+                        "\n%s: Справочник не предоставляется по реестровому номеру\n",
+                        $registryNumber
+                    ));
+                    break;
+                case ErrorMessageType::ERROR_CODE_EMPTY_COLLECTION:
+                    $this->report(sprintf(
+                        "\n%s: Новых элементов не найдено\n",
+                        $registryNumber
+                    ));
+                    break;
+                default:
+                    $this->report(sprintf(
+                        "\n%s: Непредвиденная ошибка при запросе элементов. %s: %s\n",
+                        $registryNumber,
+                        $nsiItemResult->ErrorMessage->ErrorCode,
+                        $nsiItemResult->ErrorMessage->Description
+                    ));
+            }
+            return false;
+        }
+
+        foreach ($nsiItemResult->NsiItem->NsiElement as $nsiElement) {
+            $this->importElement($reference, $nsiElement);
+        }
+
+        $importedElementsCount = count($nsiItemResult->NsiItem->NsiElement);
+
+        $this->report(
+            "\nОбновлён справочник №" . $registryNumber . ": " . $reference->getName() .
+            "\nКоличество новых и обновлённых записей: " . $importedElementsCount . "\n");
+
+    }
+
+    /**
+     * Полный импорт справочников из ГИС ЖКХ во внутренний реестр
      * Если справочники не пустые, то происходит только обновление
      *
      * @return boolean было ли что-то обновлено
@@ -128,12 +242,12 @@ class NsiDynamicManager extends Component
             // если справочника во внутреннем реестре нет -- создаём
             // если справочник есть -- импортируем новые элементы
             if (empty($reference)) {
-                $this->importReference($nsiItemInfo, $nsiItemResult->NsiItem->NsiElement);
+                $this->importRef($nsiItemInfo, $nsiItemResult->NsiItem->NsiElement);
                 $this->report(
                     "\nИпортирован новый справочник №" . $nsiItemInfo->RegistryNumber . ": " . $nsiItemInfo->Name .
                     "\nКоличество записей: " . $importedElementsCount . "\n");
             } else {
-                $this->updateReference($reference, $nsiItemInfo, $nsiItemResult->NsiItem->NsiElement);
+                $this->updateRef($reference, $nsiItemInfo, $nsiItemResult->NsiItem->NsiElement);
                 $this->report(
                     "\nОбновлён справочник №" . $nsiItemInfo->RegistryNumber . ": " . $nsiItemInfo->Name .
                     "\nКоличество новых и обновлённых записей: " . $importedElementsCount . "\n");
@@ -182,7 +296,7 @@ class NsiDynamicManager extends Component
      * @param NsiElementType[] $nsiElements
      * @return IDynamicReference
      */
-    private function importReference($nsiItemInfo, $nsiElements)
+    private function importRef($nsiItemInfo, $nsiElements)
     {
         $reference = $this->referenceManager->createReference($nsiItemInfo->RegistryNumber, $nsiItemInfo->Name);
         $reference->setModifiedAt($nsiItemInfo->getModified());
@@ -201,7 +315,7 @@ class NsiDynamicManager extends Component
      * @param NsiItemInfoType $nsiItemInfo
      * @param NsiElementType[] $nsiElements
      */
-    private function updateReference($reference, $nsiItemInfo, $nsiElements)
+    private function updateRef($reference, $nsiItemInfo, $nsiElements)
     {
         $reference->setModifiedAt($nsiItemInfo->getModified());
         $reference->setName($nsiItemInfo->Name);

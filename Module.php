@@ -1,6 +1,7 @@
 <?php
 
 namespace opengkh\gis;
+use opengkh\gis\components\NsiDynamicManager;
 
 /**
  * Модуль интеграции с ГИС ЖКХ
@@ -33,6 +34,11 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
     public $orgPPAGUID = null;
 
     /**
+     * @var string $nsiManager имя компонента реализующего интерфейс IDynamicReferenceManager
+     */
+    public $nsiManager = false;
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -53,8 +59,11 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
 
         \Yii::setAlias('@gisgkh', $this->classesPath);
 
-        if (!empty($this->managerComponent) && $this->managerComponent) {
-            $app->set($this->managerComponent, $this->manager);
+        if (!empty($this->nsiManager) && $this->nsiManager) {
+            $app->set('nsi', [
+                'class' => NsiDynamicManager::className(),
+                'referenceManager' => \Yii::$app->get($this->nsiManager)
+            ]);
         }
 
         if ($app instanceof \yii\web\Application) {
