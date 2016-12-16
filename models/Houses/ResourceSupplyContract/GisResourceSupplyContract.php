@@ -227,7 +227,11 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
                         $owner->RegOrg = new RegOrgType($this->organizationGuid);
                         break;
                     case static::COUNTERPARTY_TYPE_PERSON:
-                        $owner->Ind = $this->person->convertTo(DRSOIndType::className());
+                        if (!empty($this->person)) {
+                            $owner->Ind = $this->person->convertTo(DRSOIndType::className());
+                        } else {
+                            $owner->Ind = new \stdClass();
+                        }
                         break;
                 }
 

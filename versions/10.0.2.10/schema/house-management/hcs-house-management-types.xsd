@@ -8950,7 +8950,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 			<xs:documentation>Физическое лицо в ДРСО</xs:documentation>
 		</xs:annotation>
 		<xs:sequence minOccurs="0">
-			<xs:element name="Surname">
+			<xs:element name="Surname" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Фамилия</xs:documentation>
 				</xs:annotation>
@@ -8961,7 +8961,7 @@ DECISION_IS_(N)OT_MADE - решение не принято</xs:documentation>
 					</xs:restriction>
 				</xs:simpleType>
 			</xs:element>
-			<xs:element name="FirstName">
+			<xs:element name="FirstName" minOccurs="0">
 				<xs:annotation>
 					<xs:documentation>Имя</xs:documentation>
 				</xs:annotation>
