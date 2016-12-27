@@ -158,7 +158,7 @@ class GisgkhSoapClient extends \SoapClient {
 
         $response = curl_exec($handle);
 
-        echo print_r($response);
+        //echo print_r($response);
 
         if (empty($response)) {
             print_r('CURL error: ' . curl_error($handle) . ' : ' . curl_errno($handle));
