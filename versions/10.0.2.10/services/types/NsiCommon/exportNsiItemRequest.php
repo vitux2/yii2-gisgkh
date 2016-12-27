@@ -33,9 +33,12 @@ class exportNsiItemRequest extends BaseType
      * @param integer $registryNumber
      * @param \DateTime $modifiedAfter
      * @param string $listGroup NSI | NSIRAO
+     * @param array $config
      */
-    public function __construct($registryNumber, $modifiedAfter = null, $listGroup = 'NSI')
+    public function __construct($registryNumber, $modifiedAfter = null, $listGroup = 'NSI', $config = [])
     {
+        parent::__construct($config);
+
         $this->RegistryNumber = $registryNumber;
 
         $this->ModifiedAfter = empty($modifiedAfter) ? null : $modifiedAfter->format(DATE_W3C);

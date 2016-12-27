@@ -84,6 +84,26 @@ class GisgkhSoapClient extends \SoapClient {
         //@todo: временное решение для подстановки namespace в атрибут version. Нужно сделать как-то по-нормальному ASAP!
         preg_match('/xmlns:(ns\d+)="http:\/\/dom.gosuslugi.ru\/schema\/integration\/base\//', $request, $matches);
         $request = str_replace('version="10', $matches[1] . ':version="10', $request);
+
+        //@todo: временное решение для подписания запросов
+        $guid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+        $tmpFile = sprintf('%s/%s.xml', \Yii::$app->getRuntimePath(), $guid);
+        file_put_contents($tmpFile, $request);
+
+        $tmpFileSigned = sprintf('%s/%s_signed.xml', \Yii::$app->getRuntimePath(), $guid);
+        exec(sprintf("python %s %s %s %s > %s",
+            Module::getInstance()->basePath . '/sign.py',
+            \Yii::getAlias(Module::getInstance()->sslKey),
+            $tmpFile,
+            Module::getInstance()->basePath . '/xades.xml',
+            $tmpFileSigned
+        ));
+
+        $request = file_get_contents($tmpFileSigned);
+
+        unlink($tmpFile);
+        unlink($tmpFileSigned);
+
         return $this->callCurl($location, $request, $action);
     }
 
@@ -112,7 +132,7 @@ class GisgkhSoapClient extends \SoapClient {
      * @throws \SoapFault
      */
     protected function callCurl($url, $data, $action) {
-        //die(\Yii::getAlias(GisgkhCommonModule::getInstance()->sslCert));
+        //die(\Yii::getAlias(Module::getInstance()->sslCert));
         $handle   = curl_init($url);
         curl_setopt($handle, CURLOPT_POST, true);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
@@ -127,15 +147,21 @@ class GisgkhSoapClient extends \SoapClient {
         }
         curl_setopt($handle, CURLOPT_SSLKEY, \Yii::getAlias(Module::getInstance()->sslKey));
         curl_setopt($handle, CURLOPT_CAINFO, \Yii::getAlias(Module::getInstance()->caInfo));
-        curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+        if (Module::getInstance()->ip == 'api.dom.gosuslugi.ru') {
+            curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, 2);
+            curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, true);
+        } else {
+            curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+        }
         curl_setopt($handle, CURLINFO_HEADER_OUT, true);
 
         $response = curl_exec($handle);
 
-        //echo print_r($response);
+        echo print_r($response);
 
         if (empty($response)) {
+            print_r('CURL error: ' . curl_error($handle) . ' : ' . curl_errno($handle));
             throw new \SoapFault('CURL error: '.curl_error($handle),curl_errno($handle));
         }
 

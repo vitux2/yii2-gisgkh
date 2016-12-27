@@ -24,9 +24,11 @@ class exportNsiListRequest extends BaseType
      * exportNsiListRequest constructor
      *
      * @param string|null $ListGroup
+     * @param array $config
      */
-    public function __construct($ListGroup = null)
+    public function __construct($ListGroup = null, $config = [])
     {
+        parent::__construct($config);
         $this->ListGroup = $ListGroup;
     }
 }

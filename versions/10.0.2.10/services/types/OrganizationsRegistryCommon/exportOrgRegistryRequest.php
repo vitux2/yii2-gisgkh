@@ -36,6 +36,7 @@ class exportOrgRegistryRequest extends BaseType
      */
     public function __construct($OGRN = null, $KPP = null, $OGRNIP = null, $isRegistered = true, $orgVersionGUID = null, $orgRootEntityGUID = null)
     {
+        parent::__construct([]);
         $this->SearchCriteria = new exportOrgRegistryRequest_SearchCriteria($OGRN, $KPP, $OGRNIP, $isRegistered, $orgVersionGUID, $orgRootEntityGUID);
     }
 }
