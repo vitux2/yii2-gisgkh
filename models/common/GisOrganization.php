@@ -65,7 +65,10 @@ class GisOrganization extends CompatibleWithGisgkh
         $this->versionGuid = $source->OrgVersion->orgVersionGUID;
         $this->ppaGuid = $source->orgPPAGUID;
 
-        $this->roles = GisNsiDirectoryEntryLink::convertFromArray($source->organizationRoles);
+        $roles = GisNsiDirectoryEntryLink::convertFromArray($source->organizationRoles);
+        foreach ($roles as $role) {
+            $this->roles[$role->code] = $role;
+        }
 
         if (!empty($source->OrgVersion->Legal)) {
             $this->shortName = $source->OrgVersion->Legal->ShortName;
@@ -101,6 +104,31 @@ class GisOrganization extends CompatibleWithGisgkh
     function fillTo(&$target)
     {
         // TODO: Implement fillTo() method.
+    }
+    /**
+     * Выполнить поиск организации в реестре ГИС ЖКХ по ОГРН
+     * @param string $ogrn ОГРН
+     * @param string $kpp КПП
+     * @return GisOrganization|null
+     * @throws GisgkhRequestControlException
+     */
+    public static function getByOgrnAndKpp($ogrn, $kpp)
+    {
+        $service = new OrganizationsRegistryCommonService(['exportOrgRegistryRequest', 'exportOrgRegistryResultType']);
+        $result = $service->exportOrgRegistry($ogrn, $kpp);
+
+        // обработка возможных ошибок
+        if ($result->ErrorMessage) {
+            if ($result->ErrorMessage->ErrorCode == ErrorMessageType::ERROR_CODE_EMPTY_COLLECTION) {
+                return null;
+            } else {
+                throw new GisgkhRequestControlException($result->ErrorMessage);
+            }
+        }
+        /* @var self[] $orgs */
+        $orgs = self::convertFromArray($result->OrgData);
+
+        return @$orgs[0];
     }
 
     /**

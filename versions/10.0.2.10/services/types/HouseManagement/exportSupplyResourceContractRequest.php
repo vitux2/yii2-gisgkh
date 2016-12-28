@@ -19,7 +19,7 @@ use gisgkh\types\lib\BaseType;
 class exportSupplyResourceContractRequest extends BaseType
 {
 
-    public $version = '10.0.2.1';
+    public $version = '10.0.1.1';
 
     /* *
      * 1. корневой GUID договора
