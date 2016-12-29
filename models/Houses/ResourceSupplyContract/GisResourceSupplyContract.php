@@ -3,6 +3,7 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\DRSOIndType;
+use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
 use gisgkh\types\HouseManagement\HeatingSystemType;
 use gisgkh\types\HouseManagement\Quality;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ContractSubject;
@@ -42,6 +43,12 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
     // вид объекта недвижимости (в случае, если договор заключен напрямую с собственником/пользователем)
     const PROPERTY_TYPE_LIVING_HOUSE        = 'living_house';       // жилой дом
     const PROPERTY_TYPE_APARTMENT_BUILDING  = 'apartment_building'; // помещение в многоквартирном доме
+
+    /* @var string $rootGuid */
+    public $rootGuid = null;
+
+    /* @var string $versionGuid */
+    public $versionGuid = null;
 
     /* @var string $contractType Вид договора (договор-оферта / договор с УО / прямой договор) */
     public $contractType = null;
@@ -114,11 +121,14 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
 
     /**
      * @inheritdoc
-     * @param SupplyResourceContractType $source
+     * @param exportSupplyResourceContractResultType $source
      * @return $this
      */
     public function fillFrom($source)
     {
+        $this->rootGuid = $source->ContractRootGUID;
+        $this->versionGuid = $source->ContractGUID;
+
         /* @var SupplyResourceContractType_IsContract $contractMeta */
         $contractMeta = null;
         if (!empty($source->IsContract)) {
@@ -176,6 +186,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
 
         $this->subjects = array_map(function (SupplyResourceContractType_ContractSubject $gisSubject) use ($source) {
             $subject = GisResourceSupplyContractSubject::convertFrom($gisSubject);
+            if ($source->Quality)
             foreach ($source->Quality as $quality) {
                 if ($quality->PairKey == $gisSubject->TransportGUID) {
                     $subject->qualityIndicators[] = GisQualityIndicator::convertFrom($quality);
@@ -303,6 +314,8 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
         $target->SpecifyingQualityIndicators = $this->commonQualityIndicators ? 'D' : 'O';
     }
 
+
+
     /**
      * @inheritdoc
      */
@@ -310,4 +323,6 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
     {
         return SupplyResourceContractType::className();
     }
+
+
 }
