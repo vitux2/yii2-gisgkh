@@ -105,6 +105,33 @@ class GisOrganization extends CompatibleWithGisgkh
     {
         // TODO: Implement fillTo() method.
     }
+
+    /**
+     * Выполнить поиск организации в реестре ГИС по идентификатору
+     * @param string $rootGuid
+     * @param string|null $versionGuid
+     * @return null|GisOrganization
+     * @throws GisgkhRequestControlException
+     */
+    public static function getByGuid($rootGuid, $versionGuid = null)
+    {
+        $service = new OrganizationsRegistryCommonService(['exportOrgRegistryRequest', 'exportOrgRegistryResultType']);
+        $result = $service->exportOrgRegistry(null, null, null, true, $versionGuid, $rootGuid);
+
+        // обработка возможных ошибок
+        if ($result->ErrorMessage) {
+            if ($result->ErrorMessage->ErrorCode == ErrorMessageType::ERROR_CODE_EMPTY_COLLECTION) {
+                return null;
+            } else {
+                throw new GisgkhRequestControlException($result->ErrorMessage);
+            }
+        }
+        /* @var self[] $orgs */
+        $orgs = self::convertFromArray($result->OrgData);
+
+        return @$orgs[0];
+    }
+
     /**
      * Выполнить поиск организации в реестре ГИС ЖКХ по ОГРН
      * @param string $ogrn ОГРН
