@@ -23,6 +23,11 @@ class importSupplyResourceContractRequest_Contract extends GisgkhType
     public $TransportGUID = null;
 
     /**
+     * @var string $ContractGUID Идентификатор версии договора ресурсоснабжения в ГИС ЖКХ
+     */
+    public $ContractGUID = null;
+
+    /**
      * @var SupplyResourceContractType $SupplyResourceContract Запрос на создание/изменение договора
      */
     public $SupplyResourceContract = null;

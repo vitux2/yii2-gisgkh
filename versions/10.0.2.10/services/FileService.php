@@ -231,7 +231,7 @@ class FileService
             return null;
         }
 
-        return $headers['X-Upload-FileID'];
+        return $headers['X-Upload-UploadID'];
     }
 
     /**
