@@ -78,7 +78,12 @@ class GisResourceSupplyContractRegistry
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
-        $request->Contract->SupplyResourceContract = $contract->convertTo();;
+        if ($contract->versionGuid) {
+            $request->Contract->ContractGUID = $contract->versionGuid;
+        }
+
+        $request->Contract->SupplyResourceContract = $contract->convertTo();
+
         //print_r($request->Contract->SupplyResourceContract);
         //die();
 

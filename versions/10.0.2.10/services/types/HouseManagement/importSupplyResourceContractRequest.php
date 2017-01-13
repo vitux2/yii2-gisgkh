@@ -24,7 +24,7 @@ class importSupplyResourceContractRequest extends BaseType
      */
     public function __construct($contract = null)
     {
-        //parent::__construct();
+        parent::__construct();
         $this->Contract = $contract;
     }
 
