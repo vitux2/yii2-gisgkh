@@ -3,10 +3,12 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\HouseManagementService;
+use gisgkh\types\HouseManagement\AnnulmentType;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest;
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_Contract;
+use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_RollOverContract;
 use gisgkh\types\HouseManagement\SupplyResourceContractType;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ContractSubject;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_IsContract;
@@ -17,6 +19,7 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_End;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_Start;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
+use gisgkh\types\HouseManagement\TerminateContract;
 use gisgkh\types\lib\CommonResultType;
 use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\ImportResult;
@@ -109,5 +112,63 @@ class GisResourceSupplyContractRegistry
         }*/
 
         return $response;
+    }
+
+    /**
+     * Аннулировать договор
+     *
+     * @param GisResourceSupplyContract $contract
+     * @param string $reason Причина расторжения
+     * @return ImportResult
+     */
+    public function annulled($contract, $reason)
+    {
+        $service = new HouseManagementService();
+        $request = new importSupplyResourceContractRequest();
+        $request->Contract = new importSupplyResourceContractRequest_Contract();
+
+        $request->Contract->AnnulmentContract = $contract->convertTo();
+        $request->Contract->AnnulmentContract->ReasonOfAnnulment = $reason;
+
+        return $service->importSupplyResourceContractData($request);
+    }
+
+    /**
+     * Расторгнуть договор
+     *
+     * @param GisResourceSupplyContract $contract
+     * @param string $reason Причина расторжения
+     * @return ImportResult
+     */
+    public function terminate($contract, $reason)
+    {
+        $service = new HouseManagementService();
+        $request = new importSupplyResourceContractRequest();
+        $request->Contract = new importSupplyResourceContractRequest_Contract();
+
+        $request->Contract->TerminateContract = $contract->convertTo();
+        $request->Contract->TerminateContract->ReasonRef = $reason;
+
+        return $service->importSupplyResourceContractData($request);
+    }
+
+    /**
+     * Пролонгировать договор
+     *
+     * @param GisResourceSupplyContract $contract
+     * @param string $rollover_date Фактическая дата расторжения
+     * @return ImportResult
+     */
+    public function rollover($contract, $rollover_date)
+    {
+        $service = new HouseManagementService();
+        $request = new importSupplyResourceContractRequest();
+        $request->Contract = new importSupplyResourceContractRequest_Contract();
+
+        $request->Contract->ContractGUID = $contract->versionGuid;
+        $request->Contract->RollOverContract = new importSupplyResourceContractRequest_RollOverContract();
+        $request->Contract->RollOverContract->RollOverDate = $rollover_date;
+
+        return $service->importSupplyResourceContractData($request);
     }
 }
