@@ -241,7 +241,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
                         if (!empty($this->person)) {
                             $owner->Ind = $this->person->convertTo(DRSOIndType::className());
                         } else {
-                            $owner->Ind = new \stdClass();
+                            $owner->Ind = "";
                         }
                         break;
                 }
@@ -263,7 +263,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
             $target->ContractBase = $this->base->convertTo();
         }
 
-        $target->IsPlannedVolume = $this->isPlannedVolume ? 'true' : 'false';
+        $target->IsPlannedVolume = $this->isPlannedVolume;
 
         $target->Period = $this->readingsDeliveryPeriod->convertTo();
 

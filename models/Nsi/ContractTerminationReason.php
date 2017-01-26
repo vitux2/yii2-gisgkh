@@ -8,52 +8,26 @@ use gisgkh\types\lib\Nsi\NsiElementType;
 use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
- * Основание заключения договора
- *
- * @package opengkh\gis\models\Nsi
+ * Причина расторжения договора
+ * реестровый номер справочника в ГИС ЖКХ -- 54
  */
-class ContractBase extends GisNsiPermanentDirectoryEntry
+class ContractTerminationReason extends GisNsiPermanentDirectoryEntry
 {
-    const FIELD_TITLE_TITLE = 'Основание заключения договора';
-    const FIELD_APPLICABLE_TO_MANAGEMENT_CONTRACTS = 'Применимо к договорам управления';
-    const FIELD_APPLICABLE_TO_RESOURCE_SUPPLY_CONTRACTS = 'Применимо к договорам ресурсоснабжения';
-
     /**
-     * @var string $title Основание заключения договора
+     * @var string $title Причина расторжения договора
      */
     public $title = null;
 
-    /**
-     * @var string $applicableToManagementContracts Применимо к договорам управления
-     */
-    public $applicableToManagementContracts = null;
-
-    /**
-     * @var boolean $applicableToResourceSupplyContract Применимо к договорам ресурсоснабжения
-     */
-    public $applicableToResourceSupplyContracts = null;
 
     /**
      * @inheritdoc
      */
     public function fillFrom($source)
     {
-        foreach ($source->NsiElementField as $nsiField) {
-            switch ($nsiField->Name) {
-                case self::FIELD_TITLE_TITLE:
-                    /* @var NsiElementStringFieldType $nsiField */
-                    $this->title = $nsiField->Value;
-                    break;
-                case self::FIELD_APPLICABLE_TO_MANAGEMENT_CONTRACTS:
-                    /* @var NsiElementBooleanFieldType $nsiField */
-                    $this->applicableToManagementContracts = $nsiField->getValue();
-                    break;
-                case self::FIELD_APPLICABLE_TO_RESOURCE_SUPPLY_CONTRACTS:
-                    /* @var NsiElementBooleanFieldType $nsiField */
-                    $this->applicableToResourceSupplyContracts = $nsiField->getValue();
-                    break;
-            }
-        }
+        /* @var NsiElementStringFieldType $field */
+        $field = @$source->NsiElementField[0];
+
+        $this->title = empty($field) ? null : $field->Value;
 
         return parent::fillFrom($source);
     }

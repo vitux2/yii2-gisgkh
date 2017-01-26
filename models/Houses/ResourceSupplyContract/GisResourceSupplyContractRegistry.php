@@ -87,8 +87,8 @@ class GisResourceSupplyContractRegistry
 
         $request->Contract->SupplyResourceContract = $contract->convertTo();
 
-        //print_r($request->Contract->SupplyResourceContract);
-        //die();
+//        print_r($request->Contract->SupplyResourceContract);
+//        die();
 
         //try {
             $response = $service->importSupplyResourceContractData($request);
