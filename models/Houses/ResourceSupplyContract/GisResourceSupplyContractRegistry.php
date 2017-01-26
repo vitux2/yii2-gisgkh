@@ -25,6 +25,7 @@ use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\ImportResult;
 use gisgkh\types\lib\Nsi\nsiRef;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
+use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -137,7 +138,7 @@ class GisResourceSupplyContractRegistry
      * Расторгнуть договор
      *
      * @param GisResourceSupplyContract $contract
-     * @param string $reason Причина расторжения
+     * @param GisNsiDirectoryEntryLink $reason Причина расторжения
      * @return ImportResult
      */
     public function terminate($contract, $reason)
@@ -147,7 +148,7 @@ class GisResourceSupplyContractRegistry
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
         $request->Contract->TerminateContract = $contract->convertTo();
-        $request->Contract->TerminateContract->ReasonRef = $reason;
+        $request->Contract->TerminateContract->ReasonRef = $reason->convertTo();
 
         return $service->importSupplyResourceContractData($request);
     }
