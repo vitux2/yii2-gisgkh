@@ -9,7 +9,7 @@ use gisgkh\types\lib\Nsi\nsiRef;
  *
  * @package gisgkh\types\HouseManagement
  */
-class TerminateContract extends TerminateType
+class importSupplyResourceContractRequest_TerminateContract extends TerminateType
 {
     /**
      * @var nsiRef $ReasonRef Ссылка на НСИ "54	Причина расторжения договора" (реестровый номер 54)

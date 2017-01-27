@@ -33,7 +33,7 @@ class importSupplyResourceContractRequest_Contract extends GisgkhType
     public $SupplyResourceContract = null;
 
     /**
-     * @var TerminateContract $TerminateContract Запрос на расторжение договора
+     * @var importSupplyResourceContractRequest_TerminateContract $TerminateContract Запрос на расторжение договора
      */
     public $TerminateContract = null;
 

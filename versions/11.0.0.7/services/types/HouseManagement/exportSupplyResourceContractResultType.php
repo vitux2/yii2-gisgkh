@@ -43,7 +43,7 @@ class exportSupplyResourceContractResultType extends SupplyResourceContractType
     public $VersionStatus = null;
 
     /**
-     * @var TerminateContract $TerminateContract Информация о расторжении
+     * @var importSupplyResourceContractRequest_TerminateContract $TerminateContract Информация о расторжении
      */
     public $TerminateContract = null;
 

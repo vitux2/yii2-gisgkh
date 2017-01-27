@@ -19,14 +19,14 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_End;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_Start;
 use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
-use gisgkh\types\HouseManagement\TerminateContract;
+use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_TerminateContract;
 use gisgkh\types\lib\CommonResultType;
 use gisgkh\types\lib\ErrorMessageType;
 use gisgkh\types\lib\ImportResult;
 use gisgkh\types\lib\Nsi\nsiRef;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
-use startuplab\gisgkh\registry\nsi\models\ContractTerminationReason;
+use opengkh\gis\models\Nsi\ContractTerminationReason;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -108,7 +108,7 @@ class GisResourceSupplyContractRegistry
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
-        $request->Contract->AnnulmentContract = new AnnulmentContract();
+        $request->Contract->AnnulmentContract = new AnnulmentType();
         $request->Contract->AnnulmentContract->ReasonOfAnnulment = $reason;
 
         return $service->importSupplyResourceContractData($request);
@@ -119,7 +119,7 @@ class GisResourceSupplyContractRegistry
      *
      * @param GisResourceSupplyContract $contract
      * @param string $date Фактическая дата расторжения
-     * @param ContractTerminationReason $reason Причина расторжения
+     * @param GisNsiDirectoryEntryLink $reason Причина расторжения
      * @return ImportResult
      */
     public function terminate($contract, $date, $reason)
@@ -129,8 +129,8 @@ class GisResourceSupplyContractRegistry
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
-        $request->Contract->TerminateContract = new TerminateContract();
-        $request->Contract->TerminateContract->ReasonRef = $reason;
+        $request->Contract->TerminateContract = new importSupplyResourceContractRequest_TerminateContract();
+        $request->Contract->TerminateContract->ReasonRef = $reason->convertTo();
         $request->Contract->TerminateContract->Terminate = $date;
 
         return $service->importSupplyResourceContractData($request);
