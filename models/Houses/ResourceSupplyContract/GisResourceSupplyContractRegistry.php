@@ -26,6 +26,7 @@ use gisgkh\types\lib\ImportResult;
 use gisgkh\types\lib\Nsi\nsiRef;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use startuplab\gisgkh\registry\nsi\models\ContractTerminationReason;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -88,29 +89,7 @@ class GisResourceSupplyContractRegistry
 
         $request->Contract->SupplyResourceContract = $contract->convertTo();
 
-//        print_r($request->Contract->SupplyResourceContract);
-//        die();
-
-        //try {
-            $response = $service->importSupplyResourceContractData($request);
-        //} catch (\SoapFault $e) {
-        //    echo $e->getMessage() . "\n";
-        //    echo $service->__getLastRequest() . "\n";
-        //    echo $service->__getLastResponse() . "\n";
-        //    die();
-        //}
-
-        // обработка возможных ошибок
-        /*if ($response->ErrorMessage) {
-            if ($response->ErrorMessage->ErrorCode == ErrorMessageType::ERROR_CODE_EMPTY_COLLECTION) {
-                return [];
-            } else {
-                print_r($service->__getLastRequest());
-                print_r($response->ErrorMessage);
-                die();
-                //throw new GisgkhRequestControlException($result->ErrorMessage);
-            }
-        }*/
+        $response = $service->importSupplyResourceContractData($request);
 
         return $response;
     }
@@ -128,7 +107,8 @@ class GisResourceSupplyContractRegistry
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
-        $request->Contract->AnnulmentContract = $contract->convertTo();
+        $request->Contract->ContractGUID = $contract->versionGuid;
+        $request->Contract->AnnulmentContract = new AnnulmentContract();
         $request->Contract->AnnulmentContract->ReasonOfAnnulment = $reason;
 
         return $service->importSupplyResourceContractData($request);
@@ -138,17 +118,20 @@ class GisResourceSupplyContractRegistry
      * Расторгнуть договор
      *
      * @param GisResourceSupplyContract $contract
-     * @param GisNsiDirectoryEntryLink $reason Причина расторжения
+     * @param string $date Фактическая дата расторжения
+     * @param ContractTerminationReason $reason Причина расторжения
      * @return ImportResult
      */
-    public function terminate($contract, $reason)
+    public function terminate($contract, $date, $reason)
     {
         $service = new HouseManagementService();
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new importSupplyResourceContractRequest_Contract();
 
-        $request->Contract->TerminateContract = $contract->convertTo();
-        $request->Contract->TerminateContract->ReasonRef = $reason->convertTo();
+        $request->Contract->ContractGUID = $contract->versionGuid;
+        $request->Contract->TerminateContract = new TerminateContract();
+        $request->Contract->TerminateContract->ReasonRef = $reason;
+        $request->Contract->TerminateContract->Terminate = $date;
 
         return $service->importSupplyResourceContractData($request);
     }
