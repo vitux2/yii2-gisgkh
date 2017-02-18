@@ -17,7 +17,7 @@ class Okei
 
     public static function getByCode($code)
     {
-        $entry = @self::ENTRIES[$code];
+        $entry = @self::ENTRIES[(int)$code];
 
         if (empty($entry)) {
             return null;
@@ -833,7 +833,7 @@ class Okei
         316 => [
             'section' => 1,
             'subsection' => 5,
-            'title' => 'Киллограмм на кубический метр',
+            'title' => 'Килограмм на кубический метр',
             'abbr' => 'кг/м[3*]',
             'abbr_int' => 'kg/m[3*]',
             'abbr_caps' => 'КГ/М3',
