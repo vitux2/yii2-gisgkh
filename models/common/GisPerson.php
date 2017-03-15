@@ -35,6 +35,28 @@ class GisPerson extends CompatibleWithGisgkh
     public $identityDocument = null;
 
     /**
+     * Есть ли сведения о физ. лице
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return empty($this->surname);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    static function convertFrom($source)
+    {
+        /* @var self $object */
+        if (empty($source)) return null;
+        $object = new static();
+        $object->fillFrom($source);
+
+        return $object->isEmpty() ? null : $object;
+    }
+
+    /**
      * @inheritdoc
      * @param IndType $source
      */
