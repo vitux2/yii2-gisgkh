@@ -2,7 +2,7 @@
 
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
-use gisgkh\types\HouseManagement\ContractSubjectType_PlannedVolume;
+use gisgkh\types\HouseManagement\ContractSubjectType\PlannedVolume;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 
 /**
@@ -28,7 +28,7 @@ class GisResourceSupplyContractPlannedVolume extends CompatibleWithGisgkh
 
     /**
      * @inheritDoc
-     * @param ContractSubjectType_PlannedVolume $source
+     * @param PlannedVolume $source
      */
     function fillFrom($source)
     {
@@ -41,7 +41,7 @@ class GisResourceSupplyContractPlannedVolume extends CompatibleWithGisgkh
 
     /**
      * @inheritDoc
-     * @param ContractSubjectType_PlannedVolume $target
+     * @param PlannedVolume $target
      */
     function fillTo(&$target)
     {
@@ -55,6 +55,6 @@ class GisResourceSupplyContractPlannedVolume extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return ContractSubjectType_PlannedVolume::className();
+        return PlannedVolume::class;
     }
 }

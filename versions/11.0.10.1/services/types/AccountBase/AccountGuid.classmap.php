@@ -1,0 +1,5 @@
+<?php
+
+return [
+    "AccountGuid" => "string"
+];

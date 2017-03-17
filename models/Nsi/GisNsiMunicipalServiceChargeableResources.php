@@ -2,10 +2,8 @@
 
 namespace opengkh\gis\models\Nsi;
 
-use gisgkh\types\lib\Nsi\NsiElementNsiRefFieldType;
-use gisgkh\types\lib\Nsi\NsiElementOkeiRefFieldType;
-use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use gisgkh\types\lib\Nsi\NsiElementType;
+use gisgkh\types\NsiBase\NsiElementNsiRefFieldType;
+use gisgkh\types\NsiBase\NsiElementOkeiRefFieldType;
 
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;

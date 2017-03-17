@@ -2,13 +2,8 @@
 
 namespace opengkh\gis\models\Nsi\common;
 
-use gisgkh\NsiCommonService;
-use gisgkh\types\lib\ErrorMessageType;
-use gisgkh\types\lib\Nsi\NsiElementType;
-use gisgkh\types\lib\Nsi\nsiRef;
-use opengkh\gis\exceptions\GisgkhRequestControlException;
+use gisgkh\types\NsiBase\NsiElementType;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
-use yii\base\Model;
 
 /**
  * Абстрактный элемент справочника
@@ -51,7 +46,7 @@ abstract class GisNsiDirectoryEntry extends CompatibleWithGisgkh
     {
         $this->code = $source->Code;
         $this->guid = $source->GUID;
-        $this->isActual = $source->getIsActual();
+        $this->isActual = $source->IsActual;
         return $this;
     }
 
@@ -71,6 +66,6 @@ abstract class GisNsiDirectoryEntry extends CompatibleWithGisgkh
      */
     function getGisgkhType()
     {
-        return NsiElementType::className();
+        return NsiElementType::class;
     }
 }

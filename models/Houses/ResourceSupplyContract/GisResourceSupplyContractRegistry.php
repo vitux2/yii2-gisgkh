@@ -2,31 +2,18 @@
 
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
+use gisgkh\ErrorMessageType;
 use gisgkh\HouseManagementService;
 use gisgkh\types\HouseManagement\AnnulmentType;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
+use gisgkh\types\HouseManagement\ImportResult;
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest;
-use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_Contract;
-use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_RollOverContract;
-use gisgkh\types\HouseManagement\SupplyResourceContractType;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ContractSubject;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_IsContract;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_IsNotContract;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress_Pair;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_End;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_Period_Start;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
-use gisgkh\types\HouseManagement\importSupplyResourceContractRequest_TerminateContract;
-use gisgkh\types\lib\CommonResultType;
-use gisgkh\types\lib\ErrorMessageType;
-use gisgkh\types\lib\ImportResult;
-use gisgkh\types\lib\Nsi\nsiRef;
+use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract;
+use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\RollOverContract;
+use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\TerminateContract;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
-use opengkh\gis\models\Nsi\ContractTerminationReason;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -77,11 +64,10 @@ class GisResourceSupplyContractRegistry
      */
     public function send(GisResourceSupplyContract $contract)
     {
-        //$service = new HouseManagementService(['SupplyResourceContractType', 'exportSupplyResourceContractRequest']);
         $service = new HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
-        $request->Contract = new importSupplyResourceContractRequest_Contract();
+        $request->Contract = new exportSupplyResourceContractResultType();
 
         if ($contract->versionGuid) {
             $request->Contract->ContractGUID = $contract->versionGuid;
@@ -89,9 +75,7 @@ class GisResourceSupplyContractRegistry
 
         $request->Contract->SupplyResourceContract = $contract->convertTo();
 
-        $response = $service->importSupplyResourceContractData($request);
-
-        return $response;
+        return $service->importSupplyResourceContractData($request);
     }
 
     /**
@@ -105,7 +89,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = new HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Contract = new importSupplyResourceContractRequest_Contract();
+        $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
         $request->Contract->AnnulmentContract = new AnnulmentType();
@@ -126,10 +110,10 @@ class GisResourceSupplyContractRegistry
     {
         $service = new HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Contract = new importSupplyResourceContractRequest_Contract();
+        $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
-        $request->Contract->TerminateContract = new importSupplyResourceContractRequest_TerminateContract();
+        $request->Contract->TerminateContract = new TerminateContract();
         $request->Contract->TerminateContract->ReasonRef = $reason->convertTo();
         $request->Contract->TerminateContract->Terminate = $date;
 
@@ -147,10 +131,10 @@ class GisResourceSupplyContractRegistry
     {
         $service = new HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Contract = new importSupplyResourceContractRequest_Contract();
+        $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
-        $request->Contract->RollOverContract = new importSupplyResourceContractRequest_RollOverContract();
+        $request->Contract->RollOverContract = new RollOverContract();
         $request->Contract->RollOverContract->RollOverDate = $rollover_date;
 
         return $service->importSupplyResourceContractData($request);

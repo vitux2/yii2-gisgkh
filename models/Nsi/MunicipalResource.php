@@ -1,11 +1,9 @@
 <?php
 
 namespace opengkh\gis\models\Nsi;
-use gisgkh\types\lib\Nsi\NsiElementBooleanFieldType;
-use gisgkh\types\lib\Nsi\NsiElementIntegerFieldType;
-use gisgkh\types\lib\Nsi\NsiElementOkeiRefFieldType;
-use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use gisgkh\types\lib\Nsi\NsiElementType;
+use gisgkh\types\NsiBase\NsiElementBooleanFieldType;
+use gisgkh\types\NsiBase\NsiElementOkeiRefFieldType;
+use gisgkh\types\NsiBase\NsiElementStringFieldType;
 use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
@@ -63,7 +61,7 @@ class MunicipalResource extends GisNsiPermanentDirectoryEntry
                     break;
                 case self::FIELD_TITLE_CAN_LINK_WITH_DEVICE:
                     /* @var NsiElementBooleanFieldType $nsiField */
-                    $this->canLinkWithDevice = $nsiField->getValue();
+                    $this->canLinkWithDevice = filter_var($nsiField->Value, FILTER_VALIDATE_BOOLEAN);
                     break;
                 case self::FIELD_TITLE_OKEI:
                     /* @var NsiElementOkeiRefFieldType $nsiField */

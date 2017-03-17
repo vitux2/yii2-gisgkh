@@ -2,8 +2,8 @@
 
 namespace opengkh\gis\models\common;
 use gisgkh\FileService;
-use gisgkh\types\lib\AttachmentType;
-use opengkh\gis\exceptions\GisgkhException;
+use gisgkh\types\Base\Attachment;
+use gisgkh\types\Base\AttachmentType;
 use opengkh\gis\exceptions\GisgkhFileDownloadException;
 use opengkh\gis\exceptions\GisgkhFileUploadException;
 
@@ -51,7 +51,7 @@ class GisAttachment extends CompatibleWithGisgkh
 
     /**
      * @inheritdoc
-     * @param AttachmentType $source
+     * @param $source
      */
     public function fillFrom($source)
     {
@@ -64,14 +64,14 @@ class GisAttachment extends CompatibleWithGisgkh
 
     /**
      * @inheritdoc
-     * @param AttachmentType $target
+     * @param $target
      */
     public function fillTo(&$target)
     {
         $target->Name = $this->name;
         $target->Description = $this->description;
         $target->AttachmentHASH = $this->hash;
-        $target->Attachment = new \gisgkh\types\lib\Attachment($this->guid);
+        $target->Attachment = new Attachment($this->guid);
     }
 
     /**
@@ -79,7 +79,7 @@ class GisAttachment extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return AttachmentType::className();
+        return AttachmentType::class;
     }
 
     /**

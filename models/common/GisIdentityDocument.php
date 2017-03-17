@@ -2,7 +2,7 @@
 
 namespace opengkh\gis\models\common;
 
-use gisgkh\types\lib\IndividualRegistry\ID;
+use gisgkh\types\IndividualRegistryBase\ID;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 class GisIdentityDocument extends CompatibleWithGisgkh
@@ -28,7 +28,7 @@ class GisIdentityDocument extends CompatibleWithGisgkh
         $this->type = GisNsiDirectoryEntryLink::convertFrom($source->Type);
         $this->series = $source->Series;
         $this->number = $source->Number;
-        $this->issueDate = $source->getIssueDate();
+        $this->issueDate = new \DateTime($source->IssueDate);
     }
 
     /**
@@ -48,6 +48,6 @@ class GisIdentityDocument extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return ID::className();
+        return ID::class;
     }
 }

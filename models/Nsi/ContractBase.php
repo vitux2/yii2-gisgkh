@@ -2,9 +2,8 @@
 
 namespace opengkh\gis\models\Nsi;
 
-use gisgkh\types\lib\Nsi\NsiElementBooleanFieldType;
-use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use gisgkh\types\lib\Nsi\NsiElementType;
+use gisgkh\types\NsiBase\NsiElementBooleanFieldType;
+use gisgkh\types\NsiBase\NsiElementStringFieldType;
 use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**
@@ -46,11 +45,11 @@ class ContractBase extends GisNsiPermanentDirectoryEntry
                     break;
                 case self::FIELD_APPLICABLE_TO_MANAGEMENT_CONTRACTS:
                     /* @var NsiElementBooleanFieldType $nsiField */
-                    $this->applicableToManagementContracts = $nsiField->getValue();
+                    $this->applicableToManagementContracts = filter_var($nsiField->Value, FILTER_VALIDATE_BOOLEAN);
                     break;
                 case self::FIELD_APPLICABLE_TO_RESOURCE_SUPPLY_CONTRACTS:
                     /* @var NsiElementBooleanFieldType $nsiField */
-                    $this->applicableToResourceSupplyContracts = $nsiField->getValue();
+                    $this->applicableToResourceSupplyContracts = filter_var($nsiField->Value, FILTER_VALIDATE_BOOLEAN);
                     break;
             }
         }

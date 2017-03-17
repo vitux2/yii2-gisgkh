@@ -2,7 +2,7 @@
 
 namespace opengkh\gis\models\Nsi\common;
 
-use gisgkh\types\lib\Nsi\nsiRef;
+use gisgkh\types\NsiBase\nsiRef;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 
 /**
@@ -52,6 +52,6 @@ class GisNsiDirectoryEntryLink extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return nsiRef::className();
+        return nsiRef::class;
     }
 }

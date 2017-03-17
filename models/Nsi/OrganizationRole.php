@@ -2,7 +2,7 @@
 
 namespace opengkh\gis\models\Nsi;
 
-use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
+use gisgkh\types\NsiBase\NsiElementStringFieldType;
 use opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
 /**

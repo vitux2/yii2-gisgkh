@@ -2,7 +2,8 @@
 
 namespace opengkh\gis\models\common;
 
-use gisgkh\types\GisgkhType;
+use gisgkh\types\Base\AttachmentType;
+use gisgkh\types\HouseManagement\SupplyResourceContractType;
 use yii\base\Model;
 
 /**
@@ -13,7 +14,7 @@ abstract class CompatibleWithGisgkh extends Model
 {
     /**
      * Конвертирвоать объект ГИС ЖКХ
-     * @param GisgkhType $source
+     * @param $source
      * @return static
      */
     static function convertFrom($source)
@@ -26,9 +27,9 @@ abstract class CompatibleWithGisgkh extends Model
 
     /**
      * Конвертировать в тип ГИС ЖКХ
-     * @param string|null $gisgkhType
-     * @param GisgkhType|null $target
-     * @return GisgkhType
+     * @param $gisgkhType
+     * @param $target
+     * @return null
      */
     public function convertTo($gisgkhType = null, &$target = null)
     {
@@ -40,7 +41,7 @@ abstract class CompatibleWithGisgkh extends Model
 
     /**
      * Конвертировать из массива объектов ГИС ЖКХ
-     * @param GisgkhType[] $source
+     * @param SupplyResourceContractType[] $source
      * @return static[]
      */
     static function convertFromArray($source)
@@ -54,7 +55,7 @@ abstract class CompatibleWithGisgkh extends Model
      * Конвертировать в массив объектов ГИС ЖКХ
      * @param self[] $source
      * @param string|null $gisgkhType
-     * @return GisgkhType[]
+     * @return array|null
      */
     static function convertToArray($source, $gisgkhType = null)
     {
@@ -72,13 +73,13 @@ abstract class CompatibleWithGisgkh extends Model
 
     /**
      * Заполнить данными из типа данных ГИС ЖКХ
-     * @param GisgkhType $source
+     * @param $source
      */
     abstract function fillFrom($source);
 
     /**
      * Заполнить данными тип данных ГИС ЖКХ
-     * @param GisgkhType &$target
+     * @param &$target
      */
     abstract function fillTo(&$target);
 }

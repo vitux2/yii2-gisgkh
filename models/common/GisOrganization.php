@@ -2,12 +2,10 @@
 
 namespace opengkh\gis\models\common;
 
-use gisgkh\OrganizationsRegistryCommonService;
-use gisgkh\types\lib\ErrorMessageType;
-use gisgkh\types\lib\OrganizationsRegistry\LegalType;
+use gisgkh\services\OrganizationsRegistryCommonService;
+use gisgkh\ErrorMessageType;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
-use \opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
 /**
@@ -52,7 +50,7 @@ class GisOrganization extends CompatibleWithGisgkh
      */
     function getGisgkhType()
     {
-        exportOrgRegistryResultType::className();
+        exportOrgRegistryResultType::class;
     }
 
     /**
@@ -115,7 +113,7 @@ class GisOrganization extends CompatibleWithGisgkh
      */
     public static function getByGuid($rootGuid, $versionGuid = null)
     {
-        $service = new OrganizationsRegistryCommonService(['exportOrgRegistryRequest', 'exportOrgRegistryResultType']);
+        $service = new OrganizationsRegistryCommonService();
         $result = $service->exportOrgRegistry(null, null, null, true, $versionGuid, $rootGuid);
 
         // обработка возможных ошибок
@@ -141,7 +139,7 @@ class GisOrganization extends CompatibleWithGisgkh
      */
     public static function getByOgrnAndKpp($ogrn, $kpp)
     {
-        $service = new OrganizationsRegistryCommonService(['exportOrgRegistryRequest', 'exportOrgRegistryResultType']);
+        $service = new OrganizationsRegistryCommonService();
         $result = $service->exportOrgRegistry($ogrn, $kpp);
 
         // обработка возможных ошибок
