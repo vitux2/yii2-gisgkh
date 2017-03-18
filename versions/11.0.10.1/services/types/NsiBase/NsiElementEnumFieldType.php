@@ -12,12 +12,12 @@ class NsiElementEnumFieldType extends \gisgkh\types\NsiBase\NsiElementFieldType
      * 
      * @var \gisgkh\types\NsiBase\NsiElementEnumFieldType\Position[]
      */
-     public $Position = [];
+     public $Position = null;
 
     /**
      * @param \gisgkh\types\NsiBase\NsiElementEnumFieldType\Position[] [$Position] Запись элемента справочника типа "Перечислимый".
      */
-    public function __construct(array $Position = [])
+    public function __construct(array $Position = null)
     {
         $this->Position = $Position;
     }

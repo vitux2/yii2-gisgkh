@@ -33,14 +33,14 @@ class ContractPaymentsInfoType
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $Protocol = [];
+     public $Protocol = null;
 
     /**
      * Информация о размере платы (цене, тарифе) за содержание и текущий ремонт общего имущества в многоквартирном доме/Информация о размере платы за содержание жилого помещения, установленном по результатам открытого конкурса по отбору управляющей организации для управления многоквартирным домом
      * 
      * @var \gisgkh\types\HouseManagement\ContractPaymentsInfoType\ServicePayment[]
      */
-     public $ServicePayment = [];
+     public $ServicePayment = null;
 
     /**
      * Тип размера платы:
@@ -63,7 +63,7 @@ class ContractPaymentsInfoType
 (С)ompetition - Установленный по результатам открытого конкурса
 					
      */
-    public function __construct(string $BeginDate = null, string $EndDate = null, string $HouseManagementPaymentSize = null, array $Protocol = [], array $ServicePayment = [], string $Type = null)
+    public function __construct(string $BeginDate = null, string $EndDate = null, string $HouseManagementPaymentSize = null, array $Protocol = null, array $ServicePayment = null, string $Type = null)
     {
         $this->BeginDate = $BeginDate;
         $this->EndDate = $EndDate;

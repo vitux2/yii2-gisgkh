@@ -12,12 +12,12 @@ class MeteringOwner
      * 
      * @var string[]
      */
-     public $orgRootEntityGUID = [];
+     public $orgRootEntityGUID = null;
 
     /**
      * @param string[] $orgRootEntityGUID Идентификатор корневой сущности организации в реестре организаций
      */
-    public function __construct(array $orgRootEntityGUID = [])
+    public function __construct(array $orgRootEntityGUID = null)
     {
         $this->orgRootEntityGUID = $orgRootEntityGUID;
     }

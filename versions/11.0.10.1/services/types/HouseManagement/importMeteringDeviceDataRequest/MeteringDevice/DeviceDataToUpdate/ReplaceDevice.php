@@ -33,7 +33,7 @@ class ReplaceDevice
      * 
      * @var \gisgkh\types\MeteringDeviceBase\OneRateMeteringValueType[]
      */
-     public $DeviceValueMunicipalResourceNotElectric = [];
+     public $DeviceValueMunicipalResourceNotElectric = null;
 
     /**
      * Показания по ПУ (электрическая энергия)
@@ -57,7 +57,7 @@ class ReplaceDevice
      * @param \gisgkh\types\MeteringDeviceBase\ElectricMeteringValueType $DeviceValueMunicipalResourceElectric Показания по ПУ (электрическая энергия)
      * @param string $ReplacingMeteringDeviceVersionGUID Заменить на существующий (идентификатор версии ПУ в ГИС ЖКХ)
      */
-    public function __construct(string $VerificationDate = null, string $PlannedVerification = null, \gisgkh\types\NsiBase\nsiRef $ReasonVerification = null, array $DeviceValueMunicipalResourceNotElectric = [], \gisgkh\types\MeteringDeviceBase\ElectricMeteringValueType $DeviceValueMunicipalResourceElectric = null, string $ReplacingMeteringDeviceVersionGUID = null)
+    public function __construct(string $VerificationDate = null, string $PlannedVerification = null, \gisgkh\types\NsiBase\nsiRef $ReasonVerification = null, array $DeviceValueMunicipalResourceNotElectric = null, \gisgkh\types\MeteringDeviceBase\ElectricMeteringValueType $DeviceValueMunicipalResourceElectric = null, string $ReplacingMeteringDeviceVersionGUID = null)
     {
         $this->VerificationDate = $VerificationDate;
         $this->PlannedVerification = $PlannedVerification;

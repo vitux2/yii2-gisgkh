@@ -40,7 +40,7 @@ class EVoting
      * 
      * @var \gisgkh\types\HouseManagement\Attachments[]
      */
-     public $Attachments = [];
+     public $Attachments = null;
 
     /**
      * @param string $EVotingDateBegin Дата и время начала проведения голосования
@@ -49,7 +49,7 @@ class EVoting
      * @param string $InfoReview Порядок ознакомления с информацией и (или) материалами, которые будут представлены на данном собрании 
      * @param \gisgkh\types\HouseManagement\Attachments[] [$Attachments] Прикрепляемые файлы
      */
-    public function __construct(string $EVotingDateBegin = null, string $EVotingDateEnd = null, string $Discipline = null, string $InfoReview = null, array $Attachments = [])
+    public function __construct(string $EVotingDateBegin = null, string $EVotingDateEnd = null, string $Discipline = null, string $InfoReview = null, array $Attachments = null)
     {
         $this->EVotingDateBegin = $EVotingDateBegin;
         $this->EVotingDateEnd = $EVotingDateEnd;

@@ -19,7 +19,7 @@ class exportVotingProtocolRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var string[]
      */
-     public $VotingProtocolGUID = [];
+     public $VotingProtocolGUID = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -33,7 +33,7 @@ class exportVotingProtocolRequest extends \gisgkh\types\Base\BaseType
      * @param string[] $VotingProtocolGUID Идентификатор протокола голосования
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(string $FIASHouseGuid = null, array $VotingProtocolGUID = [], $version = "10.0.1.1")
+    public function __construct(string $FIASHouseGuid = null, array $VotingProtocolGUID = null, $version = "10.0.1.1")
     {
         $this->FIASHouseGuid = $FIASHouseGuid;
         $this->VotingProtocolGUID = $VotingProtocolGUID;

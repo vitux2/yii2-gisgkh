@@ -26,14 +26,14 @@ class NsiItemType
      * 
      * @var \gisgkh\types\NsiBase\NsiElementType[]
      */
-     public $NsiElement = [];
+     public $NsiElement = null;
 
     /**
      * @param string $NsiItemRegistryNumber Реестровый номер справочника.
      * @param string $Created Дата и время формирования данных справочника.
      * @param \gisgkh\types\NsiBase\NsiElementType[] $NsiElement Элемент справочника верхнего уровня.
      */
-    public function __construct(string $NsiItemRegistryNumber = null, string $Created = null, array $NsiElement = [])
+    public function __construct(string $NsiItemRegistryNumber = null, string $Created = null, array $NsiElement = null)
     {
         $this->NsiItemRegistryNumber = $NsiItemRegistryNumber;
         $this->Created = $Created;

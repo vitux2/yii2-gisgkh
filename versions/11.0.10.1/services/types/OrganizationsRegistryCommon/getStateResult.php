@@ -19,21 +19,21 @@ class getStateResult extends \gisgkh\types\Base\BaseAsyncResponseType
      * 
      * @var \gisgkh\types\Base\CommonResultType[]
      */
-     public $ImportResult = [];
+     public $ImportResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType[]
      */
-     public $exportOrgRegistryResult = [];
+     public $exportOrgRegistryResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\OrganizationsRegistryCommon\exportDataProviderResultType[]
      */
-     public $exportDataProviderResult = [];
+     public $exportDataProviderResult = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -49,7 +49,7 @@ class getStateResult extends \gisgkh\types\Base\BaseAsyncResponseType
      * @param \gisgkh\types\OrganizationsRegistryCommon\exportDataProviderResultType[] $exportDataProviderResult 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $ImportResult = [], array $exportOrgRegistryResult = [], array $exportDataProviderResult = [], $version = "10.0.2.1")
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $ImportResult = null, array $exportOrgRegistryResult = null, array $exportDataProviderResult = null, $version = "10.0.2.1")
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->ImportResult = $ImportResult;

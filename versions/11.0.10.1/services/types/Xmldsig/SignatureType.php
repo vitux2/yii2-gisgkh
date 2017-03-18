@@ -33,7 +33,7 @@ class SignatureType
      * 
      * @var \gisgkh\types\Xmldsig\ObjectType[]
      */
-     public $Object = [];
+     public $Object = null;
 
     /**
      * 
@@ -49,7 +49,7 @@ class SignatureType
      * @param \gisgkh\types\Xmldsig\ObjectType[] [$Object] 
      * @param string $Id 
      */
-    public function __construct(\gisgkh\types\Xmldsig\SignedInfoType $SignedInfo = null, \gisgkh\types\Xmldsig\SignatureValueType $SignatureValue = null, \gisgkh\types\Xmldsig\KeyInfoType $KeyInfo = null, array $Object = [], $Id = null)
+    public function __construct(\gisgkh\types\Xmldsig\SignedInfoType $SignedInfo = null, \gisgkh\types\Xmldsig\SignatureValueType $SignatureValue = null, \gisgkh\types\Xmldsig\KeyInfoType $KeyInfo = null, array $Object = null, $Id = null)
     {
         $this->SignedInfo = $SignedInfo;
         $this->SignatureValue = $SignatureValue;

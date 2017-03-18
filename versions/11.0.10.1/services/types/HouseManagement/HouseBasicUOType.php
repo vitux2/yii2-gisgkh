@@ -68,7 +68,7 @@ class HouseBasicUOType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $FIASHouseGuid Глобальный уникальный идентификатор дома по ФИАС
@@ -81,7 +81,7 @@ class HouseBasicUOType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * @param string [$CulturalHeritage] Наличие у дома статуса объекта культурного наследия
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $FIASHouseGuid = null, string $TotalSquare = null, \gisgkh\types\NsiBase\nsiRef $State = null, string $UsedYear = null, string $FloorCount = null, \gisgkh\types\Base\OKTMORefType $OKTMO = null, \gisgkh\types\NsiBase\nsiRef $OlsonTZ = null, string $CulturalHeritage = null, array $OGFData = [])
+    public function __construct(string $FIASHouseGuid = null, string $TotalSquare = null, \gisgkh\types\NsiBase\nsiRef $State = null, string $UsedYear = null, string $FloorCount = null, \gisgkh\types\Base\OKTMORefType $OKTMO = null, \gisgkh\types\NsiBase\nsiRef $OlsonTZ = null, string $CulturalHeritage = null, array $OGFData = null)
     {
         $this->FIASHouseGuid = $FIASHouseGuid;
         $this->TotalSquare = $TotalSquare;

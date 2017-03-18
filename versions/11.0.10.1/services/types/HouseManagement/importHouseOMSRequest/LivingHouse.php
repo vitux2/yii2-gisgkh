@@ -26,21 +26,21 @@ class LivingHouse
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingRoomToCreate[]
      */
-     public $LivingRoomToCreate = [];
+     public $LivingRoomToCreate = null;
 
     /**
      * Обновление комнаты
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingRoomToUpdate[]
      */
-     public $LivingRoomToUpdate = [];
+     public $LivingRoomToUpdate = null;
 
     /**
      * Блоки (для ЖД блокированной застройки)
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\Blocks[]
      */
-     public $Blocks = [];
+     public $Blocks = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingHouseToCreate $LivingHouseToCreate Добавление жилого дома
@@ -49,7 +49,7 @@ class LivingHouse
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingRoomToUpdate[] [$LivingRoomToUpdate] Обновление комнаты
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\Blocks[] [$Blocks] Блоки (для ЖД блокированной застройки)
      */
-    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingHouseToCreate $LivingHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingHouseToUpdate $LivingHouseToUpdate = null, array $LivingRoomToCreate = [], array $LivingRoomToUpdate = [], array $Blocks = [])
+    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingHouseToCreate $LivingHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\LivingHouse\LivingHouseToUpdate $LivingHouseToUpdate = null, array $LivingRoomToCreate = null, array $LivingRoomToUpdate = null, array $Blocks = null)
     {
         $this->LivingHouseToCreate = $LivingHouseToCreate;
         $this->LivingHouseToUpdate = $LivingHouseToUpdate;

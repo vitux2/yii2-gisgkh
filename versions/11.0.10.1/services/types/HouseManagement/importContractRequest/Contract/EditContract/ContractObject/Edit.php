@@ -26,14 +26,14 @@ class Edit extends \gisgkh\types\HouseManagement\ManageObjectType
      * 
      * @var \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject\Edit\HouseService[]
      */
-     public $HouseService = [];
+     public $HouseService = null;
 
     /**
      * Дополнительные услуги. Ссылка на НСИ "Дополнительные услуги" (реестровый номер 1) 
      * 
      * @var \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject\Edit\AddService[]
      */
-     public $AddService = [];
+     public $AddService = null;
 
     /**
      * @param string $ContractObjectVersionGUID Идентификатор версии объекта управления  в ГИС ЖКХ 
@@ -41,7 +41,7 @@ class Edit extends \gisgkh\types\HouseManagement\ManageObjectType
      * @param \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject\Edit\HouseService[] [$HouseService] Виды КУ. Ссылка на НСИ "Вид коммунальной услуги" (реестровый номер 3)
      * @param \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject\Edit\AddService[] [$AddService] Дополнительные услуги. Ссылка на НСИ "Дополнительные услуги" (реестровый номер 1) 
      */
-    public function __construct(string $ContractObjectVersionGUID = null, \gisgkh\types\HouseManagement\BaseServiceType $BaseMService = null, array $HouseService = [], array $AddService = [])
+    public function __construct(string $ContractObjectVersionGUID = null, \gisgkh\types\HouseManagement\BaseServiceType $BaseMService = null, array $HouseService = null, array $AddService = null)
     {
         $this->ContractObjectVersionGUID = $ContractObjectVersionGUID;
         $this->BaseMService = $BaseMService;

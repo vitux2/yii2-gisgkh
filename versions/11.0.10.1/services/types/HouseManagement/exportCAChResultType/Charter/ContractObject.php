@@ -26,14 +26,14 @@ class ContractObject extends \gisgkh\types\HouseManagement\ManageObjectType
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject\HouseService[]
      */
-     public $HouseService = [];
+     public $HouseService = null;
 
     /**
      * Дополнительные услуги. Ссылка на НСИ "Дополнительные услуги" (реестровый номер 1) 
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject\AddService[]
      */
-     public $AddService = [];
+     public $AddService = null;
 
     /**
      * Сведения об исключении объекта управления из устава
@@ -77,7 +77,7 @@ Approved-Утвержден
 Locked-Заблокирован
      * @param string [$IsManagedByContract] Управление многоквартирным домом осуществляется управляющей организацией по договору управления
      */
-    public function __construct(string $ContractObjectVersionGUID = null, \gisgkh\types\HouseManagement\BaseServiceType $BaseMService = null, array $HouseService = [], array $AddService = [], \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject\Exclusion $Exclusion = null, string $StatusObject = null, string $IsManagedByContract = null)
+    public function __construct(string $ContractObjectVersionGUID = null, \gisgkh\types\HouseManagement\BaseServiceType $BaseMService = null, array $HouseService = null, array $AddService = null, \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject\Exclusion $Exclusion = null, string $StatusObject = null, string $IsManagedByContract = null)
     {
         $this->ContractObjectVersionGUID = $ContractObjectVersionGUID;
         $this->BaseMService = $BaseMService;

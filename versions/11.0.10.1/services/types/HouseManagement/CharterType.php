@@ -33,7 +33,7 @@ class CharterType
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $AttachmentCharter = [];
+     public $AttachmentCharter = null;
 
     /**
      * @param string $Date Дата регистрации TCН/ТСЖ/кооператива (Организации Поставщика данных)
@@ -41,7 +41,7 @@ class CharterType
      * @param \gisgkh\types\HouseManagement\CharterType\MeetingProtocol $MeetingProtocol Протокол собрания собственников
      * @param \gisgkh\types\Base\AttachmentType[] $AttachmentCharter Документы устава
      */
-    public function __construct(string $Date = null, \gisgkh\types\HouseManagement\CharterDateDetailsType $DateDetails = null, \gisgkh\types\HouseManagement\CharterType\MeetingProtocol $MeetingProtocol = null, array $AttachmentCharter = [])
+    public function __construct(string $Date = null, \gisgkh\types\HouseManagement\CharterDateDetailsType $DateDetails = null, \gisgkh\types\HouseManagement\CharterType\MeetingProtocol $MeetingProtocol = null, array $AttachmentCharter = null)
     {
         $this->Date = $Date;
         $this->DateDetails = $DateDetails;

@@ -12,12 +12,12 @@ class AccountOpening
      * 
      * @var string[]
      */
-     public $FIASHouseGuid = [];
+     public $FIASHouseGuid = null;
 
     /**
      * @param string[] $FIASHouseGuid Глобальный уникальный идентификатор дома по ФИАС
      */
-    public function __construct(array $FIASHouseGuid = [])
+    public function __construct(array $FIASHouseGuid = null)
     {
         $this->FIASHouseGuid = $FIASHouseGuid;
     }

@@ -26,35 +26,35 @@ class ApartmentHouse
      * 
      * @var \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\NonResidentialPremiseToCreate[]
      */
-     public $NonResidentialPremiseToCreate = [];
+     public $NonResidentialPremiseToCreate = null;
 
     /**
      * Изменение данных нежилого помещения
      * 
      * @var \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\NonResidentialPremiseToUpdate[]
      */
-     public $NonResidentialPremiseToUpdate = [];
+     public $NonResidentialPremiseToUpdate = null;
 
     /**
      * Добавление нового подъезда
      * 
      * @var \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\EntranceToCreate[]
      */
-     public $EntranceToCreate = [];
+     public $EntranceToCreate = null;
 
     /**
      * Изменение подъезда
      * 
      * @var \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\EntranceToUpdate[]
      */
-     public $EntranceToUpdate = [];
+     public $EntranceToUpdate = null;
 
     /**
      * Жилое помещение
      * 
      * @var \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ResidentialPremises[]
      */
-     public $ResidentialPremises = [];
+     public $ResidentialPremises = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate Добавление многоквартирного дома
@@ -65,7 +65,7 @@ class ApartmentHouse
      * @param \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\EntranceToUpdate[] [$EntranceToUpdate] Изменение подъезда
      * @param \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ResidentialPremises[] [$ResidentialPremises] Жилое помещение
      */
-    public function __construct(\gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ApartmentHouseToUpdate $ApartmentHouseToUpdate = null, array $NonResidentialPremiseToCreate = [], array $NonResidentialPremiseToUpdate = [], array $EntranceToCreate = [], array $EntranceToUpdate = [], array $ResidentialPremises = [])
+    public function __construct(\gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseRSORequest\ApartmentHouse\ApartmentHouseToUpdate $ApartmentHouseToUpdate = null, array $NonResidentialPremiseToCreate = null, array $NonResidentialPremiseToUpdate = null, array $EntranceToCreate = null, array $EntranceToUpdate = null, array $ResidentialPremises = null)
     {
         $this->ApartmentHouseToCreate = $ApartmentHouseToCreate;
         $this->ApartmentHouseToUpdate = $ApartmentHouseToUpdate;

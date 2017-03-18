@@ -12,20 +12,20 @@ class MeetingProtocol
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProtocolMeetingOwners = [];
+     public $ProtocolMeetingOwners = null;
 
     /**
      * Идентификатор протокола голосования (Добавление протокола из реестра сведений о голосовании)
      * 
      * @var string[]
      */
-     public $VotingProtocolGUID = [];
+     public $VotingProtocolGUID = null;
 
     /**
      * @param \gisgkh\types\Base\AttachmentType[] $ProtocolMeetingOwners Протокол собрания собственников (Добавление нового протокола)
      * @param string[] $VotingProtocolGUID Идентификатор протокола голосования (Добавление протокола из реестра сведений о голосовании)
      */
-    public function __construct(array $ProtocolMeetingOwners = [], array $VotingProtocolGUID = [])
+    public function __construct(array $ProtocolMeetingOwners = null, array $VotingProtocolGUID = null)
     {
         $this->ProtocolMeetingOwners = $ProtocolMeetingOwners;
         $this->VotingProtocolGUID = $VotingProtocolGUID;

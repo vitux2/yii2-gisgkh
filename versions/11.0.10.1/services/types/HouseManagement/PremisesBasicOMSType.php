@@ -19,13 +19,13 @@ class PremisesBasicOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyTyp
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $PremisesNum Номер помещения
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $PremisesNum = null, array $OGFData = [])
+    public function __construct(string $PremisesNum = null, array $OGFData = null)
     {
         $this->PremisesNum = $PremisesNum;
         $this->OGFData = $OGFData;

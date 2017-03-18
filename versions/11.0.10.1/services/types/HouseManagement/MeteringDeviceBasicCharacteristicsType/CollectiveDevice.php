@@ -26,14 +26,14 @@ class CollectiveDevice
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProjectRegistrationNode = [];
+     public $ProjectRegistrationNode = null;
 
     /**
      * Электронный образ акта ввода узла учета в эксплуатацию
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $Certificate = [];
+     public $Certificate = null;
 
     /**
      * @param string [$TemperatureSensingElementInfo] Информация о наличии датчиков температуры с указанием их местоположения на узле учета (обязательно для заполнения, если tns:TemperatureSensor = true, в противном случае поле не обрабатывается при импорте)
@@ -41,7 +41,7 @@ class CollectiveDevice
      * @param \gisgkh\types\Base\AttachmentType[] [$ProjectRegistrationNode] Электронный образ проекта узла учета
      * @param \gisgkh\types\Base\AttachmentType[] [$Certificate] Электронный образ акта ввода узла учета в эксплуатацию
      */
-    public function __construct(string $TemperatureSensingElementInfo = null, string $PressureSensingElementInfo = null, array $ProjectRegistrationNode = [], array $Certificate = [])
+    public function __construct(string $TemperatureSensingElementInfo = null, string $PressureSensingElementInfo = null, array $ProjectRegistrationNode = null, array $Certificate = null)
     {
         $this->TemperatureSensingElementInfo = $TemperatureSensingElementInfo;
         $this->PressureSensingElementInfo = $PressureSensingElementInfo;

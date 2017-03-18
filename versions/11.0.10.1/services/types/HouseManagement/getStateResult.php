@@ -19,7 +19,7 @@ class getStateResult extends \gisgkh\types\Base\BaseAsyncResponseType
      * 
      * @var \gisgkh\types\HouseManagement\ImportResult[]
      */
-     public $ImportResult = [];
+     public $ImportResult = null;
 
     /**
      * 
@@ -33,56 +33,56 @@ class getStateResult extends \gisgkh\types\Base\BaseAsyncResponseType
      * 
      * @var \gisgkh\types\HouseManagement\exportMeteringDeviceDataResultType[]
      */
-     public $exportMeteringDeviceDataResult = [];
+     public $exportMeteringDeviceDataResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusCAChResultType[]
      */
-     public $exportStatusCAChResult = [];
+     public $exportStatusCAChResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType[]
      */
-     public $exportCAChResult = [];
+     public $exportCAChResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusPublicPropertyContractResultType[]
      */
-     public $exportStatusPublicPropertyContractResult = [];
+     public $exportStatusPublicPropertyContractResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportAccountResultType[]
      */
-     public $exportAccountResult = [];
+     public $exportAccountResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportVotingProtocolResultType[]
      */
-     public $exportVotingProtocolResult = [];
+     public $exportVotingProtocolResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportSupplyResourceContractResultType[]
      */
-     public $exportSupplyResourceContractResult = [];
+     public $exportSupplyResourceContractResult = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportAccountIndividualServicesResultType[]
      */
-     public $exportAccountIndividualServicesResult = [];
+     public $exportAccountIndividualServicesResult = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -105,7 +105,7 @@ class getStateResult extends \gisgkh\types\Base\BaseAsyncResponseType
      * @param \gisgkh\types\HouseManagement\exportAccountIndividualServicesResultType[] [$exportAccountIndividualServicesResult] 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $ImportResult = [], \gisgkh\types\HouseManagement\exportHouseResultType $exportHouseResult = null, array $exportMeteringDeviceDataResult = [], array $exportStatusCAChResult = [], array $exportCAChResult = [], array $exportStatusPublicPropertyContractResult = [], array $exportAccountResult = [], array $exportVotingProtocolResult = [], array $exportSupplyResourceContractResult = [], array $exportAccountIndividualServicesResult = [], $version = "11.0.0.1")
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $ImportResult = null, \gisgkh\types\HouseManagement\exportHouseResultType $exportHouseResult = null, array $exportMeteringDeviceDataResult = null, array $exportStatusCAChResult = null, array $exportCAChResult = null, array $exportStatusPublicPropertyContractResult = null, array $exportAccountResult = null, array $exportVotingProtocolResult = null, array $exportSupplyResourceContractResult = null, array $exportAccountIndividualServicesResult = null, $version = "11.0.0.1")
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->ImportResult = $ImportResult;

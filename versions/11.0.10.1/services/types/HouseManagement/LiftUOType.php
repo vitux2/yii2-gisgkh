@@ -47,7 +47,7 @@ class LiftUOType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $EntranceNum Номер подъезда
@@ -57,7 +57,7 @@ class LiftUOType
      * @param string [$OperatingLimit] Предельный срок эксплуатации
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $EntranceNum = null, string $FIASChildHouseGuid = null, string $FactoryNum = null, \gisgkh\types\NsiBase\nsiRef $Type = null, string $OperatingLimit = null, array $OGFData = [])
+    public function __construct(string $EntranceNum = null, string $FIASChildHouseGuid = null, string $FactoryNum = null, \gisgkh\types\NsiBase\nsiRef $Type = null, string $OperatingLimit = null, array $OGFData = null)
     {
         $this->EntranceNum = $EntranceNum;
         $this->FIASChildHouseGuid = $FIASChildHouseGuid;

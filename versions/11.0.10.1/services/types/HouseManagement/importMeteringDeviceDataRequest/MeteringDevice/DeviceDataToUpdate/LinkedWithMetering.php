@@ -12,12 +12,12 @@ class LinkedWithMetering
      * 
      * @var string[]
      */
-     public $LinkedMeteringDeviceVersionGUID = [];
+     public $LinkedMeteringDeviceVersionGUID = null;
 
     /**
      * @param string[] $LinkedMeteringDeviceVersionGUID Идентификатор версии ПУ, заведенного в ГИС ЖКХ, с которым требуется установить связь текущего ПУ
      */
-    public function __construct(array $LinkedMeteringDeviceVersionGUID = [])
+    public function __construct(array $LinkedMeteringDeviceVersionGUID = null)
     {
         $this->LinkedMeteringDeviceVersionGUID = $LinkedMeteringDeviceVersionGUID;
     }

@@ -40,7 +40,7 @@ class Create
      * 
      * @var string[]
      */
-     public $FIASHouseGuid = [];
+     public $FIASHouseGuid = null;
 
     /**
      * Собственник помещений в МКД
@@ -54,14 +54,14 @@ class Create
      * 
      * @var \gisgkh\types\OrganizationsRegistryBase\RegOrgType[]
      */
-     public $SpecialAccountOwner = [];
+     public $SpecialAccountOwner = null;
 
     /**
      * Идентификатор организации-органа государственного надзора
      * 
      * @var \gisgkh\types\OrganizationsRegistryBase\RegOrgType[]
      */
-     public $InspectionAuthority = [];
+     public $InspectionAuthority = null;
 
     /**
      * Не ограничено 
@@ -89,7 +89,7 @@ class Create
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $Attachment = [];
+     public $Attachment = null;
 
     /**
      * Направить новость адресатам
@@ -113,7 +113,7 @@ class Create
      * @param \gisgkh\types\Base\AttachmentType[] [$Attachment] Документы новости
      * @param string [$IsShipOff] Направить новость адресатам
      */
-    public function __construct(string $Topic = null, string $IsImportant = null, string $content = null, string $IsAll = null, array $FIASHouseGuid = [], \gisgkh\types\HouseManagement\importNotificationRequest\notification\Create\RoomOwners $RoomOwners = null, array $SpecialAccountOwner = [], array $InspectionAuthority = [], string $IsNotLimit = null, string $StartDate = null, string $EndDate = null, array $Attachment = [], string $IsShipOff = null)
+    public function __construct(string $Topic = null, string $IsImportant = null, string $content = null, string $IsAll = null, array $FIASHouseGuid = null, \gisgkh\types\HouseManagement\importNotificationRequest\notification\Create\RoomOwners $RoomOwners = null, array $SpecialAccountOwner = null, array $InspectionAuthority = null, string $IsNotLimit = null, string $StartDate = null, string $EndDate = null, array $Attachment = null, string $IsShipOff = null)
     {
         $this->Topic = $Topic;
         $this->IsImportant = $IsImportant;

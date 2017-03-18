@@ -40,7 +40,7 @@ class CommonResultType
      * 
      * @var \gisgkh\types\Base\CommonResultType\Error[]
      */
-     public $Error = [];
+     public $Error = null;
 
     /**
      * @param string [$GUID] Идентификатор создаваемой/изменяемой сущности
@@ -49,7 +49,7 @@ class CommonResultType
      * @param string $UpdateDate Дата модификации
      * @param \gisgkh\types\Base\CommonResultType\Error[] $Error Описание ошибки
      */
-    public function __construct(string $GUID = null, string $TransportGUID = null, string $UniqueNumber = null, string $UpdateDate = null, array $Error = [])
+    public function __construct(string $GUID = null, string $TransportGUID = null, string $UniqueNumber = null, string $UpdateDate = null, array $Error = null)
     {
         $this->GUID = $GUID;
         $this->TransportGUID = $TransportGUID;

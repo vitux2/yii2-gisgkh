@@ -97,14 +97,14 @@ class ContractType
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ContractAttachment = [];
+     public $ContractAttachment = null;
 
     /**
      * Дополнительное соглашение
      * 
      * @var \gisgkh\types\HouseManagement\ContractType\AgreementAttachment[]
      */
-     public $AgreementAttachment = [];
+     public $AgreementAttachment = null;
 
     /**
      * @param string $DocNum Номер документа 
@@ -123,7 +123,7 @@ class ContractType
      * @param \gisgkh\types\Base\AttachmentType[] $ContractAttachment Договор на управление и приложения
      * @param \gisgkh\types\HouseManagement\ContractType\AgreementAttachment[] [$AgreementAttachment] Дополнительное соглашение
      */
-    public function __construct(string $DocNum = null, string $SigningDate = null, string $EffectiveDate = null, string $PlanDateComptetion = null, \gisgkh\types\HouseManagement\ContractType\Validity $Validity = null, string $Owners = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $Cooperative = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $MunicipalHousing = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $BuildingOwner = null, \gisgkh\types\HouseManagement\ContractType\Protocol $Protocol = null, \gisgkh\types\NsiBase\nsiRef $ContractBase = null, \gisgkh\types\HouseManagement\DateDetailsType $DateDetails = null, array $ContractAttachment = [], array $AgreementAttachment = [])
+    public function __construct(string $DocNum = null, string $SigningDate = null, string $EffectiveDate = null, string $PlanDateComptetion = null, \gisgkh\types\HouseManagement\ContractType\Validity $Validity = null, string $Owners = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $Cooperative = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $MunicipalHousing = null, \gisgkh\types\OrganizationsRegistryBase\RegOrgType $BuildingOwner = null, \gisgkh\types\HouseManagement\ContractType\Protocol $Protocol = null, \gisgkh\types\NsiBase\nsiRef $ContractBase = null, \gisgkh\types\HouseManagement\DateDetailsType $DateDetails = null, array $ContractAttachment = null, array $AgreementAttachment = null)
     {
         $this->DocNum = $DocNum;
         $this->SigningDate = $SigningDate;

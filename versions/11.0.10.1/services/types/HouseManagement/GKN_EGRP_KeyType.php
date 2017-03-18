@@ -33,7 +33,7 @@ class GKN_EGRP_KeyType
      * 
      * @var \gisgkh\types\HouseManagement\RightOrEncumbrance[]
      */
-     public $RightOrEncumbrance = [];
+     public $RightOrEncumbrance = null;
 
     /**
      * @param string $CadastralNumber Поиск в ГКН/ЕГРП по кадастровому номеру объекта недвижимости. При указании осуществляется привязка к ГКН и ЕГРП при наличии этих сведений в рееестрах. Перечень Субъектов РФ, по которым размещена информация в ГКН/ЕГРП, можно уточнить у Оператора ГИС ЖКХ. Наличие в экспорте указывает на установленную связь с ГКН/ЕГРП по этому элементу. 
@@ -41,7 +41,7 @@ class GKN_EGRP_KeyType
      * @param string $ConditionalNumber Поиск в ЕГРП по условному номер ЕГРП. При указании осуществляется поиск по ЕГРП и автопривязка к найденным сведениям. Наличие в экспорте указывает на установленную связь с ЕГРП по этому элементу. 
      * @param \gisgkh\types\HouseManagement\RightOrEncumbrance[] $RightOrEncumbrance Поиск в ЕГРП по регистрационным данным прав или ограничениям прав. Наличие в экспорте указывает на установленную связь с ЕГРП по этому элементам.
      */
-    public function __construct(string $CadastralNumber = null, string $No_RSO_GKN_EGRP_Registered = null, string $ConditionalNumber = null, array $RightOrEncumbrance = [])
+    public function __construct(string $CadastralNumber = null, string $No_RSO_GKN_EGRP_Registered = null, string $ConditionalNumber = null, array $RightOrEncumbrance = null)
     {
         $this->CadastralNumber = $CadastralNumber;
         $this->No_RSO_GKN_EGRP_Registered = $No_RSO_GKN_EGRP_Registered;

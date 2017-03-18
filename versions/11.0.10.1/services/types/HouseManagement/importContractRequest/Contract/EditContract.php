@@ -19,7 +19,7 @@ class EditContract extends \gisgkh\types\HouseManagement\ContractType
      * 
      * @var \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * Идентификатор версии договора
@@ -33,7 +33,7 @@ class EditContract extends \gisgkh\types\HouseManagement\ContractType
      * @param \gisgkh\types\HouseManagement\importContractRequest\Contract\EditContract\ContractObject[] [$ContractObject] Управляемый объект
      * @param string $ContractVersionGUID Идентификатор версии договора
      */
-    public function __construct(string $LicenseRequest = null, array $ContractObject = [], string $ContractVersionGUID = null)
+    public function __construct(string $LicenseRequest = null, array $ContractObject = null, string $ContractVersionGUID = null)
     {
         $this->LicenseRequest = $LicenseRequest;
         $this->ContractObject = $ContractObject;

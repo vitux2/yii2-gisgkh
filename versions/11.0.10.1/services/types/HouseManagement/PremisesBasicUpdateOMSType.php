@@ -19,7 +19,7 @@ class PremisesBasicUpdateOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * Дата прекращения существования объекта
@@ -33,7 +33,7 @@ class PremisesBasicUpdateOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      * @param string [$TerminationDate] Дата прекращения существования объекта
      */
-    public function __construct(string $PremisesNum = null, array $OGFData = [], string $TerminationDate = null)
+    public function __construct(string $PremisesNum = null, array $OGFData = null, string $TerminationDate = null)
     {
         $this->PremisesNum = $PremisesNum;
         $this->OGFData = $OGFData;

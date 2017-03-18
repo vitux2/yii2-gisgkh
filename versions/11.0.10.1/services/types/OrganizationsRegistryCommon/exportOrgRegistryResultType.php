@@ -33,7 +33,7 @@ class exportOrgRegistryResultType
      * 
      * @var \gisgkh\types\NsiBase\nsiRef[]
      */
-     public $organizationRoles = [];
+     public $organizationRoles = null;
 
     /**
      * Зарегистрирована в ГИС ЖКХ
@@ -49,7 +49,7 @@ class exportOrgRegistryResultType
      * @param \gisgkh\types\NsiBase\nsiRef[] [$organizationRoles] Полномочие организации (НСИ №20)
      * @param string [$isRegistered] Зарегистрирована в ГИС ЖКХ
      */
-    public function __construct(string $orgRootEntityGUID = null, \gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType\OrgVersion $OrgVersion = null, string $orgPPAGUID = null, array $organizationRoles = [], string $isRegistered = null)
+    public function __construct(string $orgRootEntityGUID = null, \gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType\OrgVersion $OrgVersion = null, string $orgPPAGUID = null, array $organizationRoles = null, string $isRegistered = null)
     {
         $this->orgRootEntityGUID = $orgRootEntityGUID;
         $this->OrgVersion = $OrgVersion;

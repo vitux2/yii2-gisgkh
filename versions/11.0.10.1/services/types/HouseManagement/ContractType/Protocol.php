@@ -19,13 +19,13 @@ class Protocol
      * 
      * @var string[]
      */
-     public $VotingProtocolGUID = [];
+     public $VotingProtocolGUID = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\ContractType\Protocol\ProtocolAdd $ProtocolAdd Протокол открытого конкурса/собрания собственников (Добавление нового протокола)
      * @param string[] $VotingProtocolGUID Идентификатор протокола голосования (Добавление протокола из реестра сведений о голосовании)
      */
-    public function __construct(\gisgkh\types\HouseManagement\ContractType\Protocol\ProtocolAdd $ProtocolAdd = null, array $VotingProtocolGUID = [])
+    public function __construct(\gisgkh\types\HouseManagement\ContractType\Protocol\ProtocolAdd $ProtocolAdd = null, array $VotingProtocolGUID = null)
     {
         $this->ProtocolAdd = $ProtocolAdd;
         $this->VotingProtocolGUID = $VotingProtocolGUID;

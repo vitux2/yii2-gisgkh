@@ -54,7 +54,7 @@ class BlockExportType extends \gisgkh\types\HouseManagement\OGFExportStatusType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $BlockNum Номер блока
@@ -65,7 +65,7 @@ class BlockExportType extends \gisgkh\types\HouseManagement\OGFExportStatusType
      * @param string [$TerminationDate] Дата прекращения существования объекта
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $BlockNum = null, \gisgkh\types\NsiBase\nsiRef $PremisesCharacteristic = null, string $TotalArea = null, string $GrossArea = null, string $NoGrossArea = null, string $TerminationDate = null, array $OGFData = [])
+    public function __construct(string $BlockNum = null, \gisgkh\types\NsiBase\nsiRef $PremisesCharacteristic = null, string $TotalArea = null, string $GrossArea = null, string $NoGrossArea = null, string $TerminationDate = null, array $OGFData = null)
     {
         $this->BlockNum = $BlockNum;
         $this->PremisesCharacteristic = $PremisesCharacteristic;

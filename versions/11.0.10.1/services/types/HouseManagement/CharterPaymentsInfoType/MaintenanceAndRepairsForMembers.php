@@ -20,13 +20,13 @@ class MaintenanceAndRepairsForMembers
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $MaintenanceAndRepairsForMembersProtocol = [];
+     public $MaintenanceAndRepairsForMembersProtocol = null;
 
     /**
      * @param string $MaintenanceAndRepairsForMembersPaymentSize Размер обязательных платежей и (или) взносов членов товарищества, кооператива
      * @param \gisgkh\types\Base\AttachmentType[] $MaintenanceAndRepairsForMembersProtocol Протокол общего собрания членов товарищества, кооператива об утверждении обязательных платежей и (или) взносов членов товарищества, кооператива
      */
-    public function __construct(string $MaintenanceAndRepairsForMembersPaymentSize = null, array $MaintenanceAndRepairsForMembersProtocol = [])
+    public function __construct(string $MaintenanceAndRepairsForMembersPaymentSize = null, array $MaintenanceAndRepairsForMembersProtocol = null)
     {
         $this->MaintenanceAndRepairsForMembersPaymentSize = $MaintenanceAndRepairsForMembersPaymentSize;
         $this->MaintenanceAndRepairsForMembersProtocol = $MaintenanceAndRepairsForMembersProtocol;

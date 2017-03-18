@@ -19,7 +19,7 @@ class ImportResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\ImportResult\CommonResult[]
      */
-     public $CommonResult = [];
+     public $CommonResult = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -33,7 +33,7 @@ class ImportResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\ImportResult\CommonResult[] $CommonResult 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $CommonResult = [], $version = "10.0.1.1")
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $CommonResult = null, $version = "10.0.1.1")
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->CommonResult = $CommonResult;

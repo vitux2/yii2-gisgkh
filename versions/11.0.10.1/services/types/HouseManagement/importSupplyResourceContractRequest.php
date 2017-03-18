@@ -12,7 +12,7 @@ class importSupplyResourceContractRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract[]
      */
-     public $Contract = [];
+     public $Contract = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -25,7 +25,7 @@ class importSupplyResourceContractRequest extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract[] $Contract Договор ресурсоснабжения
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $Contract = [], $version = "10.0.2.1")
+    public function __construct(array $Contract = null, $version = "10.0.2.1")
     {
         $this->Contract = $Contract;
         $this->version = $version;

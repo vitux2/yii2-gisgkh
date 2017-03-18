@@ -12,28 +12,28 @@ class ApartmentHouse extends \gisgkh\types\HouseManagement\ApartmentHouseExportT
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\Entrance[]
      */
-     public $Entrance = [];
+     public $Entrance = null;
 
     /**
      * 
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\ResidentialPremises[]
      */
-     public $ResidentialPremises = [];
+     public $ResidentialPremises = null;
 
     /**
      * Лифты
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\Lift[]
      */
-     public $Lift = [];
+     public $Lift = null;
 
     /**
      * Нежилое помещение
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\NonResidentialPremises[]
      */
-     public $NonResidentialPremises = [];
+     public $NonResidentialPremises = null;
 
     /**
      * Cпособ управления домом (НСИ 25). 
@@ -49,7 +49,7 @@ class ApartmentHouse extends \gisgkh\types\HouseManagement\ApartmentHouseExportT
      * @param \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\NonResidentialPremises[] [$NonResidentialPremises] Нежилое помещение
      * @param \gisgkh\types\NsiBase\nsiRef [$HouseManagementType] Cпособ управления домом (НСИ 25). 
      */
-    public function __construct(array $Entrance = [], array $ResidentialPremises = [], array $Lift = [], array $NonResidentialPremises = [], \gisgkh\types\NsiBase\nsiRef $HouseManagementType = null)
+    public function __construct(array $Entrance = null, array $ResidentialPremises = null, array $Lift = null, array $NonResidentialPremises = null, \gisgkh\types\NsiBase\nsiRef $HouseManagementType = null)
     {
         $this->Entrance = $Entrance;
         $this->ResidentialPremises = $ResidentialPremises;

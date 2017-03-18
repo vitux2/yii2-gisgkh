@@ -19,7 +19,7 @@ class NsiListType
      * 
      * @var \gisgkh\types\NsiBase\NsiItemInfoType[]
      */
-     public $NsiItemInfo = [];
+     public $NsiItemInfo = null;
 
     /**
      * Группа справочника:
@@ -37,7 +37,7 @@ NSIRAO - ОЖФ
 NSI - (по умолчанию) общесистемный 
 NSIRAO - ОЖФ
      */
-    public function __construct(string $Created = null, array $NsiItemInfo = [], string $ListGroup = null)
+    public function __construct(string $Created = null, array $NsiItemInfo = null, string $ListGroup = null)
     {
         $this->Created = $Created;
         $this->NsiItemInfo = $NsiItemInfo;

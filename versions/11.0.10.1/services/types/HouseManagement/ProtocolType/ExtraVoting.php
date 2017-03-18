@@ -12,12 +12,12 @@ class ExtraVoting
      * 
      * @var \gisgkh\types\HouseManagement\VoteInitiators[]
      */
-     public $VoteInitiators = [];
+     public $VoteInitiators = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\VoteInitiators[] $VoteInitiators Сведения об инициаторах собрания
      */
-    public function __construct(array $VoteInitiators = [])
+    public function __construct(array $VoteInitiators = null)
     {
         $this->VoteInitiators = $VoteInitiators;
     }

@@ -20,13 +20,13 @@ class Meeting extends \gisgkh\types\HouseManagement\VoitingType
      * 
      * @var \gisgkh\types\HouseManagement\Attachments[]
      */
-     public $Attachments = [];
+     public $Attachments = null;
 
     /**
      * @param string $MeetingDate Дата и время проведения собрания
      * @param \gisgkh\types\HouseManagement\Attachments[] $Attachments Прикрепляемые файлы
      */
-    public function __construct(string $MeetingDate = null, array $Attachments = [])
+    public function __construct(string $MeetingDate = null, array $Attachments = null)
     {
         $this->MeetingDate = $MeetingDate;
         $this->Attachments = $Attachments;

@@ -12,12 +12,12 @@ class DeptsInforming
      * 
      * @var \gisgkh\types\HouseManagement\importNotificationRequest\notification\Create\RoomOwners\DeptsInforming\Account[]
      */
-     public $Account = [];
+     public $Account = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importNotificationRequest\notification\Create\RoomOwners\DeptsInforming\Account[] $Account Лицевой счет
      */
-    public function __construct(array $Account = [])
+    public function __construct(array $Account = null)
     {
         $this->Account = $Account;
     }

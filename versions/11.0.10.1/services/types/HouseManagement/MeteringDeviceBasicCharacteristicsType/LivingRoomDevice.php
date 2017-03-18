@@ -12,20 +12,20 @@ class LivingRoomDevice
      * 
      * @var string[]
      */
-     public $LivingRoomGUID = [];
+     public $LivingRoomGUID = null;
 
     /**
      * Идентификатор ЛС
      * 
      * @var string[]
      */
-     public $AccountGUID = [];
+     public $AccountGUID = null;
 
     /**
      * @param string[] $LivingRoomGUID Идентификатор комнаты
      * @param string[] $AccountGUID Идентификатор ЛС
      */
-    public function __construct(array $LivingRoomGUID = [], array $AccountGUID = [])
+    public function __construct(array $LivingRoomGUID = null, array $AccountGUID = null)
     {
         $this->LivingRoomGUID = $LivingRoomGUID;
         $this->AccountGUID = $AccountGUID;

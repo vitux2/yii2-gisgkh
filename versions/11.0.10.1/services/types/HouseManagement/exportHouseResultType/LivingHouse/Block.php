@@ -33,7 +33,7 @@ class Block extends \gisgkh\types\HouseManagement\BlockExportType
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\LivingHouse\Block\LivingRoom[]
      */
-     public $LivingRoom = [];
+     public $LivingRoom = null;
 
     /**
      * @param string $BlockUniqueNumber Уникальный номер блока
@@ -41,7 +41,7 @@ class Block extends \gisgkh\types\HouseManagement\BlockExportType
      * @param string $BlockGUID Идентификатор блока
      * @param \gisgkh\types\HouseManagement\exportHouseResultType\LivingHouse\Block\LivingRoom[] [$LivingRoom] Комната в блоке
      */
-    public function __construct(string $BlockUniqueNumber = null, string $ModificationDate = null, string $BlockGUID = null, array $LivingRoom = [])
+    public function __construct(string $BlockUniqueNumber = null, string $ModificationDate = null, string $BlockGUID = null, array $LivingRoom = null)
     {
         $this->BlockUniqueNumber = $BlockUniqueNumber;
         $this->ModificationDate = $ModificationDate;

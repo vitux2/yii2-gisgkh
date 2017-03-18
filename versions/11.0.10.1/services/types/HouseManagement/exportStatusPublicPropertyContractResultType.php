@@ -12,12 +12,12 @@ class exportStatusPublicPropertyContractResultType
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusPublicPropertyContractResultType\PublicPropertyContract[]
      */
-     public $PublicPropertyContract = [];
+     public $PublicPropertyContract = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\exportStatusPublicPropertyContractResultType\PublicPropertyContract[] $PublicPropertyContract ДОИ
      */
-    public function __construct(array $PublicPropertyContract = [])
+    public function __construct(array $PublicPropertyContract = null)
     {
         $this->PublicPropertyContract = $PublicPropertyContract;
     }

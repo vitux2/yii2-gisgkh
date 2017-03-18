@@ -22,35 +22,35 @@ class GKNRelationshipStatusType
      * 
      * @var string[]
      */
-     public $AppartmentHouseAcceptedParameter = [];
+     public $AppartmentHouseAcceptedParameter = null;
 
     /**
      * Пользовательский параметр ЖД, принятый ГИС ЖКХ после установления связи с ГКН
      * 
      * @var string[]
      */
-     public $LivingHouseAcceptedParameter = [];
+     public $LivingHouseAcceptedParameter = null;
 
     /**
      * Пользовательский параметр нежилого помещения, принятый ГИС ЖКХ после установления связи с ГКН
      * 
      * @var string[]
      */
-     public $NonResidentialPremiseAcceptedParameter = [];
+     public $NonResidentialPremiseAcceptedParameter = null;
 
     /**
      * Пользовательский параметр жилого помещения, принятый ГИС ЖКХ после установления связи с ГКН
      * 
      * @var string[]
      */
-     public $ResidentialPremiseAcceptedParameter = [];
+     public $ResidentialPremiseAcceptedParameter = null;
 
     /**
      * Пользовательский параметр комнаты, принятый ГИС ЖКХ после установления связи с ГКН
      * 
      * @var string[]
      */
-     public $RoomAcceptedParameter = [];
+     public $RoomAcceptedParameter = null;
 
     /**
      * @param string $Status Статус связи объекта с ГКН:
@@ -63,7 +63,7 @@ class GKNRelationshipStatusType
      * @param string[] [$ResidentialPremiseAcceptedParameter] Пользовательский параметр жилого помещения, принятый ГИС ЖКХ после установления связи с ГКН
      * @param string[] [$RoomAcceptedParameter] Пользовательский параметр комнаты, принятый ГИС ЖКХ после установления связи с ГКН
      */
-    public function __construct(string $Status = null, array $AppartmentHouseAcceptedParameter = [], array $LivingHouseAcceptedParameter = [], array $NonResidentialPremiseAcceptedParameter = [], array $ResidentialPremiseAcceptedParameter = [], array $RoomAcceptedParameter = [])
+    public function __construct(string $Status = null, array $AppartmentHouseAcceptedParameter = null, array $LivingHouseAcceptedParameter = null, array $NonResidentialPremiseAcceptedParameter = null, array $ResidentialPremiseAcceptedParameter = null, array $RoomAcceptedParameter = null)
     {
         $this->Status = $Status;
         $this->AppartmentHouseAcceptedParameter = $AppartmentHouseAcceptedParameter;

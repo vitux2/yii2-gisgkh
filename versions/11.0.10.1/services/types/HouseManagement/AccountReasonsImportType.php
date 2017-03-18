@@ -12,7 +12,7 @@ class AccountReasonsImportType
      * 
      * @var \gisgkh\types\HouseManagement\AccountReasonsImportType\SupplyResourceContract[]
      */
-     public $SupplyResourceContract = [];
+     public $SupplyResourceContract = null;
 
     /**
      * 
@@ -25,7 +25,7 @@ class AccountReasonsImportType
      * @param \gisgkh\types\HouseManagement\AccountReasonsImportType\SupplyResourceContract[] [$SupplyResourceContract] 
      * @param \gisgkh\types\HouseManagement\AccountReasonsImportType\SocialHireContract [$SocialHireContract] 
      */
-    public function __construct(array $SupplyResourceContract = [], \gisgkh\types\HouseManagement\AccountReasonsImportType\SocialHireContract $SocialHireContract = null)
+    public function __construct(array $SupplyResourceContract = null, \gisgkh\types\HouseManagement\AccountReasonsImportType\SocialHireContract $SocialHireContract = null)
     {
         $this->SupplyResourceContract = $SupplyResourceContract;
         $this->SocialHireContract = $SocialHireContract;

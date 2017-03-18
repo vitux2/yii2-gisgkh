@@ -26,14 +26,14 @@ class ResidentialPremises
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\LivingRoomToCreate[]
      */
-     public $LivingRoomToCreate = [];
+     public $LivingRoomToCreate = null;
 
     /**
      * Изменение комнаты
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\LivingRoomToUpdate[]
      */
-     public $LivingRoomToUpdate = [];
+     public $LivingRoomToUpdate = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\ResidentialPremisesToCreate $ResidentialPremisesToCreate Добавление жилого помещения
@@ -41,7 +41,7 @@ class ResidentialPremises
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\LivingRoomToCreate[] [$LivingRoomToCreate] Добавление комнаты
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\LivingRoomToUpdate[] [$LivingRoomToUpdate] Изменение комнаты
      */
-    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\ResidentialPremisesToCreate $ResidentialPremisesToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\ResidentialPremisesToUpdate $ResidentialPremisesToUpdate = null, array $LivingRoomToCreate = [], array $LivingRoomToUpdate = [])
+    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\ResidentialPremisesToCreate $ResidentialPremisesToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises\ResidentialPremisesToUpdate $ResidentialPremisesToUpdate = null, array $LivingRoomToCreate = null, array $LivingRoomToUpdate = null)
     {
         $this->ResidentialPremisesToCreate = $ResidentialPremisesToCreate;
         $this->ResidentialPremisesToUpdate = $ResidentialPremisesToUpdate;

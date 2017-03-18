@@ -12,7 +12,7 @@ class SignaturePropertiesType
      * 
      * @var \gisgkh\types\Xmldsig\SignaturePropertyType[]
      */
-     public $SignatureProperty = [];
+     public $SignatureProperty = null;
 
     /**
      * 
@@ -25,7 +25,7 @@ class SignaturePropertiesType
      * @param \gisgkh\types\Xmldsig\SignaturePropertyType[] $SignatureProperty 
      * @param string $Id 
      */
-    public function __construct(array $SignatureProperty = [], $Id = null)
+    public function __construct(array $SignatureProperty = null, $Id = null)
     {
         $this->SignatureProperty = $SignatureProperty;
         $this->Id = $Id;

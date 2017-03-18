@@ -26,14 +26,14 @@ class Blocks
      * 
      * @var \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\LivingRoomToCreate[]
      */
-     public $LivingRoomToCreate = [];
+     public $LivingRoomToCreate = null;
 
     /**
      * Обновление комнаты
      * 
      * @var \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\LivingRoomToUpdate[]
      */
-     public $LivingRoomToUpdate = [];
+     public $LivingRoomToUpdate = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\BlockToCreate $BlockToCreate Создание блока
@@ -41,7 +41,7 @@ class Blocks
      * @param \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\LivingRoomToCreate[] [$LivingRoomToCreate] Добавление комнаты
      * @param \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\LivingRoomToUpdate[] [$LivingRoomToUpdate] Обновление комнаты
      */
-    public function __construct(\gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\BlockToCreate $BlockToCreate = null, \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\BlockToUpdate $BlockToUpdate = null, array $LivingRoomToCreate = [], array $LivingRoomToUpdate = [])
+    public function __construct(\gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\BlockToCreate $BlockToCreate = null, \gisgkh\types\HouseManagement\importHouseUORequest\LivingHouse\Blocks\BlockToUpdate $BlockToUpdate = null, array $LivingRoomToCreate = null, array $LivingRoomToUpdate = null)
     {
         $this->BlockToCreate = $BlockToCreate;
         $this->BlockToUpdate = $BlockToUpdate;

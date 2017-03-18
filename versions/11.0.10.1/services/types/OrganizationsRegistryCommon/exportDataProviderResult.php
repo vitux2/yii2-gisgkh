@@ -19,7 +19,7 @@ class exportDataProviderResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\OrganizationsRegistryCommon\exportDataProviderResultType[]
      */
-     public $exportDataProviderResult = [];
+     public $exportDataProviderResult = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -33,7 +33,7 @@ class exportDataProviderResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\OrganizationsRegistryCommon\exportDataProviderResultType[] $exportDataProviderResult 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $exportDataProviderResult = [], $version = "10.0.2.1")
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $exportDataProviderResult = null, $version = "10.0.2.1")
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->exportDataProviderResult = $exportDataProviderResult;

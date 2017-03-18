@@ -48,14 +48,14 @@ Annul - сведения аннулированы
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Contract\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * Сведения о размере платы 
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Contract\ContractPaymentsInfo[]
      */
-     public $ContractPaymentsInfo = [];
+     public $ContractPaymentsInfo = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Contract\Terminate [$Terminate] Информация о расторжении ДУ
@@ -73,7 +73,7 @@ Annul - сведения аннулированы
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Contract\ContractObject[] $ContractObject Объект управления
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Contract\ContractPaymentsInfo[] [$ContractPaymentsInfo] Сведения о размере платы 
      */
-    public function __construct(\gisgkh\types\HouseManagement\exportCAChResultType\Contract\Terminate $Terminate = null, string $ContractStatus = null, string $ContractGUID = null, string $ContractVersionGUID = null, array $ContractObject = [], array $ContractPaymentsInfo = [])
+    public function __construct(\gisgkh\types\HouseManagement\exportCAChResultType\Contract\Terminate $Terminate = null, string $ContractStatus = null, string $ContractGUID = null, string $ContractVersionGUID = null, array $ContractObject = null, array $ContractPaymentsInfo = null)
     {
         $this->Terminate = $Terminate;
         $this->ContractStatus = $ContractStatus;

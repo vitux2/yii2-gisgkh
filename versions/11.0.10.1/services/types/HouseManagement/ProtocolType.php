@@ -88,7 +88,7 @@ class ProtocolType
      * 
      * @var \gisgkh\types\HouseManagement\ProtocolType\DecisionList[]
      */
-     public $DecisionList = [];
+     public $DecisionList = null;
 
     /**
      * Основание изменения. Заполняется для протоколов ОСС в статусе "Размещен"
@@ -117,7 +117,7 @@ class ProtocolType
      * @param \gisgkh\types\HouseManagement\ProtocolType\DecisionList[] $DecisionList Повестка
      * @param string [$Modification] Основание изменения. Заполняется для протоколов ОСС в статусе "Размещен"
      */
-    public function __construct(string $FIASHouseGuid = null, string $ProtocolNum = null, string $ProtocolDate = null, \gisgkh\types\HouseManagement\ProtocolType\AVoting $AVoting = null, \gisgkh\types\HouseManagement\ProtocolType\Meeting $Meeting = null, \gisgkh\types\HouseManagement\ProtocolType\EVoting $EVoting = null, \gisgkh\types\HouseManagement\ProtocolType\MeetingAVoting $MeetingAVoting = null, \gisgkh\types\HouseManagement\ProtocolType\ExtraVoting $ExtraVoting = null, string $AnnualVoting = null, string $MeetingEligibility = null, array $DecisionList = [], string $Modification = null)
+    public function __construct(string $FIASHouseGuid = null, string $ProtocolNum = null, string $ProtocolDate = null, \gisgkh\types\HouseManagement\ProtocolType\AVoting $AVoting = null, \gisgkh\types\HouseManagement\ProtocolType\Meeting $Meeting = null, \gisgkh\types\HouseManagement\ProtocolType\EVoting $EVoting = null, \gisgkh\types\HouseManagement\ProtocolType\MeetingAVoting $MeetingAVoting = null, \gisgkh\types\HouseManagement\ProtocolType\ExtraVoting $ExtraVoting = null, string $AnnualVoting = null, string $MeetingEligibility = null, array $DecisionList = null, string $Modification = null)
     {
         $this->FIASHouseGuid = $FIASHouseGuid;
         $this->ProtocolNum = $ProtocolNum;

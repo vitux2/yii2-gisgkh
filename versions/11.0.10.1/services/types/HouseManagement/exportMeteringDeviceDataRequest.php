@@ -33,7 +33,7 @@ class exportMeteringDeviceDataRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var string[]
      */
-     public $orgRootEntityGUID = [];
+     public $orgRootEntityGUID = null;
 
     /**
      * Глобальный уникальный идентификатор дома по ФИАС
@@ -121,7 +121,7 @@ class exportMeteringDeviceDataRequest extends \gisgkh\types\Base\BaseType
      * @param string [$CommissioningDateFrom] Дата ввода в эксплуатацию «С»
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(string $MeteringDeviceRootGUID = null, string $MeteringDeviceVersionGUID = null, string $CurrentOrganization = null, array $orgRootEntityGUID = [], string $FIASHouseGuid = null, string $UpdateDateTime = null, \gisgkh\types\NsiBase\nsiRef $MeteringDeviceType = null, \gisgkh\types\NsiBase\nsiRef $MunicipalResource = null, string $ArchiveDateTo = null, string $ArchiveDateFrom = null, string $SearchArchived = null, string $CommissioningDateTo = null, string $CommissioningDateFrom = null, $version = "11.0.0.1")
+    public function __construct(string $MeteringDeviceRootGUID = null, string $MeteringDeviceVersionGUID = null, string $CurrentOrganization = null, array $orgRootEntityGUID = null, string $FIASHouseGuid = null, string $UpdateDateTime = null, \gisgkh\types\NsiBase\nsiRef $MeteringDeviceType = null, \gisgkh\types\NsiBase\nsiRef $MunicipalResource = null, string $ArchiveDateTo = null, string $ArchiveDateFrom = null, string $SearchArchived = null, string $CommissioningDateTo = null, string $CommissioningDateFrom = null, $version = "11.0.0.1")
     {
         $this->MeteringDeviceRootGUID = $MeteringDeviceRootGUID;
         $this->MeteringDeviceVersionGUID = $MeteringDeviceVersionGUID;

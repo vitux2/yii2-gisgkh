@@ -47,7 +47,7 @@ class LiftUpdateOMSType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * Дата прекращения существования объекта
@@ -65,7 +65,7 @@ class LiftUpdateOMSType
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      * @param string [$TerminationDate] Дата прекращения существования объекта
      */
-    public function __construct(string $EntranceNum = null, string $FIASChildHouseGuid = null, string $FactoryNum = null, \gisgkh\types\NsiBase\nsiRef $Type = null, string $OperatingLimit = null, array $OGFData = [], string $TerminationDate = null)
+    public function __construct(string $EntranceNum = null, string $FIASChildHouseGuid = null, string $FactoryNum = null, \gisgkh\types\NsiBase\nsiRef $Type = null, string $OperatingLimit = null, array $OGFData = null, string $TerminationDate = null)
     {
         $this->EntranceNum = $EntranceNum;
         $this->FIASChildHouseGuid = $FIASChildHouseGuid;

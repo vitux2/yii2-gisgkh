@@ -26,7 +26,7 @@ class SignedInfoType
      * 
      * @var \gisgkh\types\Xmldsig\ReferenceType[]
      */
-     public $Reference = [];
+     public $Reference = null;
 
     /**
      * 
@@ -41,7 +41,7 @@ class SignedInfoType
      * @param \gisgkh\types\Xmldsig\ReferenceType[] $Reference 
      * @param string $Id 
      */
-    public function __construct(\gisgkh\types\Xmldsig\CanonicalizationMethodType $CanonicalizationMethod = null, \gisgkh\types\Xmldsig\SignatureMethodType $SignatureMethod = null, array $Reference = [], $Id = null)
+    public function __construct(\gisgkh\types\Xmldsig\CanonicalizationMethodType $CanonicalizationMethod = null, \gisgkh\types\Xmldsig\SignatureMethodType $SignatureMethod = null, array $Reference = null, $Id = null)
     {
         $this->CanonicalizationMethod = $CanonicalizationMethod;
         $this->SignatureMethod = $SignatureMethod;

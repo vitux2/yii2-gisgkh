@@ -12,7 +12,7 @@ class exportStatusCAChResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusCAChResultType[]
      */
-     public $exportStatusCACh = [];
+     public $exportStatusCACh = null;
 
     /**
      * Описание ошибок контролей или бизнес-процесса
@@ -33,7 +33,7 @@ class exportStatusCAChResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $exportStatusCACh = [], \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "10.0.1.1")
+    public function __construct(array $exportStatusCACh = null, \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "10.0.1.1")
     {
         $this->exportStatusCACh = $exportStatusCACh;
         $this->ErrorMessage = $ErrorMessage;

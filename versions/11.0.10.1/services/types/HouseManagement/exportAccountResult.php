@@ -12,7 +12,7 @@ class exportAccountResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportAccountResultType[]
      */
-     public $Accounts = [];
+     public $Accounts = null;
 
     /**
      * Описание ошибок контролей или бизнес-процесса
@@ -33,7 +33,7 @@ class exportAccountResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $Accounts = [], \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.2")
+    public function __construct(array $Accounts = null, \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.2")
     {
         $this->Accounts = $Accounts;
         $this->ErrorMessage = $ErrorMessage;

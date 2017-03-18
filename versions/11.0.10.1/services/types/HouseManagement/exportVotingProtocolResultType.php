@@ -23,7 +23,7 @@ class exportVotingProtocolResultType extends \gisgkh\types\HouseManagement\Proto
      * 
      * @var string[]
      */
-     public $VotingProtocolGUID = [];
+     public $VotingProtocolGUID = null;
 
     /**
      * @param string $StatusProtocol Статус протокола ОСС
@@ -33,7 +33,7 @@ class exportVotingProtocolResultType extends \gisgkh\types\HouseManagement\Proto
 -Edited-На изменении
      * @param string[] $VotingProtocolGUID Идентификатор протокола голосования
      */
-    public function __construct(string $StatusProtocol = null, array $VotingProtocolGUID = [])
+    public function __construct(string $StatusProtocol = null, array $VotingProtocolGUID = null)
     {
         $this->StatusProtocol = $StatusProtocol;
         $this->VotingProtocolGUID = $VotingProtocolGUID;

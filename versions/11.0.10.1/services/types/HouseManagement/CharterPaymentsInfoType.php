@@ -42,7 +42,7 @@ class CharterPaymentsInfoType
      * 
      * @var \gisgkh\types\HouseManagement\CharterPaymentsInfoType\ServicePayment[]
      */
-     public $ServicePayment = [];
+     public $ServicePayment = null;
 
     /**
      * @param string $BeginDate Дата начала периода
@@ -53,7 +53,7 @@ class CharterPaymentsInfoType
 помещения в МКД, не являющегося членом товарищества, кооператива
      * @param \gisgkh\types\HouseManagement\CharterPaymentsInfoType\ServicePayment[] [$ServicePayment] Информация о размере платы (цене, тарифе) за содержание и текущий ремонт общего имущества в многоквартирном доме
      */
-    public function __construct(string $BeginDate = null, string $EndDate = null, \gisgkh\types\HouseManagement\CharterPaymentsInfoType\MaintenanceAndRepairsForMembers $MaintenanceAndRepairsForMembers = null, \gisgkh\types\HouseManagement\CharterPaymentsInfoType\MaintenanceAndRepairsForNonMembersInfo $MaintenanceAndRepairsForNonMembersInfo = null, array $ServicePayment = [])
+    public function __construct(string $BeginDate = null, string $EndDate = null, \gisgkh\types\HouseManagement\CharterPaymentsInfoType\MaintenanceAndRepairsForMembers $MaintenanceAndRepairsForMembers = null, \gisgkh\types\HouseManagement\CharterPaymentsInfoType\MaintenanceAndRepairsForNonMembersInfo $MaintenanceAndRepairsForNonMembersInfo = null, array $ServicePayment = null)
     {
         $this->BeginDate = $BeginDate;
         $this->EndDate = $EndDate;

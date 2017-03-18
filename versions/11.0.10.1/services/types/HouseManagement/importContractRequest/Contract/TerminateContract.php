@@ -19,7 +19,7 @@ class TerminateContract extends \gisgkh\types\HouseManagement\TerminateType
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $TerminateAttachment = [];
+     public $TerminateAttachment = null;
 
     /**
      * Идентификатор версии договора
@@ -33,7 +33,7 @@ class TerminateContract extends \gisgkh\types\HouseManagement\TerminateType
      * @param \gisgkh\types\Base\AttachmentType[] $TerminateAttachment Основание
      * @param string $ContractVersionGUID Идентификатор версии договора
      */
-    public function __construct(\gisgkh\types\NsiBase\nsiRef $ReasonRef = null, array $TerminateAttachment = [], string $ContractVersionGUID = null)
+    public function __construct(\gisgkh\types\NsiBase\nsiRef $ReasonRef = null, array $TerminateAttachment = null, string $ContractVersionGUID = null)
     {
         $this->ReasonRef = $ReasonRef;
         $this->TerminateAttachment = $TerminateAttachment;

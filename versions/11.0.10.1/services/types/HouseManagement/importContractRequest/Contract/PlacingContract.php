@@ -19,13 +19,13 @@ class PlacingContract extends \gisgkh\types\HouseManagement\ContractType
      * 
      * @var \gisgkh\types\HouseManagement\importContractRequest\Contract\PlacingContract\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * @param string [$LicenseRequest] Формировать заявки в реестр лицензий, если сведения о лицензии/управляемом объекте отсутсвуют
      * @param \gisgkh\types\HouseManagement\importContractRequest\Contract\PlacingContract\ContractObject[] $ContractObject Объект управления
      */
-    public function __construct(string $LicenseRequest = null, array $ContractObject = [])
+    public function __construct(string $LicenseRequest = null, array $ContractObject = null)
     {
         $this->LicenseRequest = $LicenseRequest;
         $this->ContractObject = $ContractObject;

@@ -89,7 +89,7 @@ class AccountType
      * 
      * @var \gisgkh\types\HouseManagement\AccountType\Accommodation[]
      */
-     public $Accommodation = [];
+     public $Accommodation = null;
 
     /**
      * Сведения о платильщике
@@ -113,7 +113,7 @@ class AccountType
      * @param \gisgkh\types\HouseManagement\AccountType\Accommodation[] $Accommodation Помещение
      * @param \gisgkh\types\HouseManagement\AccountType\PayerInfo $PayerInfo Сведения о платильщике
      */
-    public function __construct(string $isUOAccount = null, string $isRSOAccount = null, string $isCRAccount = null, string $isRCAccount = null, string $isOGVorOMSAccount = null, string $CreationDate = null, string $LivingPersonsNumber = null, string $TotalSquare = null, string $ResidentialSquare = null, string $HeatedArea = null, \gisgkh\types\HouseManagement\ClosedAccountAttributesType $Closed = null, array $Accommodation = [], \gisgkh\types\HouseManagement\AccountType\PayerInfo $PayerInfo = null)
+    public function __construct(string $isUOAccount = null, string $isRSOAccount = null, string $isCRAccount = null, string $isRCAccount = null, string $isOGVorOMSAccount = null, string $CreationDate = null, string $LivingPersonsNumber = null, string $TotalSquare = null, string $ResidentialSquare = null, string $HeatedArea = null, \gisgkh\types\HouseManagement\ClosedAccountAttributesType $Closed = null, array $Accommodation = null, \gisgkh\types\HouseManagement\AccountType\PayerInfo $PayerInfo = null)
     {
         $this->isUOAccount = $isUOAccount;
         $this->isRSOAccount = $isRSOAccount;

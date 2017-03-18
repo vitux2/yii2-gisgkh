@@ -54,14 +54,14 @@ class MeteringDeviceToUpdateAfterDevicesValuesType
      * 
      * @var string[]
      */
-     public $AccountGUID = [];
+     public $AccountGUID = null;
 
     /**
      * Данные об изменении базовых показаний. Коммунальный ресурс (тепловая энергия, газ, горячая вода, холодная вода, сточные бытовые воды) должен быть указан тот же, что и при создании ПУ
      * 
      * @var \gisgkh\types\HouseManagement\MunicipalResourceNotElectricType[]
      */
-     public $MunicipalResourceNotEnergy = [];
+     public $MunicipalResourceNotEnergy = null;
 
     /**
      * Данные об изменении базовых показаний ПУ электрической энергии. Необходимо прислать все актуальные базовые показания в соответсвии с видом ПУ по количеству тарифов (даже если отредактировать надо только одно показание).
@@ -105,7 +105,7 @@ class MeteringDeviceToUpdateAfterDevicesValuesType
      * @param string $NotLinkedWithMetering Объем ресурса(ов) определяется только с помощью текущего ПУ (связей с другими ПУ нет)
      * @param \gisgkh\types\HouseManagement\MeteringDeviceToUpdateAfterDevicesValuesType\LinkedWithMetering $LinkedWithMetering Объем ресурса(ов) определяется с помощью нескольких приборов учета
      */
-    public function __construct(string $InstallationDate = null, string $RemoteMeteringMode = null, string $RemoteMeteringInfo = null, string $TemperatureSensor = null, string $PressureSensor = null, \gisgkh\types\HouseManagement\MeteringDeviceToUpdateAfterDevicesValuesType\CollectiveDevice $CollectiveDevice = null, array $AccountGUID = [], array $MunicipalResourceNotEnergy = [], \gisgkh\types\HouseManagement\MunicipalResourceElectricType $MunicipalResourceEnergy = null, string $FirstVerificationDate = null, string $NotLinkedWithMetering = null, \gisgkh\types\HouseManagement\MeteringDeviceToUpdateAfterDevicesValuesType\LinkedWithMetering $LinkedWithMetering = null)
+    public function __construct(string $InstallationDate = null, string $RemoteMeteringMode = null, string $RemoteMeteringInfo = null, string $TemperatureSensor = null, string $PressureSensor = null, \gisgkh\types\HouseManagement\MeteringDeviceToUpdateAfterDevicesValuesType\CollectiveDevice $CollectiveDevice = null, array $AccountGUID = null, array $MunicipalResourceNotEnergy = null, \gisgkh\types\HouseManagement\MunicipalResourceElectricType $MunicipalResourceEnergy = null, string $FirstVerificationDate = null, string $NotLinkedWithMetering = null, \gisgkh\types\HouseManagement\MeteringDeviceToUpdateAfterDevicesValuesType\LinkedWithMetering $LinkedWithMetering = null)
     {
         $this->InstallationDate = $InstallationDate;
         $this->RemoteMeteringMode = $RemoteMeteringMode;

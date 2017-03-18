@@ -26,14 +26,14 @@ class RoomOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $RoomNumber Номер комнаты
      * @param string $Square Площадь
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $RoomNumber = null, string $Square = null, array $OGFData = [])
+    public function __construct(string $RoomNumber = null, string $Square = null, array $OGFData = null)
     {
         $this->RoomNumber = $RoomNumber;
         $this->Square = $Square;

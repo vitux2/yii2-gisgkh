@@ -39,7 +39,7 @@ class GisBilingDay extends CompatibleWithGisgkh
      */
     function fillTo(&$target)
     {
-        $target->Date = $this->day->convertTo();
+        $target->Date = empty($this->day) ? null : $this->day->convertTo();
         $target->DateType = ( $this->nextMonth ? 'N' : 'C' );
     }
 }

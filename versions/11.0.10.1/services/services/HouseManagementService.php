@@ -55,11 +55,34 @@ class HouseManagementService
     /**
      * @param importSupplyResourceContractRequest $request
      * @return ImportResult
+     * @throws \SoapFault
      */
     public function importSupplyResourceContractData(importSupplyResourceContractRequest $request)
     {
-        $this->setRequestHeader();
+        $client = new LocalSoapClient($this->wsdl, $this->location, array_merge(
+            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/classmap.php',
+            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/HouseManagement/ImportResult.classmap.php'
+        ));
 
-        return $this->__soapCall('importSupplyResourceContractData', [$request]);
+        $header = new RequestHeader(Module::getInstance()->SenderId, Module::getInstance()->orgPPAGUID);
+
+        $header->MessageGUID = GuidHelper::generate();
+        $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->orgPPAGUID = 'f9de06f2-3a3b-4c3a-b141-74913fe3d4a7';
+
+        $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
+
+        $request->Id = GuidHelper::generate();
+
+        try {
+            return $client->__soapCall('importSupplyResourceContractData', [$request]);
+        } catch (\SoapFault $e) {
+            echo "Exception Error!\n\n";
+            echo sprintf("Last request headers: %s\n", $client->__getLastRequestHeaders());
+            echo sprintf("Last request: %s\n", $client->__getLastRequest());
+            echo sprintf("Class: %s\n", get_class($e));
+            echo sprintf("Message: %s\n", $e->getMessage());
+            throw $e;
+        }
     }
 }

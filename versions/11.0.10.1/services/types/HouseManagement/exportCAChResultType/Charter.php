@@ -48,14 +48,14 @@ class Charter extends \gisgkh\types\HouseManagement\CharterType
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * Сведения о размере платы 
      * 
      * @var \gisgkh\types\HouseManagement\exportCAChResultType\Charter\CharterPaymentsInfo[]
      */
-     public $CharterPaymentsInfo = [];
+     public $CharterPaymentsInfo = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Charter\Terminate [$Terminate] Информация о прекращении действия устава
@@ -73,7 +73,7 @@ class Charter extends \gisgkh\types\HouseManagement\CharterType
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Charter\ContractObject[] $ContractObject Объект управления
      * @param \gisgkh\types\HouseManagement\exportCAChResultType\Charter\CharterPaymentsInfo[] [$CharterPaymentsInfo] Сведения о размере платы 
      */
-    public function __construct(\gisgkh\types\HouseManagement\exportCAChResultType\Charter\Terminate $Terminate = null, string $CharterStatus = null, string $CharterGUID = null, string $CharterVersionGUID = null, array $ContractObject = [], array $CharterPaymentsInfo = [])
+    public function __construct(\gisgkh\types\HouseManagement\exportCAChResultType\Charter\Terminate $Terminate = null, string $CharterStatus = null, string $CharterGUID = null, string $CharterVersionGUID = null, array $ContractObject = null, array $CharterPaymentsInfo = null)
     {
         $this->Terminate = $Terminate;
         $this->CharterStatus = $CharterStatus;

@@ -26,14 +26,14 @@ class ContractObject extends \gisgkh\types\HouseManagement\ManageObjectType
      * 
      * @var \gisgkh\types\HouseManagement\importCharterRequest\PlacingCharter\ContractObject\HouseService[]
      */
-     public $HouseService = [];
+     public $HouseService = null;
 
     /**
      * Дополнительные услуги. Ссылка на НСИ "Дополнительные услуги" (реестровый номер 1) 
      * 
      * @var \gisgkh\types\HouseManagement\importCharterRequest\PlacingCharter\ContractObject\AddService[]
      */
-     public $AddService = [];
+     public $AddService = null;
 
     /**
      * Управление многоквартирным домом осуществляется управляющей организацией по договору управления
@@ -49,7 +49,7 @@ class ContractObject extends \gisgkh\types\HouseManagement\ManageObjectType
      * @param \gisgkh\types\HouseManagement\importCharterRequest\PlacingCharter\ContractObject\AddService[] [$AddService] Дополнительные услуги. Ссылка на НСИ "Дополнительные услуги" (реестровый номер 1) 
      * @param string [$IsManagedByContract] Управление многоквартирным домом осуществляется управляющей организацией по договору управления
      */
-    public function __construct(string $TransportGUID = null, \gisgkh\types\HouseManagement\BaseServiceCharterType $BaseMService = null, array $HouseService = [], array $AddService = [], string $IsManagedByContract = null)
+    public function __construct(string $TransportGUID = null, \gisgkh\types\HouseManagement\BaseServiceCharterType $BaseMService = null, array $HouseService = null, array $AddService = null, string $IsManagedByContract = null)
     {
         $this->TransportGUID = $TransportGUID;
         $this->BaseMService = $BaseMService;

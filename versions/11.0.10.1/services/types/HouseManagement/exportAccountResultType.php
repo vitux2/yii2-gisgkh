@@ -40,7 +40,7 @@ class exportAccountResultType extends \gisgkh\types\HouseManagement\AccountType
      * 
      * @var \gisgkh\types\HouseManagement\exportAccountResultType\Obligations[]
      */
-     public $Obligations = [];
+     public $Obligations = null;
 
     /**
      * Идентификатор жилищно-коммунальной услуги
@@ -57,7 +57,7 @@ class exportAccountResultType extends \gisgkh\types\HouseManagement\AccountType
      * @param \gisgkh\types\HouseManagement\exportAccountResultType\Obligations[] [$Obligations] Cведения об обязательствах
      * @param string $ServiceID Идентификатор жилищно-коммунальной услуги
      */
-    public function __construct(\gisgkh\types\HouseManagement\exportAccountResultType\AccountReasons $AccountReasons = null, string $AccountNumber = null, string $AccountGUID = null, string $UnifiedAccountNumber = null, array $Obligations = [], string $ServiceID = null)
+    public function __construct(\gisgkh\types\HouseManagement\exportAccountResultType\AccountReasons $AccountReasons = null, string $AccountNumber = null, string $AccountGUID = null, string $UnifiedAccountNumber = null, array $Obligations = null, string $ServiceID = null)
     {
         $this->AccountReasons = $AccountReasons;
         $this->AccountNumber = $AccountNumber;

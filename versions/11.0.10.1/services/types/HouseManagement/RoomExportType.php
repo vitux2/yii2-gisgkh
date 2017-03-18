@@ -33,7 +33,7 @@ class RoomExportType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * Дата прекращения существования объекта
@@ -49,7 +49,7 @@ class RoomExportType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      * @param string [$TerminationDate] Дата прекращения существования объекта
      */
-    public function __construct(string $RoomNumber = null, string $Square = null, string $Floor = null, array $OGFData = [], string $TerminationDate = null)
+    public function __construct(string $RoomNumber = null, string $Square = null, string $Floor = null, array $OGFData = null, string $TerminationDate = null)
     {
         $this->RoomNumber = $RoomNumber;
         $this->Square = $Square;

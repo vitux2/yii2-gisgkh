@@ -26,49 +26,49 @@ class ApartmentHouse
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\NonResidentialPremiseToCreate[]
      */
-     public $NonResidentialPremiseToCreate = [];
+     public $NonResidentialPremiseToCreate = null;
 
     /**
      * Изменение данных нежилого помещения
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\NonResidentialPremiseToUpdate[]
      */
-     public $NonResidentialPremiseToUpdate = [];
+     public $NonResidentialPremiseToUpdate = null;
 
     /**
      * Добавление нового подъезда
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\EntranceToCreate[]
      */
-     public $EntranceToCreate = [];
+     public $EntranceToCreate = null;
 
     /**
      * Изменение подъезда
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\EntranceToUpdate[]
      */
-     public $EntranceToUpdate = [];
+     public $EntranceToUpdate = null;
 
     /**
      * Жилое помещение
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ResidentialPremises[]
      */
-     public $ResidentialPremises = [];
+     public $ResidentialPremises = null;
 
     /**
      * Добавление нового лифта
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\LiftToCreate[]
      */
-     public $LiftToCreate = [];
+     public $LiftToCreate = null;
 
     /**
      * Изменение лифта
      * 
      * @var \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\LiftToUpdate[]
      */
-     public $LiftToUpdate = [];
+     public $LiftToUpdate = null;
 
     /**
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate Добавление многоквартирного дома
@@ -81,7 +81,7 @@ class ApartmentHouse
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\LiftToCreate[] [$LiftToCreate] Добавление нового лифта
      * @param \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\LiftToUpdate[] [$LiftToUpdate] Изменение лифта
      */
-    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ApartmentHouseToUpdate $ApartmentHouseToUpdate = null, array $NonResidentialPremiseToCreate = [], array $NonResidentialPremiseToUpdate = [], array $EntranceToCreate = [], array $EntranceToUpdate = [], array $ResidentialPremises = [], array $LiftToCreate = [], array $LiftToUpdate = [])
+    public function __construct(\gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ApartmentHouseToCreate $ApartmentHouseToCreate = null, \gisgkh\types\HouseManagement\importHouseOMSRequest\ApartmentHouse\ApartmentHouseToUpdate $ApartmentHouseToUpdate = null, array $NonResidentialPremiseToCreate = null, array $NonResidentialPremiseToUpdate = null, array $EntranceToCreate = null, array $EntranceToUpdate = null, array $ResidentialPremises = null, array $LiftToCreate = null, array $LiftToUpdate = null)
     {
         $this->ApartmentHouseToCreate = $ApartmentHouseToCreate;
         $this->ApartmentHouseToUpdate = $ApartmentHouseToUpdate;

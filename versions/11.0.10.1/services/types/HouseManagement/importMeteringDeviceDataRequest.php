@@ -20,7 +20,7 @@ class importMeteringDeviceDataRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\importMeteringDeviceDataRequest\MeteringDevice[]
      */
-     public $MeteringDevice = [];
+     public $MeteringDevice = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -34,7 +34,7 @@ class importMeteringDeviceDataRequest extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\importMeteringDeviceDataRequest\MeteringDevice[] $MeteringDevice Приборы учета
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(string $FIASHouseGuid = null, array $MeteringDevice = [], $version = "11.0.0.1")
+    public function __construct(string $FIASHouseGuid = null, array $MeteringDevice = null, $version = "11.0.0.1")
     {
         $this->FIASHouseGuid = $FIASHouseGuid;
         $this->MeteringDevice = $MeteringDevice;

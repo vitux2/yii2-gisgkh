@@ -26,7 +26,7 @@ class ResidentialPremises extends \gisgkh\types\HouseManagement\ResidentialPremi
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\ResidentialPremises\LivingRoom[]
      */
-     public $LivingRoom = [];
+     public $LivingRoom = null;
 
     /**
      * Идентификатор помещения
@@ -41,7 +41,7 @@ class ResidentialPremises extends \gisgkh\types\HouseManagement\ResidentialPremi
      * @param \gisgkh\types\HouseManagement\exportHouseResultType\ApartmentHouse\ResidentialPremises\LivingRoom[] [$LivingRoom] Комната в квартире коммунального заселения
      * @param string $PremisesGUID Идентификатор помещения
      */
-    public function __construct(string $PremisesUniqueNumber = null, string $ModificationDate = null, array $LivingRoom = [], string $PremisesGUID = null)
+    public function __construct(string $PremisesUniqueNumber = null, string $ModificationDate = null, array $LivingRoom = null, string $PremisesGUID = null)
     {
         $this->PremisesUniqueNumber = $PremisesUniqueNumber;
         $this->ModificationDate = $ModificationDate;

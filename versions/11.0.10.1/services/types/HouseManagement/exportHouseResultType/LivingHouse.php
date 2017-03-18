@@ -12,14 +12,14 @@ class LivingHouse extends \gisgkh\types\HouseManagement\LivingHouseExportType
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\LivingHouse\LivingRoom[]
      */
-     public $LivingRoom = [];
+     public $LivingRoom = null;
 
     /**
      * Блоки (для жилого дома блокированной застройки)
      * 
      * @var \gisgkh\types\HouseManagement\exportHouseResultType\LivingHouse\Block[]
      */
-     public $Block = [];
+     public $Block = null;
 
     /**
      * Актуальная версия сведений о доме
@@ -33,7 +33,7 @@ class LivingHouse extends \gisgkh\types\HouseManagement\LivingHouseExportType
      * @param \gisgkh\types\HouseManagement\exportHouseResultType\LivingHouse\Block[] [$Block] Блоки (для жилого дома блокированной застройки)
      * @param string $HouseGUID Актуальная версия сведений о доме
      */
-    public function __construct(array $LivingRoom = [], array $Block = [], string $HouseGUID = null)
+    public function __construct(array $LivingRoom = null, array $Block = null, string $HouseGUID = null)
     {
         $this->LivingRoom = $LivingRoom;
         $this->Block = $Block;

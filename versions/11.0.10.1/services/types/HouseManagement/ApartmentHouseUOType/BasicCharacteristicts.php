@@ -33,7 +33,7 @@ class BasicCharacteristicts
      * 
      * @var \gisgkh\types\HouseManagement\RightOrEncumbrance[]
      */
-     public $RightOrEncumbrance = [];
+     public $RightOrEncumbrance = null;
 
     /**
      * Глобальный уникальный идентификатор дома по ФИАС
@@ -96,7 +96,7 @@ class BasicCharacteristicts
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $CadastralNumber Поиск в ГКН/ЕГРП по кадастровому номеру объекта недвижимости. При указании осуществляется привязка к ГКН и ЕГРП при наличии этих сведений в рееестрах. Перечень Субъектов РФ, по которым размещена информация в ГКН/ЕГРП, можно уточнить у Оператора ГИС ЖКХ. Наличие в экспорте указывает на установленную связь с ГКН/ЕГРП по этому элементу. 
@@ -113,7 +113,7 @@ class BasicCharacteristicts
      * @param string $CulturalHeritage Наличие у дома статуса объекта культурного наследия
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $CadastralNumber = null, string $No_RSO_GKN_EGRP_Registered = null, string $ConditionalNumber = null, array $RightOrEncumbrance = [], string $FIASHouseGuid = null, string $TotalSquare = null, \gisgkh\types\NsiBase\nsiRef $State = null, string $UsedYear = null, string $FloorCount = null, \gisgkh\types\Base\OKTMORefType $OKTMO = null, \gisgkh\types\NsiBase\nsiRef $OlsonTZ = null, string $CulturalHeritage = null, array $OGFData = [])
+    public function __construct(string $CadastralNumber = null, string $No_RSO_GKN_EGRP_Registered = null, string $ConditionalNumber = null, array $RightOrEncumbrance = null, string $FIASHouseGuid = null, string $TotalSquare = null, \gisgkh\types\NsiBase\nsiRef $State = null, string $UsedYear = null, string $FloorCount = null, \gisgkh\types\Base\OKTMORefType $OKTMO = null, \gisgkh\types\NsiBase\nsiRef $OlsonTZ = null, string $CulturalHeritage = null, array $OGFData = null)
     {
         $this->CadastralNumber = $CadastralNumber;
         $this->No_RSO_GKN_EGRP_Registered = $No_RSO_GKN_EGRP_Registered;

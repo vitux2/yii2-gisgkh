@@ -19,7 +19,7 @@ class exportOrgRegistryResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType[]
      */
-     public $OrgData = [];
+     public $OrgData = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -33,7 +33,7 @@ class exportOrgRegistryResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType[] [$OrgData] Найденная организация.
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $OrgData = [], $version = "10.0.2.1")
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $OrgData = null, $version = "10.0.2.1")
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->OrgData = $OrgData;

@@ -3,7 +3,7 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\ErrorMessageType;
-use gisgkh\HouseManagementService;
+use gisgkh\services\HouseManagementService;
 use gisgkh\types\HouseManagement\AnnulmentType;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
@@ -14,6 +14,7 @@ use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\Ro
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\TerminateContract;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use startuplab\helpers\GuidHelper;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -67,7 +68,8 @@ class GisResourceSupplyContractRegistry
         $service = new HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
-        $request->Contract = new exportSupplyResourceContractResultType();
+        $request->Contract = new Contract();
+        $request->Contract->TransportGUID = GuidHelper::generate();
 
         if ($contract->versionGuid) {
             $request->Contract->ContractGUID = $contract->versionGuid;

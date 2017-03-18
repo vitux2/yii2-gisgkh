@@ -15,7 +15,7 @@ IndividualServiceGUID - для обновления индивидуальной
      * 
      * @var \gisgkh\types\HouseManagement\exportAccountIndividualServicesResultType[]
      */
-     public $IndividualService = [];
+     public $IndividualService = null;
 
     /**
      * Описание ошибок контролей или бизнес-процесса
@@ -39,7 +39,7 @@ IndividualServiceGUID - для обновления индивидуальной
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $IndividualService = [], \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.1")
+    public function __construct(array $IndividualService = null, \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.1")
     {
         $this->IndividualService = $IndividualService;
         $this->ErrorMessage = $ErrorMessage;

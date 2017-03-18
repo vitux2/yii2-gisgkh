@@ -26,14 +26,14 @@ class ProtocolMeetingOwners
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $TrustDocAttachment = [];
+     public $TrustDocAttachment = null;
 
     /**
      * @param string $ProtocolNum Номер протокола
      * @param string $ProtocolDate Дата составления протокола
      * @param \gisgkh\types\Base\AttachmentType[] $TrustDocAttachment Документы, подтверждающие полномочия заключать договор
      */
-    public function __construct(string $ProtocolNum = null, string $ProtocolDate = null, array $TrustDocAttachment = [])
+    public function __construct(string $ProtocolNum = null, string $ProtocolDate = null, array $TrustDocAttachment = null)
     {
         $this->ProtocolNum = $ProtocolNum;
         $this->ProtocolDate = $ProtocolDate;

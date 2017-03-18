@@ -47,7 +47,7 @@ class ResultType
      * 
      * @var \gisgkh\types\Base\ErrorMessageType[]
      */
-     public $CreateOrUpdateError = [];
+     public $CreateOrUpdateError = null;
 
     /**
      * @param string $TransportGUID Транспортный идентификатор, определенный постащиком информации
@@ -57,7 +57,7 @@ class ResultType
      * @param string [$UniqueNumber] Уникальный номер 
      * @param \gisgkh\types\Base\ErrorMessageType[] $CreateOrUpdateError 
      */
-    public function __construct(string $TransportGUID = null, string $UpdateGUID = null, string $GUID = null, string $UpdateDate = null, string $UniqueNumber = null, array $CreateOrUpdateError = [])
+    public function __construct(string $TransportGUID = null, string $UpdateGUID = null, string $GUID = null, string $UpdateDate = null, string $UniqueNumber = null, array $CreateOrUpdateError = null)
     {
         $this->TransportGUID = $TransportGUID;
         $this->UpdateGUID = $UpdateGUID;

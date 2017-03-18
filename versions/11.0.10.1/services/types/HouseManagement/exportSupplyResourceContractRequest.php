@@ -12,14 +12,14 @@ class exportSupplyResourceContractRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var string[]
      */
-     public $ContractRootGUID = [];
+     public $ContractRootGUID = null;
 
     /**
      * Идентификатор версии договора ресурсоснабжения в ГИС ЖКХ 
      * 
      * @var string[]
      */
-     public $ContractGUID = [];
+     public $ContractGUID = null;
 
     /**
      * Номер договора
@@ -55,7 +55,7 @@ class exportSupplyResourceContractRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportSupplyResourceContractRequest\ContractSubject[]
      */
-     public $ContractSubject = [];
+     public $ContractSubject = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -75,7 +75,7 @@ class exportSupplyResourceContractRequest extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\exportSupplyResourceContractRequest\ContractSubject[] [$ContractSubject] Предмет договора
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $ContractRootGUID = [], array $ContractGUID = [], string $ContractNumber = null, string $SigningDateStart = null, string $SigningDateEnd = null, string $FIASHouseGuid = null, array $ContractSubject = [], $version = "10.0.1.1")
+    public function __construct(array $ContractRootGUID = null, array $ContractGUID = null, string $ContractNumber = null, string $SigningDateStart = null, string $SigningDateEnd = null, string $FIASHouseGuid = null, array $ContractSubject = null, $version = "10.0.1.1")
     {
         $this->ContractRootGUID = $ContractRootGUID;
         $this->ContractGUID = $ContractGUID;

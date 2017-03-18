@@ -19,13 +19,13 @@ class ResidentialPremiseDevice
      * 
      * @var string[]
      */
-     public $AccountGUID = [];
+     public $AccountGUID = null;
 
     /**
      * @param string $PremiseGUID Идентификатор помещения (тип = жилое помещение)
      * @param string[] $AccountGUID Идентификатор ЛС
      */
-    public function __construct(string $PremiseGUID = null, array $AccountGUID = [])
+    public function __construct(string $PremiseGUID = null, array $AccountGUID = null)
     {
         $this->PremiseGUID = $PremiseGUID;
         $this->AccountGUID = $AccountGUID;

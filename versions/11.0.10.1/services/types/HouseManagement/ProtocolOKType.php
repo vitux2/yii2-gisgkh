@@ -12,20 +12,20 @@ class ProtocolOKType
      * 
      * @var string[]
      */
-     public $ProtocolGUID = [];
+     public $ProtocolGUID = null;
 
     /**
      * Приложенный документ
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $AttachmentProtocol = [];
+     public $AttachmentProtocol = null;
 
     /**
      * @param string[] $ProtocolGUID Идентификатор в ГИС ЖКХ (ссылка на подсистему голосования)
      * @param \gisgkh\types\Base\AttachmentType[] [$AttachmentProtocol] Приложенный документ
      */
-    public function __construct(array $ProtocolGUID = [], array $AttachmentProtocol = [])
+    public function __construct(array $ProtocolGUID = null, array $AttachmentProtocol = null)
     {
         $this->ProtocolGUID = $ProtocolGUID;
         $this->AttachmentProtocol = $AttachmentProtocol;

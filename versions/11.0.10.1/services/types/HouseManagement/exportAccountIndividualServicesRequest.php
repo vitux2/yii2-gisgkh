@@ -12,14 +12,14 @@ class exportAccountIndividualServicesRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var string[]
      */
-     public $AccountGuid = [];
+     public $AccountGuid = null;
 
     /**
      * Идентификатор индивидуальной услуги ЛС
      * 
      * @var string[]
      */
-     public $AccountIndividualServiceGUID = [];
+     public $AccountIndividualServiceGUID = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -33,7 +33,7 @@ class exportAccountIndividualServicesRequest extends \gisgkh\types\Base\BaseType
      * @param string[] $AccountIndividualServiceGUID Идентификатор индивидуальной услуги ЛС
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $AccountGuid = [], array $AccountIndividualServiceGUID = [], $version = "11.0.0.1")
+    public function __construct(array $AccountGuid = null, array $AccountIndividualServiceGUID = null, $version = "11.0.0.1")
     {
         $this->AccountGuid = $AccountGuid;
         $this->AccountIndividualServiceGUID = $AccountIndividualServiceGUID;

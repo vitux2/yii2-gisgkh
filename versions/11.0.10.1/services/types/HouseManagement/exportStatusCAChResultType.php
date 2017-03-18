@@ -81,7 +81,7 @@ Annul - сведения аннулированы
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusCAChResultType\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * Номер версии 
@@ -121,7 +121,7 @@ Annul - сведения аннулированы
      * @param \gisgkh\types\HouseManagement\exportStatusCAChResultType\ContractObject[] [$ContractObject] Управляемый объект
      * @param string $VersionNumber Номер версии 
      */
-    public function __construct(string $ContractGUID = null, string $ContractVersionGUID = null, string $ContractStatus = null, string $CharterGUID = null, string $CharterVersionGUID = null, string $CharterStatus = null, string $State = null, array $ContractObject = [], string $VersionNumber = null)
+    public function __construct(string $ContractGUID = null, string $ContractVersionGUID = null, string $ContractStatus = null, string $CharterGUID = null, string $CharterVersionGUID = null, string $CharterStatus = null, string $State = null, array $ContractObject = null, string $VersionNumber = null)
     {
         $this->ContractGUID = $ContractGUID;
         $this->ContractVersionGUID = $ContractVersionGUID;

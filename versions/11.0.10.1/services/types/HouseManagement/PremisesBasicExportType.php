@@ -26,7 +26,7 @@ class PremisesBasicExportType extends \gisgkh\types\HouseManagement\OGFExportSta
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * Дата прекращения существования объекта
@@ -41,7 +41,7 @@ class PremisesBasicExportType extends \gisgkh\types\HouseManagement\OGFExportSta
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      * @param string [$TerminationDate] Дата прекращения существования объекта
      */
-    public function __construct(string $PremisesNum = null, string $Floor = null, array $OGFData = [], string $TerminationDate = null)
+    public function __construct(string $PremisesNum = null, string $Floor = null, array $OGFData = null, string $TerminationDate = null)
     {
         $this->PremisesNum = $PremisesNum;
         $this->Floor = $Floor;

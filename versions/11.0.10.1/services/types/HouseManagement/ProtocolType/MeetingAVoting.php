@@ -41,7 +41,7 @@ class MeetingAVoting
      * 
      * @var \gisgkh\types\HouseManagement\Attachments[]
      */
-     public $Attachments = [];
+     public $Attachments = null;
 
     /**
      * @param string $MeetingDate Дата и время проведения собрания
@@ -50,7 +50,7 @@ class MeetingAVoting
      * @param string $ResolutionPlace Место приема решения
      * @param \gisgkh\types\HouseManagement\Attachments[] $Attachments Прикрепляемые файлы
      */
-    public function __construct(string $MeetingDate = null, string $VotingPlace = null, string $AVotingDate = null, string $ResolutionPlace = null, array $Attachments = [])
+    public function __construct(string $MeetingDate = null, string $VotingPlace = null, string $AVotingDate = null, string $ResolutionPlace = null, array $Attachments = null)
     {
         $this->MeetingDate = $MeetingDate;
         $this->VotingPlace = $VotingPlace;

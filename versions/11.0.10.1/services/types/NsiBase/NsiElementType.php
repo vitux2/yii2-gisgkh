@@ -54,14 +54,14 @@ class NsiElementType
      * 
      * @var \gisgkh\types\NsiBase\NsiElementFieldType[]
      */
-     public $NsiElementField = [];
+     public $NsiElementField = null;
 
     /**
      * Дочерний элемент.
      * 
      * @var \gisgkh\types\NsiBase\NsiElementType[]
      */
-     public $ChildElement = [];
+     public $ChildElement = null;
 
     /**
      * @param string $Code Код элемента справочника, уникальный в пределах справочника.
@@ -73,7 +73,7 @@ class NsiElementType
      * @param \gisgkh\types\NsiBase\NsiElementFieldType[] [$NsiElementField] Наименование и значение поля для элемента справочника.
      * @param \gisgkh\types\NsiBase\NsiElementType[] [$ChildElement] Дочерний элемент.
      */
-    public function __construct(string $Code = null, string $GUID = null, string $Modified = null, string $StartDate = null, string $EndDate = null, string $IsActual = null, array $NsiElementField = [], array $ChildElement = [])
+    public function __construct(string $Code = null, string $GUID = null, string $Modified = null, string $StartDate = null, string $EndDate = null, string $IsActual = null, array $NsiElementField = null, array $ChildElement = null)
     {
         $this->Code = $Code;
         $this->GUID = $GUID;

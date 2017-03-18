@@ -19,13 +19,13 @@ class ObjectAddress extends \gisgkh\types\HouseManagement\ObjectAddressType
      * 
      * @var \gisgkh\types\HouseManagement\SupplyResourceContractType\ObjectAddress\Pair[]
      */
-     public $Pair = [];
+     public $Pair = null;
 
     /**
      * @param string $TransportGUID Транспортный идентификатор
      * @param \gisgkh\types\HouseManagement\SupplyResourceContractType\ObjectAddress\Pair[] $Pair Пара: коммунальная услуга и коммунальный ресурс
      */
-    public function __construct(string $TransportGUID = null, array $Pair = [])
+    public function __construct(string $TransportGUID = null, array $Pair = null)
     {
         $this->TransportGUID = $TransportGUID;
         $this->Pair = $Pair;

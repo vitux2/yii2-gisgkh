@@ -19,13 +19,13 @@ class ImportResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\Base\CommonResultType[]
      */
-     public $CommonResult = [];
+     public $CommonResult = null;
 
     /**
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param \gisgkh\types\Base\CommonResultType[] $CommonResult 
      */
-    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $CommonResult = [])
+    public function __construct(\gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, array $CommonResult = null)
     {
         $this->ErrorMessage = $ErrorMessage;
         $this->CommonResult = $CommonResult;

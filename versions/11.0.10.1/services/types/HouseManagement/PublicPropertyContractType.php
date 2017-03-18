@@ -89,21 +89,21 @@ class PublicPropertyContractType
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ContractAttachment = [];
+     public $ContractAttachment = null;
 
     /**
      * Протокол собрания собственников  
      * 
      * @var \gisgkh\types\HouseManagement\PublicPropertyContractType\RentAgrConfirmationDocument[]
      */
-     public $RentAgrConfirmationDocument = [];
+     public $RentAgrConfirmationDocument = null;
 
     /**
      * Сведения о внесении платы и задолженности по такой плате
      * 
      * @var \gisgkh\types\HouseManagement\PublicPropertyContractType\AgreementPayment[]
      */
-     public $AgreementPayment = [];
+     public $AgreementPayment = null;
 
     /**
      * @param \gisgkh\types\OrganizationsRegistryBase\RegOrgType $Organization Организация
@@ -121,7 +121,7 @@ class PublicPropertyContractType
      * @param \gisgkh\types\HouseManagement\PublicPropertyContractType\RentAgrConfirmationDocument[] $RentAgrConfirmationDocument Протокол собрания собственников  
      * @param \gisgkh\types\HouseManagement\PublicPropertyContractType\AgreementPayment[] [$AgreementPayment] Сведения о внесении платы и задолженности по такой плате
      */
-    public function __construct(\gisgkh\types\OrganizationsRegistryBase\RegOrgType $Organization = null, \gisgkh\types\IndividualRegistryBase\IndType $Entrepreneur = null, string $FIASHouseGuid = null, string $ContractNumber = null, string $Date = null, string $StartDate = null, string $EndDate = null, string $ContractObject = null, string $Comments = null, string $Payment = null, string $MoneySpentDirection = null, array $ContractAttachment = [], array $RentAgrConfirmationDocument = [], array $AgreementPayment = [])
+    public function __construct(\gisgkh\types\OrganizationsRegistryBase\RegOrgType $Organization = null, \gisgkh\types\IndividualRegistryBase\IndType $Entrepreneur = null, string $FIASHouseGuid = null, string $ContractNumber = null, string $Date = null, string $StartDate = null, string $EndDate = null, string $ContractObject = null, string $Comments = null, string $Payment = null, string $MoneySpentDirection = null, array $ContractAttachment = null, array $RentAgrConfirmationDocument = null, array $AgreementPayment = null)
     {
         $this->Organization = $Organization;
         $this->Entrepreneur = $Entrepreneur;

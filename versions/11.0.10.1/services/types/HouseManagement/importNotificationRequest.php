@@ -12,7 +12,7 @@ class importNotificationRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\importNotificationRequest\notification[]
      */
-     public $notification = [];
+     public $notification = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -25,7 +25,7 @@ class importNotificationRequest extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\importNotificationRequest\notification[] $notification 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $notification = [], $version = "10.0.1.1")
+    public function __construct(array $notification = null, $version = "10.0.1.1")
     {
         $this->notification = $notification;
         $this->version = $version;

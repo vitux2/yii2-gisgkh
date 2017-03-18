@@ -12,7 +12,7 @@ class exportStatusCAChRequest extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportStatusCAChRequest\Criteria[]
      */
-     public $Criteria = [];
+     public $Criteria = null;
 
     /**
      * Версия элемента, начиная с которой поддерживается совместимость
@@ -25,7 +25,7 @@ class exportStatusCAChRequest extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\HouseManagement\exportStatusCAChRequest\Criteria[] $Criteria 
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $Criteria = [], $version = "10.0.1.1")
+    public function __construct(array $Criteria = null, $version = "10.0.1.1")
     {
         $this->Criteria = $Criteria;
         $this->version = $version;

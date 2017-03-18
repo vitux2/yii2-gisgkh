@@ -12,12 +12,12 @@ class ApartmentHouseDevice
      * 
      * @var string[]
      */
-     public $AccountGUID = [];
+     public $AccountGUID = null;
 
     /**
      * @param string[] $AccountGUID Идентификатор ЛС
      */
-    public function __construct(array $AccountGUID = [])
+    public function __construct(array $AccountGUID = null)
     {
         $this->AccountGUID = $AccountGUID;
     }

@@ -12,7 +12,7 @@ class EditCharter extends \gisgkh\types\HouseManagement\CharterType
      * 
      * @var \gisgkh\types\HouseManagement\importCharterRequest\EditCharter\ContractObject[]
      */
-     public $ContractObject = [];
+     public $ContractObject = null;
 
     /**
      * Идентификатор версии устава в ГИС ЖКХ 
@@ -33,7 +33,7 @@ class EditCharter extends \gisgkh\types\HouseManagement\CharterType
      * @param string $CharterVersionGUID Идентификатор версии устава в ГИС ЖКХ 
      * @param string [$RISUHouseRequest] Формировать заявки в реестр информации о способах управления МКД (РИСУ), если сведения об управляемом объекте устава конфликтуют с РИСУ
      */
-    public function __construct(array $ContractObject = [], string $CharterVersionGUID = null, string $RISUHouseRequest = null)
+    public function __construct(array $ContractObject = null, string $CharterVersionGUID = null, string $RISUHouseRequest = null)
     {
         $this->ContractObject = $ContractObject;
         $this->CharterVersionGUID = $CharterVersionGUID;

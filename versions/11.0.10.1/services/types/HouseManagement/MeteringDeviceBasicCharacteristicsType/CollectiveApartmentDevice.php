@@ -19,13 +19,13 @@ class CollectiveApartmentDevice
      * 
      * @var string[]
      */
-     public $AccountGUID = [];
+     public $AccountGUID = null;
 
     /**
      * @param string $PremiseGUID Идентификатор жилого помещения
      * @param string[] $AccountGUID Идентификатор ЛС
      */
-    public function __construct(string $PremiseGUID = null, array $AccountGUID = [])
+    public function __construct(string $PremiseGUID = null, array $AccountGUID = null)
     {
         $this->PremiseGUID = $PremiseGUID;
         $this->AccountGUID = $AccountGUID;

@@ -47,7 +47,7 @@ class BlockOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * 
      * @var \gisgkh\types\HouseManagement\OGFData[]
      */
-     public $OGFData = [];
+     public $OGFData = null;
 
     /**
      * @param string $BlockNum Номер блока
@@ -57,7 +57,7 @@ class BlockOMSType extends \gisgkh\types\HouseManagement\GKN_EGRP_KeyType
      * @param string $NoGrossArea Отсутствует значение жилой площади
      * @param \gisgkh\types\HouseManagement\OGFData[] [$OGFData] Данные ОЖФ
      */
-    public function __construct(string $BlockNum = null, \gisgkh\types\NsiBase\nsiRef $PremisesCharacteristic = null, string $TotalArea = null, string $GrossArea = null, string $NoGrossArea = null, array $OGFData = [])
+    public function __construct(string $BlockNum = null, \gisgkh\types\NsiBase\nsiRef $PremisesCharacteristic = null, string $TotalArea = null, string $GrossArea = null, string $NoGrossArea = null, array $OGFData = null)
     {
         $this->BlockNum = $BlockNum;
         $this->PremisesCharacteristic = $PremisesCharacteristic;

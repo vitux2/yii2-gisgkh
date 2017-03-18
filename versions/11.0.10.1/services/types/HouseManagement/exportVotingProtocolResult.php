@@ -12,7 +12,7 @@ class exportVotingProtocolResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportVotingProtocolResult\VotingProtocol[]
      */
-     public $VotingProtocol = [];
+     public $VotingProtocol = null;
 
     /**
      * Описание ошибок контролей или бизнес-процесса
@@ -33,7 +33,7 @@ class exportVotingProtocolResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $VotingProtocol = [], \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "10.0.1.1")
+    public function __construct(array $VotingProtocol = null, \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "10.0.1.1")
     {
         $this->VotingProtocol = $VotingProtocol;
         $this->ErrorMessage = $ErrorMessage;

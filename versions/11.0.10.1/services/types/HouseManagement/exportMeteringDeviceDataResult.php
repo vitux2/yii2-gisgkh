@@ -12,7 +12,7 @@ class exportMeteringDeviceDataResult extends \gisgkh\types\Base\BaseType
      * 
      * @var \gisgkh\types\HouseManagement\exportMeteringDeviceDataResultType[]
      */
-     public $MeteringDevice = [];
+     public $MeteringDevice = null;
 
     /**
      * Описание ошибок контролей или бизнес-процесса
@@ -33,7 +33,7 @@ class exportMeteringDeviceDataResult extends \gisgkh\types\Base\BaseType
      * @param \gisgkh\types\Base\ErrorMessageType $ErrorMessage Описание ошибок контролей или бизнес-процесса
      * @param string [$version] Версия элемента, начиная с которой поддерживается совместимость
      */
-    public function __construct(array $MeteringDevice = [], \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.1")
+    public function __construct(array $MeteringDevice = null, \gisgkh\types\Base\ErrorMessageType $ErrorMessage = null, $version = "11.0.0.1")
     {
         $this->MeteringDevice = $MeteringDevice;
         $this->ErrorMessage = $ErrorMessage;

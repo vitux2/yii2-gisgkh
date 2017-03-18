@@ -33,7 +33,7 @@ class MeteringDeviceFullInformationType
      * 
      * @var \gisgkh\types\HouseManagement\MunicipalResourceNotElectricType[]
      */
-     public $MunicipalResourceNotEnergy = [];
+     public $MunicipalResourceNotEnergy = null;
 
     /**
      * Сведения о коммунальном ресурсе и базовые показания ПУ (электрическая энергия)
@@ -49,7 +49,7 @@ class MeteringDeviceFullInformationType
      * @param \gisgkh\types\HouseManagement\MunicipalResourceNotElectricType[] $MunicipalResourceNotEnergy Сведения о коммунальном ресурсе и базовые показания ПУ  (тепловая энергия, газ, горячая вода, холодная вода, сточные бытовые воды)
      * @param \gisgkh\types\HouseManagement\MunicipalResourceElectricType $MunicipalResourceEnergy Сведения о коммунальном ресурсе и базовые показания ПУ (электрическая энергия)
      */
-    public function __construct(\gisgkh\types\HouseManagement\MeteringDeviceBasicCharacteristicsType $BasicChatacteristicts = null, string $NotLinkedWithMetering = null, \gisgkh\types\HouseManagement\MeteringDeviceFullInformationType\LinkedWithMetering $LinkedWithMetering = null, array $MunicipalResourceNotEnergy = [], \gisgkh\types\HouseManagement\MunicipalResourceElectricType $MunicipalResourceEnergy = null)
+    public function __construct(\gisgkh\types\HouseManagement\MeteringDeviceBasicCharacteristicsType $BasicChatacteristicts = null, string $NotLinkedWithMetering = null, \gisgkh\types\HouseManagement\MeteringDeviceFullInformationType\LinkedWithMetering $LinkedWithMetering = null, array $MunicipalResourceNotEnergy = null, \gisgkh\types\HouseManagement\MunicipalResourceElectricType $MunicipalResourceEnergy = null)
     {
         $this->BasicChatacteristicts = $BasicChatacteristicts;
         $this->NotLinkedWithMetering = $NotLinkedWithMetering;

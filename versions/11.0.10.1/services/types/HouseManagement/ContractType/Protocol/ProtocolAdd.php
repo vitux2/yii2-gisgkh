@@ -19,28 +19,28 @@ class ProtocolAdd
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProtocolOK = [];
+     public $ProtocolOK = null;
 
     /**
      * Протокол собрания собственников 
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProtocolMeetingOwners = [];
+     public $ProtocolMeetingOwners = null;
 
     /**
      * Протокол заседания правления
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProtocolMeetingBoard = [];
+     public $ProtocolMeetingBoard = null;
 
     /**
      * Документ, подтверждающий принятое решение органом управления застройщика
      * 
      * @var \gisgkh\types\Base\AttachmentType[]
      */
-     public $ProtocolBuildingOwner = [];
+     public $ProtocolBuildingOwner = null;
 
     /**
      * @param string [$PurchaseNumber] Номер извещения
@@ -49,7 +49,7 @@ class ProtocolAdd
      * @param \gisgkh\types\Base\AttachmentType[] [$ProtocolMeetingBoard] Протокол заседания правления
      * @param \gisgkh\types\Base\AttachmentType[] [$ProtocolBuildingOwner] Документ, подтверждающий принятое решение органом управления застройщика
      */
-    public function __construct(string $PurchaseNumber = null, array $ProtocolOK = [], array $ProtocolMeetingOwners = [], array $ProtocolMeetingBoard = [], array $ProtocolBuildingOwner = [])
+    public function __construct(string $PurchaseNumber = null, array $ProtocolOK = null, array $ProtocolMeetingOwners = null, array $ProtocolMeetingBoard = null, array $ProtocolBuildingOwner = null)
     {
         $this->PurchaseNumber = $PurchaseNumber;
         $this->ProtocolOK = $ProtocolOK;
