@@ -12,7 +12,7 @@ use startuplab\helpers\GuidHelper;
 
 class NsiCommonService
 {
-    protected $wsdl = '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/schema/nsi-common/hcs-nsi-common-service.wsdl';
+    protected $wsdl = __DIR__ . '/../../schema/nsi-common/hcs-nsi-common-service.wsdl';
     protected $location = 'https://217.107.108.147:10081/ext-bus-nsi-common-service/services/NsiCommon';
 
     /**
@@ -24,9 +24,9 @@ class NsiCommonService
     public function exportNsiItem($registryNumber, $modifiedAfter = null, $listGroup = 'NSI')
     {
         $classMap = array_merge(
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/NsiCommon/exportNsiItemRequest.classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/NsiCommon/exportNsiItemResult.classmap.php'
+            require __DIR__ . '/../types/classmap.php',
+            require __DIR__ . '/../types/NsiCommon/exportNsiItemRequest.classmap.php',
+            require __DIR__ . '/../types/NsiCommon/exportNsiItemResult.classmap.php'
         );
 
         $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
@@ -39,32 +39,7 @@ class NsiCommonService
         $request = new exportNsiItemRequest($registryNumber, $listGroup, $modifiedAfter);
         $request->Id = GuidHelper::generate();
 
-        try {
-
-            /* @var exportNsiItemResult $nsiItemResult */
-            $nsiItemResult = $client->__soapCall('exportNsiItem', [$request]);
-
-            if (!empty($nsiItemResult->ErrorMessage)) {
-                \Yii::error(
-                    sprintf(
-                        'Ошибка импорта перечня справочников ГИС ЖКХ. %s: %s',
-                        $nsiItemResult->ErrorMessage->ErrorCode,
-                        $nsiItemResult->ErrorMessage->Description
-                    ),
-                    __METHOD__
-                );
-            }
-
-        } catch (\SoapFault $e) {
-
-            print "Soap Error!\n\n";
-            print sprintf("Last request headers: %s\n", $client->__getLastRequestHeaders());
-            print sprintf("Last request: %s\n", $client->__getLastRequest());
-            print sprintf("Class: %s\n", get_class($e));
-            print sprintf("Message: %s\n", $e->getMessage());
-        }
-
-        return $nsiItemResult;
+        return $client->__soapCall('exportNsiItem', [$request]);
     }
 
     /**
@@ -74,9 +49,9 @@ class NsiCommonService
     public function exportNsiList($listGroup = 'NSI')
     {
         $classMap = array_merge(
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/NsiCommon/exportNsiListRequest.classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/NsiCommon/exportNsiListResult.classmap.php'
+            require __DIR__ . '/../types/classmap.php',
+            require __DIR__ . '/../types/NsiCommon/exportNsiListRequest.classmap.php',
+            require __DIR__ . '/../types/NsiCommon/exportNsiListResult.classmap.php'
         );
 
         $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
@@ -86,20 +61,6 @@ class NsiCommonService
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
         $client->__setSoapHeaders(new \SoapHeader("http://dom.gosuslugi.ru/schema/integration/base/", 'ISRequestHeader', $header));
 
-        /* @var exportNsiListResult $nsiListResult */
-        $nsiListResult = $client->__soapCall('exportNsiList', [new exportNsiListRequest($listGroup)]);
-
-        if (!empty($nsiListResult->ErrorMessage)) {
-            \Yii::error(
-                sprintf(
-                    'Ошибка импорта перечня справочников ГИС ЖКХ. %s: %s',
-                    $nsiListResult->ErrorMessage->ErrorCode,
-                    $nsiListResult->ErrorMessage->Description
-                ),
-                __METHOD__
-            );
-        }
-
-        return $nsiListResult;
+        return $client->__soapCall('exportNsiList', [new exportNsiListRequest($listGroup)]);
     }
 }

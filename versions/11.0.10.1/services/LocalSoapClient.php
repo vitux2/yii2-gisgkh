@@ -32,6 +32,46 @@ class LocalSoapClient extends \SoapClient
         ]);
     }
 
+    public function __soapCall(
+        $function_name,
+        $arguments,
+        $options = null,
+        $input_headers = null,
+        &$output_headers = null
+    ) {
+        try {
+            return parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
+        } catch (\SoapFault $exception) {
+
+            $message = $exception->getMessage();
+            if (!empty($message)) {
+                echo sprintf("Message:\n%s\n\n", $message);
+            }
+
+            $headers = $this->__getLastRequestHeaders();
+            if (!empty($headers)) {
+                echo sprintf("Request headers:\n%s\n\n", $headers);
+            }
+
+            $request = $this->__getLastRequest();
+            if (!empty($request)) {
+                echo sprintf("Request content:\n%s\n\n", $this->prettyXml($request));
+            }
+
+            $headers = $this->__getLastResponseHeaders();
+            if (!empty($headers)) {
+                echo sprintf("Response headers:\n%s\n\n", $headers);
+            }
+
+            $response = $this->__getLastResponse();
+            if (!empty($response)) {
+                echo sprintf("Response content:\n%s\n\n", $this->prettyXml($response));
+            }
+
+            throw $exception;
+        }
+    }
+
     /**
      * Перегрузка системного метода выполнения запроса
      *
@@ -125,5 +165,14 @@ class LocalSoapClient extends \SoapClient
 
         curl_close($handle);
         return $response;
+    }
+
+    protected function prettyXml($data, $linePrefix = '~ ')
+    {
+        $domDocument = new \DOMDocument("1.0", "UTF-8");
+        $domDocument->preserveWhiteSpace = false;
+        $domDocument->formatOutput = true;
+        $domDocument->loadXML($data);
+        return $linePrefix . (str_replace("\n", "\n{$linePrefix}", $domDocument->saveXML()));
     }
 }

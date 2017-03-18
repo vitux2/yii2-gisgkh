@@ -14,7 +14,7 @@ use startuplab\helpers\GuidHelper;
 
 class HouseManagementService
 {
-    private $wsdl = '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/schema/house-management/hcs-house-management-service.wsdl';
+    private $wsdl = __DIR__ . '/../../schema/house-management/hcs-house-management-service.wsdl';
     private $location = 'https://217.107.108.147:10081/ext-bus-home-management-service/services/HomeManagement';
 
     /**
@@ -25,9 +25,9 @@ class HouseManagementService
     public function exportSupplyResourceContractData(exportSupplyResourceContractRequest $request)
     {
         $client = new LocalSoapClient($this->wsdl, $this->location, array_merge(
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/HouseManagement/exportSupplyResourceContractRequest.classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/HouseManagement/ExportSupplyResourceContractType.classmap.php'
+            require __DIR__ . '/../types/classmap.php',
+            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractRequest.classmap.php',
+            require __DIR__ . '/../types/HouseManagement/ExportSupplyResourceContractType.classmap.php'
         ));
 
         $header = new RequestHeader(Module::getInstance()->SenderId, Module::getInstance()->orgPPAGUID);
@@ -40,16 +40,7 @@ class HouseManagementService
 
         $request->Id = GuidHelper::generate();
 
-        try {
-            return $client->__soapCall('exportSupplyResourceContractData', [$request]);
-        } catch (\SoapFault $e) {
-            echo "Exception Error!\n\n";
-            echo sprintf("Last request headers: %s\n", $client->__getLastRequestHeaders());
-            echo sprintf("Last request: %s\n", $client->__getLastRequest());
-            echo sprintf("Class: %s\n", get_class($e));
-            echo sprintf("Message: %s\n", $e->getMessage());
-            throw $e;
-        }
+        return $client->__soapCall('exportSupplyResourceContractData', [$request]);
     }
 
     /**
@@ -60,8 +51,8 @@ class HouseManagementService
     public function importSupplyResourceContractData(importSupplyResourceContractRequest $request)
     {
         $client = new LocalSoapClient($this->wsdl, $this->location, array_merge(
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/classmap.php',
-            require '/home/user/Workspace/rias-web/modules/opengkh/versions/11.0.10.1/services/types/HouseManagement/ImportResult.classmap.php'
+            require __DIR__ . '/../types/classmap.php',
+            require __DIR__ . '/../types/HouseManagement/ImportResult.classmap.php'
         ));
 
         $header = new RequestHeader(Module::getInstance()->SenderId, Module::getInstance()->orgPPAGUID);
@@ -74,15 +65,6 @@ class HouseManagementService
 
         $request->Id = GuidHelper::generate();
 
-        try {
-            return $client->__soapCall('importSupplyResourceContractData', [$request]);
-        } catch (\SoapFault $e) {
-            echo "Exception Error!\n\n";
-            echo sprintf("Last request headers: %s\n", $client->__getLastRequestHeaders());
-            echo sprintf("Last request: %s\n", $client->__getLastRequest());
-            echo sprintf("Class: %s\n", get_class($e));
-            echo sprintf("Message: %s\n", $e->getMessage());
-            throw $e;
-        }
+        return $client->__soapCall('importSupplyResourceContractData', [$request]);
     }
 }
