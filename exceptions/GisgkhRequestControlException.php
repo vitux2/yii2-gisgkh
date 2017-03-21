@@ -2,7 +2,7 @@
 
 namespace opengkh\gis\exceptions;
 
-use gisgkh\types\lib\ErrorMessageType;
+use gisgkh\types\Base\ErrorMessageType;
 
 /**
  * Ошибка контроля или бизнес-процессов

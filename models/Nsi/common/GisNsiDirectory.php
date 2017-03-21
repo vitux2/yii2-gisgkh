@@ -2,11 +2,10 @@
 
 namespace opengkh\gis\models\Nsi\common;
 
-use startuplab\helpers\ArrayHelper;
 use yii\base\Model;
 
-use gisgkh\NsiCommonService;
-use gisgkh\types\lib\ErrorMessageType;
+use gisgkh\services\NsiCommonService;
+use gisgkh\ErrorMessageType;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 
 /**
@@ -125,8 +124,8 @@ abstract class GisNsiDirectory extends Model
         try {
             // выполнение запроса к ГИС ЖКХ на получение записей справочника НСИ
             $result = $nsiCommonService->exportNsiItem(
-                $this->getRegisterNumber(),
-                empty($this->modifiedFrom) ? null : $this->modifiedFrom
+                (string) $this->getRegisterNumber(),
+                empty($this->modifiedFrom) ? null : $this->modifiedFrom->format(DATE_ATOM)
             );
         } catch (\SoapFault $e) {
             print_r($nsiCommonService->__getLastResponse());

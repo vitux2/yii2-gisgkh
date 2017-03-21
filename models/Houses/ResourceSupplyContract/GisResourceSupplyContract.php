@@ -3,26 +3,24 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\DRSOIndType;
+use \gisgkh\types\HouseManagement\ExportSupplyResourceContractType\ContractSubject;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
-use gisgkh\types\HouseManagement\HeatingSystemType;
-use gisgkh\types\HouseManagement\Quality;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ContractSubject;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_IsContract;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_IsNotContract;
-use gisgkh\types\HouseManagement\Owner;
+use gisgkh\types\HouseManagement\ExportSupplyResourceContractType\IsContract;
+use gisgkh\types\HouseManagement\ExportSupplyResourceContractType\IsNotContract;
 use gisgkh\types\HouseManagement\SupplyResourceContractType;
 
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ObjectAddress_Pair;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_Organization;
-use gisgkh\types\lib\Nsi\nsiRef;
-use gisgkh\types\lib\OrganizationsRegistry\RegOrgType;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\ApartmentBuildingOwner;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\LivingHouseOwner;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\ObjectAddress\Pair\HeatingSystemType;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Organization;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Quality;
+use gisgkh\types\OrganizationsRegistryBase\RegOrgType;
 use opengkh\gis\exceptions\GisgkhDataExtractionException;
 use opengkh\gis\models\common\GisAttachment;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
-use opengkh\gis\models\common\GisDayOfMonth;
 use opengkh\gis\models\common\GisPerson;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use startuplab\helpers\GuidHelper;
 
 /**
  * Договор ресурсоснабжения
@@ -129,7 +127,6 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
         $this->rootGuid = $source->ContractRootGUID;
         $this->versionGuid = $source->ContractGUID;
 
-        /* @var SupplyResourceContractType_IsContract $contractMeta */
         $contractMeta = null;
         if (!empty($source->IsContract)) {
             $contractMeta = $source->IsContract;
@@ -139,11 +136,10 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
             $this->noContract = true;
         }
         $this->number = $contractMeta->ContractNumber;
-        $this->signingDate = $contractMeta->getSigningDate();
-        $this->effectiveDate = $contractMeta->getEffectiveDate();
+        $this->signingDate = new \DateTime($contractMeta->SigningDate);
+        $this->effectiveDate = new \DateTime($contractMeta->EffectiveDate);
         $this->attachments = GisAttachment::convertFromArray($contractMeta->ContractAttachment);
 
-        /* @var Owner $owner */
         $owner = null;
         if ($source->Offer) {
             $this->contractType = static::CONTRACT_TYPE_OFFER;
@@ -176,15 +172,18 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
             $this->base = GisNsiDirectoryEntryLink::convertFrom($source->ContractBase);
         }
 
-        $this->completionDate = $source->getCompletionDate();
-        $this->isPlannedVolume = $source->getIsPlannedVolume();
+        $this->completionDate = new \DateTime($source->ComptetionDate);
+        $this->isPlannedVolume = $source->IsPlannedVolume;
 
         $this->readingsDeliveryPeriod = GisReadingsDeliveryPeriod::convertFrom($source->Period);
         $this->billingDay = GisBilingDay::convertFrom($source->BillingDate);
         $this->paymentDay = GisBilingDay::convertFrom($source->PaymentDate);
-        $this->providingInformationDay = GisBilingDay::convertFrom($source->ProvidingInformationDate);
 
-        $this->subjects = array_map(function (SupplyResourceContractType_ContractSubject $gisSubject) use ($source) {
+        if ($source->ProvidingInformationDate) {
+            $this->providingInformationDay = GisBilingDay::convertFrom($source->ProvidingInformationDate);
+        }
+
+        $this->subjects = array_map(function (ContractSubject $gisSubject) use ($source) {
             $subject = GisResourceSupplyContractSubject::convertFrom($gisSubject);
             if ($source->Quality)
             foreach ($source->Quality as $quality) {
@@ -208,30 +207,40 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
     public function fillTo(&$target)
     {
         if ($this->noContract) {
-            $target->IsNotContract = new SupplyResourceContractType_IsNotContract(
-                $this->number,
-                $this->signingDate,
-                $this->effectiveDate,
+            $target->IsNotContract = new IsNotContract(
+                (string) $this->number,
+                $this->signingDate->format('Y-m-d'),
+                $this->effectiveDate->format('Y-m-d'),
                 GisAttachment::convertToArray($this->attachments)
             );
         } else {
-            $target->IsContract = new SupplyResourceContractType_IsContract(
-                $this->number,
-                $this->signingDate,
-                $this->effectiveDate,
+            $target->IsContract = new IsContract(
+                (string) $this->number,
+                $this->signingDate->format('Y-m-d'),
+                $this->effectiveDate->format('Y-m-d'),
                 GisAttachment::convertToArray($this->attachments)
             );
         }
 
         switch ($this->contractType) {
             case static::CONTRACT_TYPE_OFFER:
-                $target->setIsOffer();
+                $target->Offer = 'true';
                 break;
             case static::CONTRACT_TYPE_MC:
-                $target->Organization = new SupplyResourceContractType_Organization($this->managementCompanyGuid);
+                $target->Organization = new Organization($this->managementCompanyGuid);
                 break;
             case static::CONTRACT_TYPE_OWNER:
-                $owner = new Owner();
+
+                $owner = null;
+
+                switch ($this->propertyType) {
+                    case static::PROPERTY_TYPE_APARTMENT_BUILDING:
+                        $owner = new ApartmentBuildingOwner();
+                        break;
+                    case static::PROPERTY_TYPE_LIVING_HOUSE:
+                        $owner = new LivingHouseOwner();
+                        break;
+                }
 
                 switch ($this->counterpartyType) {
                     case static::COUNTERPARTY_TYPE_ORGANIZATION:
@@ -239,7 +248,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
                         break;
                     case static::COUNTERPARTY_TYPE_PERSON:
                         if (!empty($this->person)) {
-                            $owner->Ind = $this->person->convertTo(DRSOIndType::className());
+                            $owner->Ind = $this->person->convertTo(DRSOIndType::class);
                         } else {
                             $owner->Ind = "";
                         }
@@ -271,14 +280,15 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
             $target->BillingDate = $this->billingDay->convertTo();
         if (!empty($this->paymentDay))
             $target->PaymentDate = $this->paymentDay->convertTo();
-        if (!empty($this->providingInformationDay))
+        if (!empty($this->providingInformationDay) && !empty($this->providingInformationDay->day))
             $target->ProvidingInformationDate = $this->providingInformationDay->convertTo();
 
         $target->ContractSubject = [];
         $target->Quality = [];
         foreach ($this->subjects as $subject) {
-            /* @var SupplyResourceContractType_ContractSubject $gisSubject */
-            $gisSubject = $subject->convertTo(SupplyResourceContractType_ContractSubject::className());
+            /* @var SupplyResourceContractType\ContractSubject $gisSubject */
+            $gisSubject = $subject->convertTo(SupplyResourceContractType\ContractSubject::class);
+            $gisSubject->TransportGUID = GuidHelper::generate();
             if (!empty($subject->qualityIndicators)) {
                 foreach ($subject->qualityIndicators as $quality) {
                     /* @var Quality $gisQuality */
@@ -290,12 +300,13 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
 
             $target->ContractSubject[] = $gisSubject;
         }
-        $target->ObjectAddress = GisResourceSupplyContractObject::convertToArray($this->objects, SupplyResourceContractType_ObjectAddress::className());
+        $target->ObjectAddress = GisResourceSupplyContractObject::convertToArray($this->objects, SupplyResourceContractType\ObjectAddress::class);
 
         for ($i = 0; $i < count($target->ObjectAddress); $i++) {
+            $target->ObjectAddress[$i]->TransportGUID = GuidHelper::generate();
             $pairs = [];
             for ($j = 0; $j < count($target->ContractSubject); $j++) {
-                $pair = new SupplyResourceContractType_ObjectAddress_Pair();
+                $pair = new SupplyResourceContractType\ObjectAddress\Pair();
                 $pair->PairKey = $target->ContractSubject[$j]->TransportGUID;
                 $pair->StartSupplyDate = $target->ContractSubject[$j]->StartSupplyDate;
                 $pair->EndSupplyDate = $target->ContractSubject[$j]->EndSupplyDate;
@@ -314,14 +325,12 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
         $target->SpecifyingQualityIndicators = $this->commonQualityIndicators ? 'D' : 'O';
     }
 
-
-
     /**
      * @inheritdoc
      */
     public function getGisgkhType()
     {
-        return SupplyResourceContractType::className();
+        return SupplyResourceContractType::class;
     }
 
 

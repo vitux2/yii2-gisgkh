@@ -1,8 +1,8 @@
 <?php
 
 namespace opengkh\gis\models\common;
-use gisgkh\types\lib\IndividualRegistry\ID;
-use gisgkh\types\lib\IndividualRegistry\IndType;
+use gisgkh\types\IndividualRegistryBase\ID;
+use gisgkh\types\IndividualRegistryBase\IndType;
 
 /**
  * Физическое лицо
@@ -70,7 +70,7 @@ class GisPerson extends CompatibleWithGisgkh
             $this->patronymic = $source->Patronymic;
         if (!empty($source->Sex))
             $this->sex = ($source->Sex == 'M');
-        $this->dateOfBirth = $source->getDateOfBirth();
+        $this->dateOfBirth = new \DateTime($source->DateOfBirth);
         $this->placeOfBirth = $source->PlaceBirth;
         $this->SNILS = $source->SNILS;
         $this->identityDocument = GisIdentityDocument::convertFrom($source->ID);
@@ -105,6 +105,6 @@ class GisPerson extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return IndType::className();
+        return IndType::class;
     }
 }

@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: max
- * Date: 01.11.16
- * Time: 16:14
- */
 
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
-use gisgkh\types\GisgkhType;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_BillingDate;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\BillingDate;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\common\GisDayOfMonth;
 
@@ -27,12 +20,12 @@ class GisBilingDay extends CompatibleWithGisgkh
      */
     function getGisgkhType()
     {
-        return SupplyResourceContractType_BillingDate::className();
+        return BillingDate::class;
     }
 
     /**
      * @inheritDoc
-     * @param SupplyResourceContractType_BillingDate $source
+     * @param BillingDate $source
      */
     function fillFrom($source)
     {
@@ -42,11 +35,11 @@ class GisBilingDay extends CompatibleWithGisgkh
 
     /**
      * @inheritDoc
-     * @param SupplyResourceContractType_BillingDate $target
+     * @param BillingDate $target
      */
     function fillTo(&$target)
     {
-        $target->Date = $this->day->convertTo();
+        $target->Date = empty($this->day) ? null : $this->day->convertTo();
         $target->DateType = ( $this->nextMonth ? 'N' : 'C' );
     }
 }

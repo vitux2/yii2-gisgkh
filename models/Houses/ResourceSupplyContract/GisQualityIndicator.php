@@ -2,8 +2,7 @@
 
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
-use gisgkh\types\GisgkhType;
-use gisgkh\types\HouseManagement\Quality;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Quality;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
@@ -40,7 +39,7 @@ class GisQualityIndicator extends CompatibleWithGisgkh
      */
     function getGisgkhType()
     {
-        return Quality::className();
+        return Quality::class;
     }
 
     /**

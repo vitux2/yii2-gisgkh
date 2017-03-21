@@ -2,10 +2,9 @@
 
 namespace opengkh\gis\models\Nsi;
 
-use gisgkh\types\lib\Nsi\NsiElementNsiFieldType;
-use gisgkh\types\lib\Nsi\NsiElementOkeiRefFieldType;
-use gisgkh\types\lib\Nsi\NsiElementStringFieldType;
-use gisgkh\types\lib\Nsi\NsiElementType;
+use gisgkh\types\NsiBase\NsiElementNsiRefFieldType;
+use gisgkh\types\NsiBase\NsiElementOkeiRefFieldType;
+use gisgkh\types\NsiBase\NsiElementStringFieldType;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 use \opengkh\gis\models\Nsi\common\GisNsiPermanentDirectoryEntry;
 
@@ -67,7 +66,7 @@ class MunicipalService extends GisNsiPermanentDirectoryEntry
                     $this->powerOkei = $nsiField->Code;
                     break;
                 case self::FIELD_TITLE_OKI_MUNICIPAL_RESOURCE_REFERENCE:
-                    /* @var NsiElementNsiFieldType $nsiField */
+                    /* @var NsiElementNsiRefFieldType $nsiField */
                     if (!empty($nsiField->NsiRef)) {
                         $this->okiMunicipalResourceReference = GisNsiDirectoryEntryLink::convertFrom($nsiField->NsiRef->Ref);
                     } else {

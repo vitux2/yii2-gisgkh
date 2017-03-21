@@ -1,7 +1,7 @@
 <?php
 
 namespace opengkh\gis\models\Nsi\common;
-use gisgkh\types\lib\Nsi\NsiElementType;
+use gisgkh\types\NsiBase\NsiElementType;
 
 /**
  * Абстрактный ограниченный по времени действия элемент справочника
@@ -25,8 +25,8 @@ abstract class GisNsiNonPermanentDirectoryEntry extends GisNsiDirectoryEntry
      */
     public function fillFrom($source)
     {
-        $this->startDate = $source->getStartDate();
-        $this->endDate = $source->getEndDate();
+        $this->startDate = new \DateTime($source->StartDate);
+        $this->endDate = new \DateTime($source->EndDate);
         return parent::fillFrom($source);
     }
 
@@ -37,7 +37,7 @@ abstract class GisNsiNonPermanentDirectoryEntry extends GisNsiDirectoryEntry
     public function fillTo(&$target)
     {
         parent::fillTo($target);
-        $target->setStartDate($this->startDate);
-        $target->setEndDate($this->endDate);
+        $target->StartDate = $this->startDate->format(DATE_ATOM);
+        $target->EndDate = $this->endDate->format(DATE_ATOM);
     }
 }

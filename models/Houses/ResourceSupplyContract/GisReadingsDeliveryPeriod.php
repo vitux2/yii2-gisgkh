@@ -2,8 +2,9 @@
 
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
-use gisgkh\types\GisgkhType;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_Period;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Period;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Period\End;
+use gisgkh\types\HouseManagement\SupplyResourceContractType\Period\Start;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\common\GisDayOfMonth;
 
@@ -39,12 +40,12 @@ class GisReadingsDeliveryPeriod extends CompatibleWithGisgkh
      */
     function getGisgkhType()
     {
-        return SupplyResourceContractType_Period::className();
+        return Period::class;
     }
 
     /**
      * @inheritDoc
-     * @param SupplyResourceContractType_Period $source
+     * @param Period $source
      */
     function fillFrom($source)
     {
@@ -57,10 +58,13 @@ class GisReadingsDeliveryPeriod extends CompatibleWithGisgkh
 
     /**
      * @inheritDoc
-     * @param SupplyResourceContractType_Period $target
+     * @param Period $target
      */
     function fillTo(&$target)
     {
+        $target->Start = new Start();
+        $target->End = new End();
+
         $target->Start->NextMonth = $this->firstDayInNextMonth ? 'true' : null;
         $target->Start->StartDate = $this->firstDay->convertTo();
         $target->End->NextMonth = $this->lastDayInNextMonth ? 'true' : null;

@@ -3,7 +3,6 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\ContractSubjectType;
-use gisgkh\types\HouseManagement\SupplyResourceContractType_ServiceType;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 
@@ -52,8 +51,8 @@ class GisResourceSupplyContractSubject extends CompatibleWithGisgkh
     {
         $this->serviceType = GisNsiDirectoryEntryLink::convertFrom($source->ServiceType);
         $this->municipalResource = GisNsiDirectoryEntryLink::convertFrom($source->MunicipalResource);
-        $this->startSupplyDate = $source->getStartSupplyDate();
-        $this->endSupplyDate = $source->getEndSupplyDate();
+        $this->startSupplyDate = new \DateTime($source->StartSupplyDate);
+        $this->endSupplyDate = new \DateTime($source->EndSupplyDate);
         if (!empty($source->PlannedVolume)) {
             $this->plannedVolume = GisResourceSupplyContractPlannedVolume::convertFrom($source->PlannedVolume);
         }
@@ -80,6 +79,6 @@ class GisResourceSupplyContractSubject extends CompatibleWithGisgkh
      */
     public function getGisgkhType()
     {
-        return ContractSubjectType::className();
+        return ContractSubjectType::class;
     }
 }
