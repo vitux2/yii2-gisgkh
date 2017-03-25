@@ -7,7 +7,7 @@ use gisgkh\types\Base\ISRequestHeader;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryRequest;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryRequest\SearchCriteria;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResult;
-use startuplab\helpers\GuidHelper;
+use gisgkh\Helper;
 
 class OrganizationsRegistryCommonService
 {
@@ -38,12 +38,12 @@ class OrganizationsRegistryCommonService
         $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
 
         $header = new ISRequestHeader();
-        $header->MessageGUID = GuidHelper::generate();
+        $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
         $client->__setSoapHeaders(new \SoapHeader("http://dom.gosuslugi.ru/schema/integration/base/", 'ISRequestHeader', $header));
 
         $request = new exportOrgRegistryRequest([new SearchCriteria($OGRNIP, $OGRN, $KPP, null, $orgVersionGUID, $orgRootEntityGUID, $isRegistered)]);
-        $request->Id = GuidHelper::generate();
+        $request->Id = Helper::guid();
 
         return $client->__soapCall('exportOrgRegistry', [$request]);
     }

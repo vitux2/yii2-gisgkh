@@ -2,13 +2,13 @@
 
 namespace gisgkh\services;
 
+use gisgkh\Helper;
 use gisgkh\LocalSoapClient;
 use gisgkh\types\Base\ISRequestHeader;
 use gisgkh\types\NsiCommon\exportNsiItemRequest;
 use gisgkh\types\NsiCommon\exportNsiItemResult;
 use gisgkh\types\NsiCommon\exportNsiListRequest;
 use gisgkh\types\NsiCommon\exportNsiListResult;
-use startuplab\helpers\GuidHelper;
 
 class NsiCommonService
 {
@@ -32,12 +32,12 @@ class NsiCommonService
         $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
 
         $header = new ISRequestHeader();
-        $header->MessageGUID = GuidHelper::generate();
+        $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
         $client->__setSoapHeaders(new \SoapHeader("http://dom.gosuslugi.ru/schema/integration/base/", 'ISRequestHeader', $header));
 
         $request = new exportNsiItemRequest($registryNumber, $listGroup, $modifiedAfter);
-        $request->Id = GuidHelper::generate();
+        $request->Id = Helper::guid();
 
         return $client->__soapCall('exportNsiItem', [$request]);
     }
@@ -57,10 +57,13 @@ class NsiCommonService
         $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
 
         $header = new ISRequestHeader();
-        $header->MessageGUID = GuidHelper::generate();
+        $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
         $client->__setSoapHeaders(new \SoapHeader("http://dom.gosuslugi.ru/schema/integration/base/", 'ISRequestHeader', $header));
 
-        return $client->__soapCall('exportNsiList', [new exportNsiListRequest($listGroup)]);
+        $request = new exportNsiListRequest($listGroup);
+        $request->Id = Helper::guid();
+
+        return $client->__soapCall('exportNsiList', [$request]);
     }
 }
