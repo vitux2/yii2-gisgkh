@@ -9,10 +9,45 @@ use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryRequest\SearchCrit
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResult;
 use gisgkh\Helper;
 
+/**
+ * Сервис обмена сведениями о поставщиках информации
+ */
 class OrganizationsRegistryCommonService
 {
-    protected $wsdl = __DIR__ . '/../../schema/organizations-registry-common/hcs-organizations-registry-common-service.wsdl';
-    protected $location = 'https://217.107.108.147:10081/ext-bus-org-registry-common-service/services/OrgRegistryCommon';
+    protected $wsdl = __DIR__ . '/../schemes/organizations-registry-common/hcs-organizations-registry-common-service.wsdl';
+
+    private $location = null;
+    private $sslCert = null;
+    private $sslKey = null;
+    private $caInfo = null;
+    private $username = null;
+    private $password = null;
+
+    /**
+     * OrganizationsRegistryCommonService constructor.
+     *
+     * <code>
+     *  $configuration = [
+     *    "location" => "",,
+     *    "sslCert" => "",
+     *    "sslKey" => "",
+     *    "caInfo" => "",
+     *    "username" => "",
+     *    "password" => ""
+     *  ];
+     * </code>
+     *
+     * @param array $configuration
+     */
+    public function __construct(array $configuration)
+    {
+        $this->location = @$configuration['location'];
+        $this->sslCert = @$configuration['sslCert'];
+        $this->sslKey = @$configuration['sslKey'];
+        $this->caInfo = @$configuration['caInfo'];
+        $this->username = @$configuration['username'];
+        $this->password = @$configuration['password'];
+    }
 
     /**
      * экспорт сведений об организациях
@@ -29,13 +64,22 @@ class OrganizationsRegistryCommonService
      */
     public function exportOrgRegistry($OGRN = null, $KPP = null, $OGRNIP = null, $isRegistered = true, $orgVersionGUID = null, $orgRootEntityGUID = null)
     {
-        $classMap = array_merge(
+        $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/OrganizationsRegistryCommon/exportOrgRegistryRequest.classmap.php',
             require __DIR__ . '/../types/OrganizationsRegistryCommon/exportOrgRegistryResult.classmap.php'
         );
 
-        $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
 
         $header = new ISRequestHeader();
         $header->MessageGUID = Helper::guid();

@@ -1,8 +1,7 @@
 <?php
 
-namespace gisgkh;
+namespace gisgkh\services;
 
-use opengkh\gis\Module;
 use gisgkh\types\Base\Attachment;
 use gisgkh\types\Base\AttachmentType;
 
@@ -25,6 +24,26 @@ class FileService
     const CONTEXT_CAPITAL_REPAIR_PROGRAMS   = 'capitalrepairprograms';  // Подсистема Капитальный ремонт
 
     public $lastError = null;
+
+    protected $url = null;
+    protected $username = null;
+    protected $password = null;
+    protected $orgPPAGUID = null;
+    protected $sslCert = null;
+    protected $sslKey = null;
+    protected $caInfo = null;
+
+    public function __construct($ip, $port, $orgPPAGUID, $username, $password, $sslCert, $sslKey, $caInfo)
+    {
+        $this->ip = $ip;
+        $this->port = $port;
+        $this->username = $username;
+        $this->password = $password;
+        $this->orgPPAGUID = $orgPPAGUID;
+        $this->sslCert = $sslCert;
+        $this->sslKey = $sslKey;
+        $this->caInfo = $caInfo;
+    }
 
     /**
      * Синхронная загрузка файла размером до 5 Мб на сервер ГИС
@@ -102,10 +121,10 @@ class FileService
      */
     protected function setCurlAuthOptions($curl)
     {
-        curl_setopt($curl, CURLOPT_USERPWD, Module::getInstance()->username . ':' . Module::getInstance()->password);
-        curl_setopt($curl, CURLOPT_SSLCERT, \Yii::getAlias(Module::getInstance()->sslCert));
-        curl_setopt($curl, CURLOPT_SSLKEY, \Yii::getAlias(Module::getInstance()->sslKey));
-        curl_setopt($curl, CURLOPT_CAINFO, \Yii::getAlias(Module::getInstance()->caInfo));
+        curl_setopt($curl, CURLOPT_USERPWD, $this->username . ':' . $this->password);
+        curl_setopt($curl, CURLOPT_SSLCERT, $this->sslCert);
+        curl_setopt($curl, CURLOPT_SSLKEY, $this->sslKey);
+        curl_setopt($curl, CURLOPT_CAINFO, $this->caInfo);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     }
@@ -119,8 +138,8 @@ class FileService
     {
         return sprintf(
             'https://%s:%s/ext-bus-file-store-service/rest/%s',
-            Module::getInstance()->ip,
-            Module::getInstance()->port,
+            $this->ip,
+            $this->port,
             $context
         );
     }
@@ -135,8 +154,8 @@ class FileService
     {
         return sprintf(
             'https://%s:%s/ext-bus-file-store-service/rest/%s/%s?getfile',
-            Module::getInstance()->ip,
-            Module::getInstance()->port,
+            $this->ip,
+            $this->port,
             $context,
             $guid
         );
@@ -154,11 +173,11 @@ class FileService
         $fileSize = fstat($file)['size'];
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            "Host: " . Module::getInstance()->host,
+            "Host: rias-gkh.ru",
             "Date: " . (new \DateTime())->format(DATE_RFC822),
             "Content-MD5: " . base64_encode(md5_file($filePath, true)),
             //@todo: switch between orgPPAGUID and SenderID (now only orgPPAGUID supported)
-            "X-Upload-OrgPPAGUID: " . Module::getInstance()->orgPPAGUID,
+            "X-Upload-OrgPPAGUID: " . $this->orgPPAGUID,
             "X-Upload-Filename: " . $fileName,
             "Expect:",
             "Accept:",
@@ -183,10 +202,10 @@ class FileService
         $file = fopen($filePath, 'wb');
 
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            "Host: " . Module::getInstance()->host,
+            "Host: rias-gkh.ru",
             "Date: " . (new \DateTime())->format(DATE_RFC822),
             //@todo: switch between orgPPAGUID and SenderID (now only orgPPAGUID supported)
-            "X-Upload-OrgPPAGUID: " . Module::getInstance()->orgPPAGUID,
+            "X-Upload-OrgPPAGUID: " . $this->orgPPAGUID,
             "Expect:",
             "Accept:",
         ]);

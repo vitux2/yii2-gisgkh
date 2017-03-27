@@ -17,11 +17,46 @@ use gisgkh\types\HouseManagement\importSupplyResourceContractRequest;
  */
 class HouseManagementService
 {
-    private $wsdl = __DIR__ . '/../../schema/house-management/hcs-house-management-service.wsdl';
-    private $location = 'https://217.107.108.147:10081/ext-bus-home-management-service/services/HomeManagement';
+    private $wsdl = __DIR__ . '/../schemes/house-management/hcs-house-management-service.wsdl';
 
+    private $location = null;
     private $senderId = null;
-    private $orgPPAGUID = 'f9de06f2-3a3b-4c3a-b141-74913fe3d4a7';
+    private $orgPPAGUID = null;
+    private $sslCert = null;
+    private $sslKey = null;
+    private $caInfo = null;
+    private $username = null;
+    private $password = null;
+
+    /**
+     * HouseManagementService constructor.
+     *
+     * <code>
+     *  $configuration = [
+     *    "location" => "",
+     *    "senderId" => "",
+     *    "orgPPAGUID" => "",
+     *    "sslCert" => "",
+     *    "sslKey" => "",
+     *    "caInfo" => "",
+     *    "username" => "",
+     *    "password" => ""
+     *  ];
+     * </code>
+     *
+     * @param array $configuration
+     */
+    public function __construct(array $configuration)
+    {
+        $this->location = @$configuration['location'];
+        $this->senderId = @$configuration['senderId'];
+        $this->orgPPAGUID = @$configuration['orgPPAGUID'];
+        $this->sslCert = @$configuration['sslCert'];
+        $this->sslKey = @$configuration['sslKey'];
+        $this->caInfo = @$configuration['caInfo'];
+        $this->username = @$configuration['username'];
+        $this->password = @$configuration['password'];
+    }
 
     /**
      * Экспорт договоров ресурсоснабжения
@@ -32,16 +67,28 @@ class HouseManagementService
      */
     public function exportSupplyResourceContractData(exportSupplyResourceContractRequest $request)
     {
-        $client = new LocalSoapClient($this->wsdl, $this->location, array_merge(
+        $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
-            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractRequest.classmap.php',
+            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractResult.classmap.php',
             require __DIR__ . '/../types/HouseManagement/ExportSupplyResourceContractType.classmap.php'
-        ));
+        );
+
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
 
         $header = new RequestHeader($this->senderId, $this->orgPPAGUID);
 
         $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->IsOperatorSignature = true;
 
         $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
 
@@ -57,10 +104,21 @@ class HouseManagementService
      */
     public function importSupplyResourceContractData(importSupplyResourceContractRequest $request)
     {
-        $client = new LocalSoapClient($this->wsdl, $this->location, array_merge(
+        $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/HouseManagement/ImportResult.classmap.php'
-        ));
+        );
+
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
 
         $header = new RequestHeader($this->senderId, $this->orgPPAGUID);
 

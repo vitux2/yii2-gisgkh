@@ -2,11 +2,12 @@
 
 namespace opengkh\gis;
 use opengkh\gis\components\NsiDynamicManager;
+use opengkh\gis\components\ServiceFactory;
 
 /**
  * Модуль интеграции с ГИС ЖКХ
  *
- * @package opengkh\gis
+ * @property ServiceFactory $serviceFactory
  */
 class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
 {
@@ -46,6 +47,10 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
         parent::init();
 
         $config = require(__DIR__ . '/config.php');
+
+        $this->sslCert = \Yii::getAlias($this->sslCert);
+        $this->sslKey = \Yii::getAlias($this->sslKey);
+        $this->caInfo = \Yii::getAlias($this->caInfo);
 
         \Yii::configure($this, $config);
     }

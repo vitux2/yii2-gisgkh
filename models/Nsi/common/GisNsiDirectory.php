@@ -3,6 +3,7 @@
 namespace opengkh\gis\models\Nsi\common;
 
 use yii\base\Model;
+use opengkh\gis\Module;
 
 use gisgkh\services\NsiCommonService;
 use gisgkh\ErrorMessageType;
@@ -119,18 +120,13 @@ abstract class GisNsiDirectory extends Model
      */
     protected function requestEntries()
     {
-        $nsiCommonService = new NsiCommonService();
+        $nsiCommonService = Module::getInstance()->serviceFactory->NsiCommonService();
 
-        try {
-            // выполнение запроса к ГИС ЖКХ на получение записей справочника НСИ
-            $result = $nsiCommonService->exportNsiItem(
-                (string) $this->getRegisterNumber(),
-                empty($this->modifiedFrom) ? null : $this->modifiedFrom->format(DATE_ATOM)
-            );
-        } catch (\SoapFault $e) {
-            print_r($nsiCommonService->__getLastResponse());
-            die("\nhello");
-        }
+        // выполнение запроса к ГИС ЖКХ на получение записей справочника НСИ
+        $result = $nsiCommonService->exportNsiItem(
+            (string) $this->getRegisterNumber(),
+            empty($this->modifiedFrom) ? null : $this->modifiedFrom->format(DATE_ATOM)
+        );
 
         // обработка возможных ошибок
         if ($result->ErrorMessage) {

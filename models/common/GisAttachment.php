@@ -1,11 +1,12 @@
 <?php
 
 namespace opengkh\gis\models\common;
-use gisgkh\FileService;
+
 use gisgkh\types\Base\Attachment;
 use gisgkh\types\Base\AttachmentType;
 use opengkh\gis\exceptions\GisgkhFileDownloadException;
 use opengkh\gis\exceptions\GisgkhFileUploadException;
+use opengkh\gis\Module;
 
 /**
  * Вложение (файл)
@@ -93,7 +94,7 @@ class GisAttachment extends CompatibleWithGisgkh
      */
     public static function upload($context, $filePath, $fileName = null)
     {
-        $fileService = new FileService();
+        $fileService = Module::getInstance()->serviceFactory->FileService();
         $gisAttachment = $fileService->upload($context, $filePath, $fileName);
 
         if (empty($gisAttachment)) {
@@ -113,7 +114,7 @@ class GisAttachment extends CompatibleWithGisgkh
      */
     public function download($context, $filePath)
     {
-        $fileService = new FileService();
+        $fileService = Module::getInstance()->serviceFactory->FileService();
         $success = $fileService->download($context, $filePath, $this->convertTo());
 
         if (!$success) {

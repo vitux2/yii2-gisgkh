@@ -12,8 +12,40 @@ use gisgkh\types\NsiCommon\exportNsiListResult;
 
 class NsiCommonService
 {
-    protected $wsdl = __DIR__ . '/../../schema/nsi-common/hcs-nsi-common-service.wsdl';
-    protected $location = 'https://217.107.108.147:10081/ext-bus-nsi-common-service/services/NsiCommon';
+    protected $wsdl = __DIR__ . '/../schemes/nsi-common/hcs-nsi-common-service.wsdl';
+
+    private $location = null;
+    private $sslCert = null;
+    private $sslKey = null;
+    private $caInfo = null;
+    private $username = null;
+    private $password = null;
+
+    /**
+     * NsiCommonService constructor.
+     *
+     * <code>
+     *  $configuration = [
+     *    "location" => "",
+     *    "sslCert" => "",
+     *    "sslKey" => "",
+     *    "caInfo" => "",
+     *    "username" => "",
+     *    "password" => ""
+     *  ];
+     * </code>
+     *
+     * @param array $configuration
+     */
+    public function __construct(array $configuration)
+    {
+        $this->location = @$configuration['location'];
+        $this->sslCert = @$configuration['sslCert'];
+        $this->sslKey = @$configuration['sslKey'];
+        $this->caInfo = @$configuration['caInfo'];
+        $this->username = @$configuration['username'];
+        $this->password = @$configuration['password'];
+    }
 
     /**
      * @param integer $registryNumber
@@ -23,13 +55,22 @@ class NsiCommonService
      */
     public function exportNsiItem($registryNumber, $modifiedAfter = null, $listGroup = 'NSI')
     {
-        $classMap = array_merge(
+        $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/NsiCommon/exportNsiItemRequest.classmap.php',
             require __DIR__ . '/../types/NsiCommon/exportNsiItemResult.classmap.php'
         );
 
-        $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
 
         $header = new ISRequestHeader();
         $header->MessageGUID = Helper::guid();
@@ -48,13 +89,22 @@ class NsiCommonService
      */
     public function exportNsiList($listGroup = 'NSI')
     {
-        $classMap = array_merge(
+        $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/NsiCommon/exportNsiListRequest.classmap.php',
             require __DIR__ . '/../types/NsiCommon/exportNsiListResult.classmap.php'
         );
 
-        $client = new LocalSoapClient($this->wsdl, $this->location, $classMap);
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
 
         $header = new ISRequestHeader();
         $header->MessageGUID = Helper::guid();

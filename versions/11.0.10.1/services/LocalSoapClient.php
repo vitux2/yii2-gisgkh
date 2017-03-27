@@ -8,25 +8,41 @@ namespace gisgkh;
  */
 class LocalSoapClient extends \SoapClient
 {
-    private $sslCert = __DIR__ . '/etc/rgd20170123.pem';
-    private $sslKey = __DIR__ . '/etc/rgd20170123.pem';
-    private $caInfo = __DIR__ . '/etc/CA-SIT.pem';
+    private $etc = __DIR__ . '/etc';
 
-//    private $sslCert = __DIR__ . '/etc/ipkorobeynikov.pem';
-//    private $sslKey = __DIR__ . '/etc/ipkorobeynikov.key';
-//    private $caInfo = __DIR__ . '/etc/CA-PPAK.pem';
-
-    private $username = 'sit';
-    private $password = 'rZ_GG72XS^Vf55ZW';
+    private $sslCert = null;
+    private $sslKey = null;
+    private $caInfo = null;
+    private $username = null;
+    private $password = null;
 
     /**
      * LocalSoapClient constructor.
      * @param string $wsdl
+     * @param null $username
+     * @param null $password
+     * @param null $sslCert
+     * @param null $sslKey
+     * @param null $caInfo
      * @param string $location
      * @param array $classmap
      */
-    public function __construct($wsdl, $location, $classmap = [])
-    {
+    public function __construct(
+        $wsdl,
+        $username = null,
+        $password = null,
+        $location = null,
+        $sslCert = null,
+        $sslKey = null,
+        $caInfo = null,
+        $classmap = []
+    ) {
+        $this->username = $username;
+        $this->password = $password;
+        $this->sslCert = $sslCert;
+        $this->sslKey = $sslKey;
+        $this->caInfo = $caInfo;
+
         parent::__construct($wsdl, [
             'cache_wsdl'        => WSDL_CACHE_NONE,
             'soap_version'      => SOAP_1_1,
@@ -49,7 +65,7 @@ class LocalSoapClient extends \SoapClient
         &$output_headers = null
     ) {
         try {
-            $result = parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
+            return parent::__soapCall($function_name, $arguments, $options, $input_headers, $output_headers);
         } catch (\SoapFault $exception) {
 
             $message = $exception->getMessage();
@@ -79,14 +95,6 @@ class LocalSoapClient extends \SoapClient
 
             throw $exception;
         }
-
-        echo sprintf("Request headers:\n%s\n\n", ($this->__getLastRequestHeaders()));
-        echo sprintf("Request content:\n%s\n\n", $this->prettyXml($this->__getLastRequest()));
-
-        echo sprintf("Response headers:\n%s\n\n", ($this->__getLastResponseHeaders()));
-        echo sprintf("Response content:\n%s\n\n", $this->prettyXml($this->__getLastResponse()));
-
-        return $result;
     }
 
     /**
@@ -106,18 +114,12 @@ class LocalSoapClient extends \SoapClient
 
         //@todo: временное решение для подписания запросов
         $guid = Helper::guid();
-
         $tmpFile = sprintf('/tmp/%s.xml', $guid);
         file_put_contents($tmpFile, $request);
 
         $tmpFileSigned = sprintf('/tmp/%s_signed.xml', $guid);
         exec(sprintf("python %s %s %s %s > %s",
-            __DIR__ . '/etc/sign.py',
-            $this->sslKey ?: $this->sslCert,
-            $tmpFile,
-            __DIR__ . '/etc/xades.xml',
-            $tmpFileSigned
-        ));
+            "{$this->etc}/sign.py", $this->sslKey, $tmpFile, "{$this->etc}/xades.xml", $tmpFileSigned));
 
         $request = file_get_contents($tmpFileSigned);
 
@@ -161,7 +163,7 @@ class LocalSoapClient extends \SoapClient
 //        }
         curl_setopt($handle, CURLOPT_SSLKEY, $this->sslKey);
         curl_setopt($handle, CURLOPT_CAINFO, $this->caInfo);
-        if (false) {
+        if (strpos($url, 'https://api.dom.gosuslugi.ru') === 0) {
             curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, 2);
             curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, true);
         } else {

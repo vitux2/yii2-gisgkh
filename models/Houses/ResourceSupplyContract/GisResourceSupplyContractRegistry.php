@@ -3,7 +3,6 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\ErrorMessageType;
-use gisgkh\services\HouseManagementService;
 use gisgkh\types\HouseManagement\AnnulmentType;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
@@ -15,6 +14,7 @@ use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\Te
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
 use startuplab\helpers\GuidHelper;
+use opengkh\gis\Module;
 
 /**
  * Работа с реестром договор ресурсоснабжения
@@ -31,19 +31,12 @@ class GisResourceSupplyContractRegistry
      */
     public function searchByNumber($number)
     {
-        $service = new HouseManagementService(['SupplyResourceContractType']);
+        $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new exportSupplyResourceContractRequest();
         $request->ContractNumber = $number;
 
-        try {
-            $result = $service->exportSupplyResourceContractData($request);
-        } catch (\SoapFault $e) {
-            echo $e->getMessage() . "\n";
-            echo $service->__getLastRequest() . "\n";
-            echo $service->__getLastResponse() . "\n";
-            die();
-        }
+        $result = $service->exportSupplyResourceContractData($request);
 
         // обработка возможных ошибок
         if ($result->ErrorMessage) {
@@ -65,7 +58,7 @@ class GisResourceSupplyContractRegistry
      */
     public function send(GisResourceSupplyContract $contract)
     {
-        $service = new HouseManagementService();
+        $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new Contract();
@@ -89,7 +82,7 @@ class GisResourceSupplyContractRegistry
      */
     public function annulled($contract, $reason)
     {
-        $service = new HouseManagementService();
+        $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new Contract();
 
@@ -110,7 +103,7 @@ class GisResourceSupplyContractRegistry
      */
     public function terminate($contract, $date, $reason)
     {
-        $service = new HouseManagementService();
+        $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new Contract();
 
@@ -131,7 +124,7 @@ class GisResourceSupplyContractRegistry
      */
     public function rollover($contract, $rollover_date)
     {
-        $service = new HouseManagementService();
+        $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
         $request->Contract = new Contract();
 

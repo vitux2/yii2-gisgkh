@@ -41,14 +41,14 @@ abstract class CompatibleWithGisgkh extends Model
 
     /**
      * Конвертировать из массива объектов ГИС ЖКХ
-     * @param SupplyResourceContractType[] $source
+     * @param array[] $source
      * @return static[]
      */
     static function convertFromArray($source)
     {
         return array_map(function ($item) {
             return static::convertFrom($item);
-        }, $source);
+        }, $source ?: []);
     }
 
     /**

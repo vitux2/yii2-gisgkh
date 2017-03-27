@@ -7,6 +7,7 @@ use gisgkh\ErrorMessageType;
 use gisgkh\types\OrganizationsRegistryCommon\exportOrgRegistryResultType;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
+use opengkh\gis\Module;
 
 /**
  * Организация (юр. лицо, обособленное подпазделение либо ИП)
@@ -113,7 +114,7 @@ class GisOrganization extends CompatibleWithGisgkh
      */
     public static function getByGuid($rootGuid, $versionGuid = null)
     {
-        $service = new OrganizationsRegistryCommonService();
+        $service = Module::getInstance()->serviceFactory->OrganizationsRegistryCommonService();
         $result = $service->exportOrgRegistry(null, null, null, true, $versionGuid, $rootGuid);
 
         // обработка возможных ошибок
@@ -139,7 +140,7 @@ class GisOrganization extends CompatibleWithGisgkh
      */
     public static function getByOgrnAndKpp($ogrn, $kpp)
     {
-        $service = new OrganizationsRegistryCommonService();
+        $service = Module::getInstance()->serviceFactory->OrganizationsRegistryCommonService();
         $result = $service->exportOrgRegistry($ogrn, $kpp);
 
         // обработка возможных ошибок
@@ -159,12 +160,12 @@ class GisOrganization extends CompatibleWithGisgkh
     /**
      * Выполнить поиск организации в реестре ГИС ЖКХ по ОГРН
      * @param string $ogrn ОГРН
-     * @return GisOrganization[]
+     * @return static[]
      * @throws GisgkhRequestControlException
      */
     public static function searchByOgrn($ogrn)
     {
-        $service = new OrganizationsRegistryCommonService(['exportOrgRegistryRequest', 'exportOrgRegistryResultType']);
+        $service = Module::getInstance()->serviceFactory->OrganizationsRegistryCommonService();
         $result = $service->exportOrgRegistry($ogrn);
 
         // обработка возможных ошибок
