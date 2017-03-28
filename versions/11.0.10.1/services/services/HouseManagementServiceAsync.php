@@ -5,8 +5,10 @@ namespace gisgkh\services;
 use gisgkh\Helper;
 use gisgkh\LocalSoapClient;
 use gisgkh\types\Base\AckRequest;
+use gisgkh\types\Base\getStateRequest;
 use gisgkh\types\Base\RequestHeader;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractRequest;
+use gisgkh\types\HouseManagement\getStateResult;
 use gisgkh\types\HouseManagement\ImportResult;
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest;
 
@@ -88,6 +90,7 @@ class HouseManagementServiceAsync
 
         $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->IsOperatorSignature = true;
 
         $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
 
@@ -123,9 +126,44 @@ class HouseManagementServiceAsync
 
         $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->IsOperatorSignature = true;
 
         $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
 
         return $client->__soapCall('importSupplyResourceContractData', [$request]);
+    }
+
+    /**
+     * @param getStateRequest $request
+     * @return getStateResult
+     */
+    public function getState(getStateRequest $request)
+    {
+        $classmap = array_merge(
+            require __DIR__ . '/../types/classmap.php',
+            require __DIR__ . '/../types/HouseManagement/getStateResult.classmap.php',
+            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractResultType.classmap.php'
+        );
+
+        $client = new LocalSoapClient(
+            $this->wsdl,
+            $this->username,
+            $this->password,
+            $this->location,
+            $this->sslCert,
+            $this->sslKey,
+            $this->caInfo,
+            $classmap
+        );
+
+        $header = new RequestHeader($this->senderId, $this->orgPPAGUID);
+
+        $header->MessageGUID = Helper::guid();
+        $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->IsOperatorSignature = true;
+
+        $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
+
+        return $client->__soapCall('getState', [$request]);
     }
 }

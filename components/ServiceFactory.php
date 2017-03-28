@@ -4,6 +4,7 @@ namespace opengkh\gis\components;
 
 use gisgkh\services\FileService;
 use gisgkh\services\HouseManagementService;
+use gisgkh\services\HouseManagementServiceAsync;
 use gisgkh\services\NsiCommonService;
 use gisgkh\services\OrganizationsRegistryCommonService;
 use yii\base\Component;
@@ -68,6 +69,21 @@ class ServiceFactory extends Component
 
         return new HouseManagementService([
             "location" => "https://{$module->ip}:{$module->port}/ext-bus-home-management-service/services/HomeManagement",
+            "sslCert" => $module->sslCert,
+            "sslKey" => $module->sslKey,
+            "caInfo" => $module->caInfo,
+            "username" => $module->username,
+            "password" => $module->password,
+            "orgPPAGUID" => $module->orgPPAGUID
+        ]);
+    }
+
+    public function HouseManagementServiceAsync()
+    {
+        $module = Module::getInstance();
+
+        return new HouseManagementServiceAsync([
+            "location" => "https://{$module->ip}:{$module->port}/ext-bus-home-management-service/services/HomeManagementAsync",
             "sslCert" => $module->sslCert,
             "sslKey" => $module->sslKey,
             "caInfo" => $module->caInfo,
