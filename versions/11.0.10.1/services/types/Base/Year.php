@@ -5,7 +5,7 @@ namespace gisgkh\types\Base;
 /**
  * Год
  */
-class Year extends \string
+class Year
 {
 
 }

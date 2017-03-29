@@ -123,8 +123,8 @@ class LocalSoapClient extends \SoapClient
 
         $request = file_get_contents($tmpFileSigned);
 
-//        unlink($tmpFile);
-//        unlink($tmpFileSigned);
+        unlink($tmpFile);
+        unlink($tmpFileSigned);
 
         return $this->callCurl($location, $request, $action);
     }

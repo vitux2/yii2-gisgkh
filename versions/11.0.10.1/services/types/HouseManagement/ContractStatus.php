@@ -13,7 +13,7 @@ Reviewed - рассмотрен
 Annul - сведения аннулированы
 			
  */
-class ContractStatus extends \string
+class ContractStatus
 {
 
 }

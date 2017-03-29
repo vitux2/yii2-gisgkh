@@ -13,7 +13,7 @@ namespace gisgkh\types\HouseManagement;
  Rejected - отклонен
 
  */
-class CharterStatus extends \string
+class CharterStatus
 {
 
 }

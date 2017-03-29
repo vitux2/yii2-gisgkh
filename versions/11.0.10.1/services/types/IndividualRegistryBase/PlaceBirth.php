@@ -5,7 +5,7 @@ namespace gisgkh\types\IndividualRegistryBase;
 /**
  * Место рождения
  */
-class PlaceBirth extends \string
+class PlaceBirth
 {
 
 }

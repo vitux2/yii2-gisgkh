@@ -5,7 +5,7 @@ namespace gisgkh\types\OrganizationsBase;
 /**
  * ОГРНИП
  */
-class OGRNIP extends \string
+class OGRNIP
 {
 
 }

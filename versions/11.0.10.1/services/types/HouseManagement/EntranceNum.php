@@ -5,7 +5,7 @@ namespace gisgkh\types\HouseManagement;
 /**
  * Номер подъезда
  */
-class EntranceNum extends \string
+class EntranceNum
 {
 
 }

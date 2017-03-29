@@ -7,7 +7,7 @@ namespace gisgkh\types\NsiBase;
 NSI - (по умолчанию) общесистемный 
 NSIRAO - ОЖФ
  */
-class ListGroup extends \string
+class ListGroup
 {
 
 }

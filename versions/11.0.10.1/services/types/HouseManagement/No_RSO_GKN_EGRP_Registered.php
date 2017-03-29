@@ -5,7 +5,7 @@ namespace gisgkh\types\HouseManagement;
 /**
  * Ключ связи с ГКН/ЕГРП отсутствует. Может быть указан только при отсутствии сведений в ГКН и ЕГРП по Субъекту РФ в ГИС ЖКХ. Перечень Субъектов РФ, по которым размещена информация в ГКН, можно уточнить у Оператора ГИС ЖКХ. 
  */
-class No_RSO_GKN_EGRP_Registered extends \string
+class No_RSO_GKN_EGRP_Registered
 {
 
 }

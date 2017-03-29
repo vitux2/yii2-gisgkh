@@ -5,7 +5,7 @@ namespace gisgkh\types\OrganizationsBase;
 /**
  * 
  */
-class Fax extends \string
+class Fax
 {
 
 }

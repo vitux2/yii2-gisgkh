@@ -12,7 +12,7 @@ Locked-Заблокирован
 Annul-Сведения аннулированы
 
  */
-class ManagedObjectStatus extends \string
+class ManagedObjectStatus
 {
 
 }

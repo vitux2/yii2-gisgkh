@@ -5,7 +5,7 @@ namespace gisgkh\types\Xmldsig;
 /**
  * 
  */
-class KeyName extends \string
+class KeyName
 {
 
 }

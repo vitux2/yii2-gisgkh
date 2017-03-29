@@ -5,7 +5,7 @@ namespace gisgkh\types\Base;
 /**
  * Месяц
  */
-class Month extends \string
+class Month
 {
 
 }

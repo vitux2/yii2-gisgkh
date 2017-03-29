@@ -5,7 +5,7 @@ namespace gisgkh\types\Xmldsig;
 /**
  * 
  */
-class DigestValue extends \string
+class DigestValue
 {
 
 }

@@ -5,7 +5,7 @@ namespace gisgkh\types\OrganizationsBase;
 /**
  * Телефон
  */
-class Phone extends \string
+class Phone
 {
 
 }

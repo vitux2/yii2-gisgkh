@@ -5,7 +5,7 @@ namespace gisgkh\types\HouseManagement;
 /**
  * Поиск в ЕГРП по условному номер ЕГРП. При указании осуществляется поиск по ЕГРП и автопривязка к найденным сведениям. Наличие в экспорте указывает на установленную связь с ЕГРП по этому элементу. 
  */
-class ConditionalNumber extends \string
+class ConditionalNumber
 {
 
 }

@@ -5,7 +5,7 @@ namespace gisgkh\types\IndividualRegistryBase;
 /**
  * Отчество
  */
-class Patronymic extends \string
+class Patronymic
 {
 
 }

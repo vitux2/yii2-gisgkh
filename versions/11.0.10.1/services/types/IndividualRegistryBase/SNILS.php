@@ -5,7 +5,7 @@ namespace gisgkh\types\IndividualRegistryBase;
 /**
  * СНИЛС
  */
-class SNILS extends \string
+class SNILS
 {
 
 }

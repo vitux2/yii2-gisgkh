@@ -22,21 +22,12 @@ class PGPDataType
      public $PGPKeyPacket = null;
 
     /**
-     * 
-     * 
-     * @var string
-     */
-     public $PGPKeyPacket = null;
-
-    /**
      * @param string $PGPKeyID 
      * @param string [$PGPKeyPacket] 
-     * @param string $PGPKeyPacket 
      */
-    public function __construct(string $PGPKeyID = null, string $PGPKeyPacket = null, string $PGPKeyPacket = null)
+    public function __construct(string $PGPKeyID = null, string $PGPKeyPacket = null)
     {
         $this->PGPKeyID = $PGPKeyID;
-        $this->PGPKeyPacket = $PGPKeyPacket;
         $this->PGPKeyPacket = $PGPKeyPacket;
     }
 }

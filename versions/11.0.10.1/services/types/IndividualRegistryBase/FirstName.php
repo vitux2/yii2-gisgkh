@@ -5,7 +5,7 @@ namespace gisgkh\types\IndividualRegistryBase;
 /**
  * Имя
  */
-class FirstName extends \string
+class FirstName
 {
 
 }
