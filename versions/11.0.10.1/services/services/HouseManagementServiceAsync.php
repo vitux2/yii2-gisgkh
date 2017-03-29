@@ -142,6 +142,7 @@ class HouseManagementServiceAsync
         $classmap = array_merge(
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/HouseManagement/getStateResult.classmap.php',
+            require __DIR__ . '/../types/HouseManagement/ExportSupplyResourceContractType.classmap.php',
             require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractResultType.classmap.php'
         );
 

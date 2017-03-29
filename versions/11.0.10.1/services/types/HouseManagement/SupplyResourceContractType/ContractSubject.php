@@ -17,7 +17,7 @@ class ContractSubject extends \gisgkh\types\HouseManagement\ContractSubjectType
     /**
      * @param string $TransportGUID Транспортный идентификатор
      */
-    public function __construct($TransportGUID = null)
+    public function __construct(string $TransportGUID = null)
     {
         $this->TransportGUID = $TransportGUID;
     }

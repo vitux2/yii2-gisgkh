@@ -16,7 +16,7 @@ return [
     "LivingHouseOwner" => "gisgkh\\types\\HouseManagement\\SupplyResourceContractType\\LivingHouseOwner",
     "Organization" => "gisgkh\\types\\HouseManagement\\SupplyResourceContractType\\Organization",
     "IsPlannedVolume" => "string",
-    "ContractSubject" => "gisgkh\\types\\HouseManagement\\SupplyResourceContractType\\``",
+    "ContractSubject" => "gisgkh\\types\\HouseManagement\\SupplyResourceContractType\\ContractSubject",
     "CountingResource" => "string",
     "SpecifyingQualityIndicators" => "string",
     "ObjectAddress" => "gisgkh\\types\\HouseManagement\\SupplyResourceContractType\\ObjectAddress",
