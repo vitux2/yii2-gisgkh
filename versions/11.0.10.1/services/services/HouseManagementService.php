@@ -124,6 +124,7 @@ class HouseManagementService
 
         $header->MessageGUID = Helper::guid();
         $header->Date = (new \DateTime())->format(\DateTime::ATOM);
+        $header->IsOperatorSignature = true;
 
         $client->__setSoapHeaders(new \SoapHeader('http://dom.gosuslugi.ru/schema/integration/base/', 'RequestHeader', $header));
 
