@@ -1,9 +1,5 @@
 <?php
 
 return [
-    "EntranceNum" => "string",
-    "HasNoEntrance" => "string",
-    "FIASChildHouseGuid" => "string",
-    "PremisesCharacteristic" => "gisgkh\\types\\NsiBase\\nsiRef",
-    "TotalArea" => "string"
+    "PremisesCharacteristic" => "gisgkh\\types\\NsiBase\\nsiRef"
 ];

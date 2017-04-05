@@ -1,8 +1,6 @@
 <?php
 
 return [
-    "HouseUniqueNumber" => "string",
-    "ModificationDate" => "string",
     "ApartmentHouse" => "gisgkh\\types\\HouseManagement\\exportHouseResultType\\ApartmentHouse",
     "Entrance" => "gisgkh\\types\\HouseManagement\\exportHouseResultType\\ApartmentHouse\\Entrance",
     "ResidentialPremises" => "gisgkh\\types\\HouseManagement\\exportHouseResultType\\ApartmentHouse\\ResidentialPremises",

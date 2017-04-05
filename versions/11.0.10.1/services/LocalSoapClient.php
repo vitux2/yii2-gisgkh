@@ -185,10 +185,23 @@ class LocalSoapClient extends \SoapClient
 
     protected function prettyXml($data, $linePrefix = '~ ')
     {
-        $domDocument = new \DOMDocument("1.0", "UTF-8");
-        $domDocument->preserveWhiteSpace = false;
-        $domDocument->formatOutput = true;
-        $domDocument->loadXML($data);
-        return $linePrefix . (str_replace("\n", "\n{$linePrefix}", $domDocument->saveXML()));
+        $output = $data;
+
+        // XML
+        if (class_exists("\\DOMDocument") && strpos($data, "<?xml ") === 0) {
+            $domDocument = new \DOMDocument("1.0", "UTF-8");
+            $domDocument->preserveWhiteSpace = false;
+            $domDocument->formatOutput = true;
+            $domDocument->loadXML($data);
+            $output = $domDocument->saveXML();
+        }
+
+        // HTML
+        if (is_callable("tidy_repair_string") && (strpos(strtolower(trim($data)), "<!DOCTYPE ") === 0 ||
+                strpos(strtolower(trim($data)), "<html>") === 0)) {
+            $output = tidy_repair_string($data, [ 'indent' => true, 'output-xhtml' => true ], 'utf8');
+        }
+
+        return $linePrefix . (str_replace("\n", "\n{$linePrefix}", $output));
     }
 }

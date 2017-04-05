@@ -1,5 +1,0 @@
-<?php
-
-return [
-    "INN" => "string"
-];

@@ -1,18 +1,7 @@
 <?php
 
 return [
-    "MeteringDeviceNumber" => "string",
-    "MeteringDeviceStamp" => "string",
-    "MeteringDeviceModel" => "string",
-    "InstallationDate" => "string",
-    "CommissioningDate" => "string",
-    "RemoteMeteringMode" => "string",
-    "RemoteMeteringInfo" => "string",
-    "FirstVerificationDate" => "string",
     "VerificationInterval" => "gisgkh\\types\\NsiBase\\nsiRef",
-    "FactorySealDate" => "string",
-    "TemperatureSensor" => "string",
-    "PressureSensor" => "string",
     "CollectiveDevice" => "gisgkh\\types\\HouseManagement\\MeteringDeviceBasicCharacteristicsType\\CollectiveDevice",
     "ProjectRegistrationNode" => "gisgkh\\types\\Base\\AttachmentType",
     "Certificate" => "gisgkh\\types\\Base\\AttachmentType",

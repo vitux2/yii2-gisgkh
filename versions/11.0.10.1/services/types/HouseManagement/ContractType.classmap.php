@@ -1,12 +1,7 @@
 <?php
 
 return [
-    "DocNum" => "string",
-    "SigningDate" => "string",
-    "EffectiveDate" => "string",
-    "PlanDateComptetion" => "string",
     "Validity" => "gisgkh\\types\\HouseManagement\\ContractType\\Validity",
-    "Owners" => "string",
     "Cooperative" => "gisgkh\\types\\OrganizationsRegistryBase\\RegOrgType",
     "MunicipalHousing" => "gisgkh\\types\\OrganizationsRegistryBase\\RegOrgType",
     "BuildingOwner" => "gisgkh\\types\\OrganizationsRegistryBase\\RegOrgType",

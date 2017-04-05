@@ -1,7 +1,5 @@
 <?php
 
 return [
-    "ServiceType" => "gisgkh\\types\\NsiBase\\nsiRef",
-    "StartDate" => "string",
-    "EndDate" => "string"
+    "ServiceType" => "gisgkh\\types\\NsiBase\\nsiRef"
 ];

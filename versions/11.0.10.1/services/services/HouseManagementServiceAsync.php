@@ -143,7 +143,10 @@ class HouseManagementServiceAsync
             require __DIR__ . '/../types/classmap.php',
             require __DIR__ . '/../types/HouseManagement/getStateResult.classmap.php',
             require __DIR__ . '/../types/HouseManagement/ExportSupplyResourceContractType.classmap.php',
-            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractResultType.classmap.php'
+            require __DIR__ . '/../types/HouseManagement/exportSupplyResourceContractResultType.classmap.php',
+            require __DIR__ . '/../types/HouseManagement/DRSOIndType.classmap.php',
+            require __DIR__ . '/../types/IndividualRegistryBase/ID.classmap.php',
+            require __DIR__ . '/../types/Base/Attachment.classmap.php'
         );
 
         $client = new LocalSoapClient(
