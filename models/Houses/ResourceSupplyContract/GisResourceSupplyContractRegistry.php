@@ -34,6 +34,7 @@ class GisResourceSupplyContractRegistry
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new exportSupplyResourceContractRequest();
+        $request->Id = GuidHelper::generate();
         $request->ContractNumber = $number;
 
         $result = $service->exportSupplyResourceContractData($request);
@@ -61,6 +62,7 @@ class GisResourceSupplyContractRegistry
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
+        $request->Id = GuidHelper::generate();
         $request->Contract = new Contract();
         $request->Contract->TransportGUID = GuidHelper::generate();
 
@@ -84,6 +86,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
+        $request->Id = GuidHelper::generate();
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
@@ -105,6 +108,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
+        $request->Id = GuidHelper::generate();
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
@@ -126,6 +130,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
+        $request->Id = GuidHelper::generate();
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
