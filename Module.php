@@ -3,16 +3,17 @@
 namespace opengkh\gis;
 use opengkh\gis\components\NsiDynamicManager;
 use opengkh\gis\components\ServiceFactory;
+use yii\base\BootstrapInterface;
+use yii\console\Application as ConsoleApplication;
+use yii\web\Application as WebApplication;
 
 /**
  * Модуль интеграции с ГИС ЖКХ
  *
  * @property ServiceFactory $serviceFactory
  */
-class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
+class Module extends \yii\base\Module implements BootstrapInterface
 {
-    public $classesPath = '@app/gisgkh';
-
     public $host = 'rias-gkh.ru';
 
     public $sslCert;
@@ -60,10 +61,6 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
      */
     public function bootstrap($app)
     {
-        $moduleId = $this->id;
-
-        \Yii::setAlias('@gisgkh', $this->classesPath);
-
         if (!empty($this->nsiManager) && $this->nsiManager) {
             $app->set('nsi', [
                 'class' => NsiDynamicManager::className(),
@@ -71,50 +68,18 @@ class Module extends \yii\base\Module implements \yii\base\BootstrapInterface
             ]);
         }
 
-        if ($app instanceof \yii\web\Application) {
+        if ($app instanceof WebApplication) {
             // routes for web application (controllers)
-        } elseif ($app instanceof \yii\console\Application) {
+        } elseif ($app instanceof ConsoleApplication) {
             // routes for console application (commands)
             $this->controllerNamespace = 'opengkh\gis\commands';
         }
 
         \Yii::configure(\Yii::$app, [
             'aliases' => [
-                '@gisgkh' => $this->getServicesPath(),
+                '@gisgkh' => $this->basePath,
             ]
         ]);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSchemaPath()
-    {
-        return sprintf('%s/versions/%s/schema', $this->basePath, $this->version);
-    }
-
-    public function getServicesPath()
-    {
-        return sprintf('%s/versions/%s/services', $this->basePath, $this->version);
-    }
-
-    /**
-     * Путь к директории, в которой располагаются сгенерированные модели
-     * Устаревший метод
-     * @deprecated
-     * @return bool|string
-     */
-    public function getClassesPath()
-    {
-        //return \Yii::getAlias($this->classesPath);
-        return sprintf('%s/versions/%s/models', $this->basePath, $this->version);
-    }
-
-    /**
-     * @return string
-     */
-    public function getBaseXmlNamespace()
-    {
-        return sprintf('http://dom.gosuslugi.ru/schema/integration/%s/', $this->version);
-    }
 }
