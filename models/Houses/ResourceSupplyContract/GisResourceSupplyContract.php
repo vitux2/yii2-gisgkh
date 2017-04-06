@@ -3,7 +3,7 @@
 namespace opengkh\gis\models\Houses\ResourceSupplyContract;
 
 use gisgkh\types\HouseManagement\DRSOIndType;
-use \gisgkh\types\HouseManagement\ExportSupplyResourceContractType\ContractSubject;
+use gisgkh\types\HouseManagement\ExportSupplyResourceContractType\ContractSubject;
 use gisgkh\types\HouseManagement\exportSupplyResourceContractResultType;
 use gisgkh\types\HouseManagement\ExportSupplyResourceContractType\IsContract;
 use gisgkh\types\HouseManagement\ExportSupplyResourceContractType\IsNotContract;
@@ -15,12 +15,13 @@ use gisgkh\types\HouseManagement\SupplyResourceContractType\ObjectAddress\Pair\H
 use gisgkh\types\HouseManagement\SupplyResourceContractType\Organization;
 use gisgkh\types\HouseManagement\SupplyResourceContractType\Quality;
 use gisgkh\types\OrganizationsRegistryBase\RegOrgType;
+
 use opengkh\gis\exceptions\GisgkhDataExtractionException;
 use opengkh\gis\models\common\GisAttachment;
 use opengkh\gis\models\common\CompatibleWithGisgkh;
 use opengkh\gis\models\common\GisPerson;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
-use startuplab\helpers\GuidHelper;
+use opengkh\gis\models\common\Guid;
 
 /**
  * Договор ресурсоснабжения
@@ -288,7 +289,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
         foreach ($this->subjects as $subject) {
             /* @var SupplyResourceContractType\ContractSubject $gisSubject */
             $gisSubject = $subject->convertTo(SupplyResourceContractType\ContractSubject::class);
-            $gisSubject->TransportGUID = GuidHelper::generate();
+            $gisSubject->TransportGUID = (string)(new Guid());
             if (!empty($subject->qualityIndicators)) {
                 foreach ($subject->qualityIndicators as $quality) {
                     /* @var Quality $gisQuality */
@@ -303,7 +304,7 @@ class GisResourceSupplyContract extends CompatibleWithGisgkh
         $target->ObjectAddress = GisResourceSupplyContractObject::convertToArray($this->objects, SupplyResourceContractType\ObjectAddress::class);
 
         for ($i = 0; $i < count($target->ObjectAddress); $i++) {
-            $target->ObjectAddress[$i]->TransportGUID = GuidHelper::generate();
+            $target->ObjectAddress[$i]->TransportGUID = (string)(new Guid());
             $pairs = [];
             for ($j = 0; $j < count($target->ContractSubject); $j++) {
                 $pair = new SupplyResourceContractType\ObjectAddress\Pair();

@@ -13,7 +13,7 @@ use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\Ro
 use gisgkh\types\HouseManagement\importSupplyResourceContractRequest\Contract\TerminateContract;
 use opengkh\gis\exceptions\GisgkhRequestControlException;
 use opengkh\gis\models\Nsi\common\GisNsiDirectoryEntryLink;
-use startuplab\helpers\GuidHelper;
+use opengkh\gis\models\common\Guid;
 use opengkh\gis\Module;
 
 /**
@@ -34,7 +34,7 @@ class GisResourceSupplyContractRegistry
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new exportSupplyResourceContractRequest();
-        $request->Id = GuidHelper::generate();
+        $request->Id = (string)(new Guid());
         $request->ContractNumber = $number;
 
         $result = $service->exportSupplyResourceContractData($request);
@@ -62,9 +62,9 @@ class GisResourceSupplyContractRegistry
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
 
         $request = new importSupplyResourceContractRequest();
-        $request->Id = GuidHelper::generate();
+        $request->Id = (string)(new Guid());
         $request->Contract = new Contract();
-        $request->Contract->TransportGUID = GuidHelper::generate();
+        $request->Contract->TransportGUID = (string)(new Guid());
 
         if ($contract->versionGuid) {
             $request->Contract->ContractGUID = $contract->versionGuid;
@@ -86,7 +86,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Id = GuidHelper::generate();
+        $request->Id = (string)(new Guid());
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
@@ -108,7 +108,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Id = GuidHelper::generate();
+        $request->Id = (string)(new Guid());
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
@@ -130,7 +130,7 @@ class GisResourceSupplyContractRegistry
     {
         $service = Module::getInstance()->serviceFactory->HouseManagementService();
         $request = new importSupplyResourceContractRequest();
-        $request->Id = GuidHelper::generate();
+        $request->Id = (string)(new Guid());
         $request->Contract = new Contract();
 
         $request->Contract->ContractGUID = $contract->versionGuid;
