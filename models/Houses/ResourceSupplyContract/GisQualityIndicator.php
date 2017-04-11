@@ -68,7 +68,7 @@ class GisQualityIndicator extends CompatibleWithGisgkh
         $target->IndicatorValue = new \stdClass();
         if (!empty($this->value)) {
             $target->IndicatorValue->Number = strval($this->value);
-            $target->IndicatorValue->OKEI = $this->OKEI;
+            $target->IndicatorValue->OKEI = sprintf('%03d', $this->OKEI);
         } else {
             $target->IndicatorValue->Correspond = $this->corresponds ? 'true' : 'false';
         }
