@@ -142,13 +142,14 @@ class GisOrganization extends CompatibleWithGisgkh
     {
         $service = Module::getInstance()->serviceFactory->OrganizationsRegistryCommonService();
 
-        $args = [$ogrn, $kpp];
-
+        $ogrnip = null;
         if (strlen($ogrn) === 15) {
-            $args = [null, null, $ogrn];
+            $ogrnip = $ogrn;
+            $ogrn = null;
+            $kpp = null;
         }
 
-        $result = call_user_func_array([$service, 'exportOrgRegistry'], $args);
+        $result = $service->exportOrgRegistry($ogrn, $kpp, $ogrnip);
 
         // обработка возможных ошибок
         if ($result->ErrorMessage) {
