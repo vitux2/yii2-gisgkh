@@ -132,8 +132,8 @@ class GisOrganization extends CompatibleWithGisgkh
     }
 
     /**
-     * Выполнить поиск организации в реестре ГИС ЖКХ по ОГРН
-     * @param string $ogrn ОГРН
+     * Выполнить поиск организации в реестре ГИС ЖКХ по ОГРН(ИП)
+     * @param string $ogrn ОГРН(ИП)
      * @param string $kpp КПП
      * @return GisOrganization|null
      * @throws GisgkhRequestControlException
@@ -141,7 +141,14 @@ class GisOrganization extends CompatibleWithGisgkh
     public static function getByOgrnAndKpp($ogrn, $kpp)
     {
         $service = Module::getInstance()->serviceFactory->OrganizationsRegistryCommonService();
-        $result = $service->exportOrgRegistry($ogrn, $kpp);
+
+        $args = [$ogrn, $kpp];
+
+        if (strlen($ogrn) === 15) {
+            $args = [null, null, $ogrn];
+        }
+
+        $result = call_user_func_array([$service, 'exportOrgRegistry'], $args);
 
         // обработка возможных ошибок
         if ($result->ErrorMessage) {
